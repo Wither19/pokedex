@@ -2,16 +2,23 @@
 <html>
 <title>Online HTML Editor</title>
 <head>
+    <link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
     <style>
+body {
+    font-family: 'Inter', sans-serif;
+}
 .damage-category-block, .Type {
     display: inline-flex;
     align-items: center;
     justify-content: space-evenly;
     margin: 0px 12px;
-    height: 24px;
+    height: 36px;
     color: #fff;
     text-shadow: 1px 1px 1px #333;
-    width: 80px;
+    width: 96px;
+    font-size: 20px;
     border: 1px solid black;
     border-radius: 5px;
     box-sizing: border-box;
@@ -122,6 +129,37 @@
     border-color: #3f00ff
 }
 
+#pokemon-img {
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: scale(2.5);
+}
+
+#pokemon-description {
+    min-height: 100px;
+    position: absolute;
+    left: 36%;
+    top: 25%;
+}
+
+#pokemon-types {
+    position: absolute;
+    top: 18%;
+    left: 40%;
+}
+
+#pokemon-list {
+    position: absolute;
+    top: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.pokemon-name {
+    flex-basis: 33%;
+}
     </style>
 </head>
 <body>
@@ -129,7 +167,7 @@
     <div id="pokemon-types"><span class="Type grass">GRASS</span><span class="Type poison">POISON</span></div>
     <div id="pokemon-description">There is a plant seed on its back right<br>from the day this POKéMON is born.<br>The seed slowly grows larger.</div>
     <div id="pokemon-list">
-        
+f
     </div>
 <script>
     
@@ -188,7 +226,7 @@ function updatePokemon(){
     let types = pokedex[this.id]["types"];
     for (let i = 0; i < types.length; i++) {
         let type = document.createElement("span");
-        type.innerText = types[i]["type"]["name"].toUpperCase();
+        type.innerText = types[i]["type"]["name"]
         type.classList.add("Type");
         type.classList.add(types[i]["type"]["name"]); //adds background color and font color
         typesDiv.append(type);
