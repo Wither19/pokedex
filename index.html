@@ -155,12 +155,25 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    overflow-y: scroll;
+    height: 510px;
 }
 
 .pokemon-name {
     flex-basis: 33%;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 12px 0px;
+    margin: 6px 0px;
+    cursor: pointer;
+    text-transform: capitalize;
 }
-    </style>
+
+.pokemon-name:hover {
+   background: yellow;
+   color: white;
+}
+  </style>
 </head>
 <body>
     <img id="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
