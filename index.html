@@ -193,7 +193,7 @@ window.onload = async function() {
         //<div id="1" class="pokemon-name">BULBASAUR</div>
         let pokemon = document.createElement("div");
         pokemon.id = i;
-        pokemon.innerText = i.toString() + ". " + pokedex[i]["name"].toUpperCase();
+        pokemon.innerText = i.toString() + ". " + pokedex[i]["name"];
         pokemon.classList.add("pokemon-name");
         pokemon.addEventListener("click", updatePokemon);
         document.getElementById("pokemon-list").append(pokemon);
