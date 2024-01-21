@@ -238,7 +238,7 @@ function updatePokemon(){
     let types = pokedex[this.id]["types"];
     for (let i = 0; i < types.length; i++) {
         let type = document.createElement("span");
-        type.innerText = types[i]["type"]["name"]
+        type.innerText = types[i]["type"]["name"].toUpperCase;
         type.classList.add("Type");
         type.classList.add(types[i]["type"]["name"]); //adds background color and font color
         typesDiv.append(type);
