@@ -138,8 +138,11 @@ body {
 
 #pokemon-description {
     min-height: 100px;
+    display: block;
+    width: 100%;
+    text-align: center;
     position: absolute;
-    left: 44.5%;
+    left: 0;
     top: 25%;
 }
 
@@ -183,7 +186,7 @@ body {
     </div>
 <script>
     
-const pokemonCount = 300;
+let pokemonCount = 300;
 var pokedex = {}; // {1 : {"name" : "bulbsaur", "img" : url, "type" : ["grass", "poison"], "desc" : "...."} }
 
 window.onload = async function() {
