@@ -5,6 +5,65 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	  <style>
+		  :root {
+  font-family: PT Serif, sans-serif;
+}
+
+.pokemon-name, .stats-header {
+  text-align: center;
+  font-size: 48px;
+  text-transform: capitalize;
+}
+
+.pokemon-img {
+	transform: scale(2);
+}
+.img-wrapper {
+	text-align: center;
+}
+
+p {
+  line-height: 200%;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 24px;
+}
+
+.types,
+.buttons {
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.buttons button {
+  font-size: 50px;
+  padding: 0px 16px;
+  cursor: pointer;
+}
+
+.type-1,
+.type-2 {
+  text-transform: capitalize;
+}
+
+.stats {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	font-size: 22px;
+	line-height: 175%;
+	font-weight: 700;
+}
+.hp {
+	text-transform: uppercase;
+}
+.atk, .sp-atk, .def, .sp-def, .spd {
+	text-transform: capitalize;
+}
+	  </style>
   </head>
 
   <body>
@@ -32,6 +91,41 @@
    	<button class="prev">< Prev</button>
     <button class="next">Next ></button>      
     </div>
+	<script>
+		var i = 1;
+
+function pkmnLoad() {
+  fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data),
+        $(".pokemon-name").html(`${data.name}`),
+        $(".pokemon-img").attr("src", `${data.sprites.front_default}`),
+        $(".type-1").html(`${data.types[0].type.name}`),
+        $(".type-2").html(`${data.types[1].type.name}`),
+        $(".hp").html(`${data.stats[0].stat.name}: ${data.stats[0].base_stat}`);
+      $(".atk").html(`${data.stats[1].stat.name}: ${data.stats[1].base_stat}`);
+      $(".sp-atk").html(`${data.stats[2].stat.name}: ${data.stats[2].base_stat}`);
+      $(".def").html(`${data.stats[3].stat.name}: ${data.stats[3].base_stat}`);
+      $(".sp-def").html(`${data.stats[4].stat.name}: ${data.stats[4].base_stat}`);
+      $(".spd").html(`${data.stats[5].stat.name}: ${data.stats[5].base_stat}`);
+    });
+}
+document.querySelector(".prev").addEventListener("click", pkmnLoad);
+
+$(".prev").click(function() {
+  i--;
+  console.log(`Pokemon #${i}.`);
+});
+
+document.querySelector(".next").addEventListener("click", pkmnLoad);
+
+$(".next").click(function() {
+  i++;
+  console.log(`Pokemon #${i}.`);
+});
+
+	</script>
   </body>
 
 </html>
