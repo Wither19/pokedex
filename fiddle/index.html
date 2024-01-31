@@ -10,17 +10,19 @@
   font-family: PT Serif, sans-serif;
 }
 
-.pokemon-name, .stats-header {
+.pokemon-name,
+.stats-header {
   text-align: center;
   font-size: 48px;
   text-transform: capitalize;
 }
 
 .pokemon-img {
-	transform: scale(2);
+  width: 30%;
 }
+
 .img-wrapper {
-	text-align: center;
+  text-align: center;
 }
 
 p {
@@ -32,7 +34,7 @@ p {
 
 .types,
 .buttons {
-  margin: 40px auto;
+  margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -42,6 +44,7 @@ p {
   font-size: 50px;
   padding: 0px 16px;
   cursor: pointer;
+  user-select: none;
 }
 
 .type-1,
@@ -50,23 +53,52 @@ p {
 }
 
 .stats {
-	display: flex;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
-	font-size: 22px;
-	line-height: 175%;
-	font-weight: 700;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 700;
 }
+
 .hp {
-	text-transform: uppercase;
+  text-transform: uppercase;
+  margin: 2px 6px;
 }
-.atk, .sp-atk, .def, .sp-def, .spd {
-	text-transform: capitalize;
+
+.atk,
+.sp-atk,
+.def,
+.sp-def,
+.spd {
+  text-transform: capitalize;
+  margin: 2px 6px;
 }
+
+input {
+  font-size: 24px;
+
+}
+
+.search {
+  background: teal;
+  color: white;
+  padding: 4px;
+  position: absolute;
+  top: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search:hover {
+  background: skyblue;
+}
+
 	  </style>
   </head>
 
   <body onload="pkmnLoad()">
+	  <center><input id="no" onsubmit="changeIToSomething();" type="number"></center>
     <h1 class="pokemon-name">
     </h1>
 	<div class="img-wrapper">
@@ -92,37 +124,50 @@ p {
     <button class="next">Next ></button>      
     </div>
 	<script>
-		var i = 1;
+var i = 1;
+const numberInput = document.querySelector("#no");
+
+
+$(".prev").click(function() {
+  i--;
+});
+
+$(".next").click(function() {
+  i++;
+});
 
 function pkmnLoad() {
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
     .then(response => response.json())
     .then(data => {
-      console.log(data),
-        $(".pokemon-name").html(`${data.name}`),
+      $(".pokemon-name").html(`${data.name}`),
         $(".pokemon-img").attr("src", `${data.sprites.front_default}`),
         $(".type-1").html(`${data.types[0].type.name}`),
         $(".type-2").html(`${data.types[1].type.name}`),
-        $(".hp").html(`${data.stats[0].stat.name}: ${data.stats[0].base_stat}`);
-      $(".atk").html(`${data.stats[1].stat.name}: ${data.stats[1].base_stat}`);
-      $(".sp-atk").html(`${data.stats[2].stat.name}: ${data.stats[2].base_stat}`);
-      $(".def").html(`${data.stats[3].stat.name}: ${data.stats[3].base_stat}`);
-      $(".sp-def").html(`${data.stats[4].stat.name}: ${data.stats[4].base_stat}`);
-      $(".spd").html(`${data.stats[5].stat.name}: ${data.stats[5].base_stat}`);
+        $(".hp").html(`${data.stats[0].stat.name}: ${data.stats[0].base_stat}`),
+        $(".atk").html(`Atk: ${data.stats[1].base_stat}`),
+        $(".sp-atk").html(`Sp-Atk: ${data.stats[2].base_stat}`),
+        $(".def").html(`Def: ${data.stats[3].base_stat}`),
+        $(".sp-def").html(`Sp-Def: ${data.stats[4].base_stat}`),
+        $(".spd").html(`Spd: ${data.stats[5].base_stat}`)
+
     });
 }
-document.querySelector(".prev").addEventListener("click", pkmnLoad);
 
-$(".prev").click(function() {
-  i--;
-  console.log(`Pokemon #${i}.`);
-});
+document.querySelector(".prev").addEventListener("click", pkmnLoad);
 
 document.querySelector(".next").addEventListener("click", pkmnLoad);
 
-$(".next").click(function() {
-  i++;
-  console.log(`Pokemon #${i}.`);
+function changeIToSomething() {
+  let daValue = Number(numberInput.value);
+  i = daValue;
+  pkmnLoad();
+}
+
+$("#no").keydown(function(e) {
+  if (e.which == 13) {
+    changeIToSomething();
+  }
 });
 
 	</script>
