@@ -5,172 +5,64 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-	  <style>
-:root {
-  font-family: PT Serif, sans-serif;
-}
-
-.pokemon-name,
-.stats-header {
-  text-align: center;
-  font-size: 48px;
-  text-transform: capitalize;
-}
-
-.pokemon-img {
-  width: 30%;
-}
-
-.img-wrapper {
-  text-align: center;
-}
-
-p {
-  line-height: 200%;
-  font-size: 18px;
-  text-align: center;
-  margin: 10px 24px;
-}
-
-.types,
-.buttons {
-  margin: 20px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.buttons button {
-  font-size: 50px;
-  padding: 0px 16px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.type-1,
-.type-2 {
-  text-transform: capitalize;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  font-size: 20px;
-  line-height: 150%;
-  font-weight: 700;
-}
-
-.hp {
-  text-transform: uppercase;
-  margin: 2px 6px;
-}
-
-.atk,
-.sp-atk,
-.def,
-.sp-def,
-.spd {
-  text-transform: capitalize;
-  margin: 2px 6px;
-}
-
-input {
-  font-size: 24px;
-
-}
-
-.search {
-  background: teal;
-  color: white;
-  padding: 4px;
-  position: absolute;
-  top: 8px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.search:hover {
-  background: skyblue;
-}
-
-	  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="style.css" href="style.css">
   </head>
 
   <body onload="pkmnLoad()">
-	  <center><input id="no" onsubmit="changeIToSomething();" type="number"></center>
+    <button onclick="surprise()" style="font-size: 24px; cursor: pointer;">
+      Surprise Me!
+    </button>
+    <center><input id="no" onsubmit="changeIToSomething();" type="number"><br>
+      <sub>Search by Pokedex number!</sub>
+    </center>
+    <div class="aside">
+      <kbd>r</kbd> - Surprise Me button
+      <br><br>
+      <kbd>s</kbd> - preview shinies
+      <br><br>
+      <kbd>m</kbd> - see minified sprites
+    </div>
     <h1 class="pokemon-name">
     </h1>
-	<div class="img-wrapper">
-	<img class="pokemon-img" src="">
-	</div>
+    <div class="sprite-wrapper hide">
+      <img class="pokemon-sprite" src="">
+      <img class="shiny-sprite" src="">
+    </div>
+    <div class="img-wrapper">
+      <img class="pokemon-artwork" src="">
+      <img class="shiny-artwork" src="">
+    </div>
     <div class="types">
-      <span class="type-1">
+      <span class="Type grass">
+        Grass
       </span>
-      <span class="type-2">
+      <span class="Type poison">
+        Poison
       </span>
     </div>
-	<h1 class="stats-header">Stats</h1>
-	<div class="stats">
-	<span class="hp"></span>
-	<span class="atk"></span>
-	<span class="sp-atk"></span>
-	<span class="def"></span>
-	<span class="sp-def"></span>
-	<span class="spd"></span>
-	</div>
+    <h1 class="stats-header">Stats</h1>
+    <div class="stats">
+      <span class="hp"></span>
+      <span class="atk"></span>
+      <span class="def"></span>
+      <span class="sp-atk"></span>
+      <span class="sp-def"></span>
+      <span class="spd"></span>
+    </div>
+    <h1 class="abilities-header">Abilities</h1>
+    <div class="abilities">
+      <span class="normal"></span>
+      <span class="hidden"></span>
+    </div>
     <div class="buttons">
-   	<button class="prev">< Prev</button>
-    <button class="next">Next ></button>      
+      <button class="prev">
+        < Prev</button>
+          <button class="next">Next ></button>
     </div>
-	<script>
-var i = 1;
-const numberInput = document.querySelector("#no");
-
-
-$(".prev").click(function() {
-  i--;
-});
-
-$(".next").click(function() {
-  i++;
-});
-
-function pkmnLoad() {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
-    .then(response => response.json())
-    .then(data => {
-      $(".pokemon-name").html(`${data.name}`),
-        $(".pokemon-img").attr("src", `${data.sprites.front_default}`),
-        $(".type-1").html(`${data.types[0].type.name}`),
-        $(".type-2").html(`${data.types[1].type.name}`),
-        $(".hp").html(`${data.stats[0].stat.name}: ${data.stats[0].base_stat}`),
-        $(".atk").html(`Atk: ${data.stats[1].base_stat}`),
-        $(".sp-atk").html(`Sp-Atk: ${data.stats[2].base_stat}`),
-        $(".def").html(`Def: ${data.stats[3].base_stat}`),
-        $(".sp-def").html(`Sp-Def: ${data.stats[4].base_stat}`),
-        $(".spd").html(`Spd: ${data.stats[5].base_stat}`)
-
-    });
-}
-
-document.querySelector(".prev").addEventListener("click", pkmnLoad);
-
-document.querySelector(".next").addEventListener("click", pkmnLoad);
-
-function changeIToSomething() {
-  let daValue = Number(numberInput.value);
-  i = daValue;
-  pkmnLoad();
-}
-
-$("#no").keydown(function(e) {
-  if (e.which == 13) {
-    changeIToSomething();
-  }
-});
-
-	</script>
+	<script src="scripts.js"></script>
   </body>
 
 </html>
