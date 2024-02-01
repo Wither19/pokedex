@@ -1,0 +1,262 @@
+:root,
+button {
+  font-family: Inter, sans-serif;
+}
+
+.pokemon-name,
+.stats-header,
+.abilities-header {
+  display: block;
+  text-align: center;
+  font-size: 48px;
+  text-transform: capitalize;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pokemon-sprite,
+.shiny-sprite {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+  position: relative;
+  left: 40%;
+}
+
+.pokemon-artwork,
+.shiny-artwork {
+  width: 55%;
+  transition: filter 0.3s;
+  filter: drop-shadow(0px 2px 12px black);
+}
+
+.pokemon-artwork,
+.pokemon-sprite {
+  display: flex;
+}
+
+.shiny-artwork,
+.shiny-sprite {
+  display: none;
+}
+
+.img-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+p {
+  line-height: 200%;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 24px;
+}
+
+.types,
+.buttons {
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.buttons button {
+  font-size: 50px;
+  padding: 0px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.type-1,
+.type-2 {
+  text-transform: capitalize;
+}
+
+.stats {
+  display: none;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 700;
+}
+
+.hp {
+  text-transform: uppercase;
+  margin: 2px 6px;
+}
+
+.atk,
+.sp-atk,
+.def,
+.sp-def,
+.spd,
+.normal,
+.hidden {
+  text-transform: capitalize;
+  margin: 2px 6px;
+}
+
+input {
+  font-size: 24px;
+
+}
+
+.search {
+  background: teal;
+  color: white;
+  padding: 4px;
+  position: absolute;
+  top: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search:hover {
+  background: skyblue;
+}
+
+.show {
+  display: flex !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.abilities {
+  display: none;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+kbd {
+  border: 1px solid gray;
+  box-shadow: 1px -1px 2px inset lightgray, -1px -1px 2px inset lightgray;
+  padding: 0px 2px;
+}
+
+.aside {
+  position: absolute;
+  top: 1%;
+  left: 78%;
+}
+
+.damage-category-block,
+.Type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0px 12px;
+  height: 36px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #333;
+  width: 96px;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+.Type {
+  color: #fff !important;
+  text-decoration: none
+}
+
+.Type.normal {
+  background: linear-gradient(#a8a878, #8a8a59);
+  border-color: #79794e
+}
+
+.Type.fire {
+  background: linear-gradient(#f08030, #dd6610);
+  border-color: #b4530d
+}
+
+.Type.water {
+  background: linear-gradient(#6890f0, #386ceb);
+  border-color: #1753e3
+}
+
+.Type.electric {
+  background: linear-gradient(#f8d030, #f0c108);
+  border-color: #c19b07
+}
+
+.Type.fairy {
+  background: linear-gradient(#f98cff, #f540ff);
+  border-color: #c1079b
+}
+
+.Type.grass {
+  background: linear-gradient(#78c850, #5ca935);
+  border-color: #4a892b
+}
+
+.Type.ice {
+  background: linear-gradient(#98d8d8, #69c6c6);
+  border-color: #45b6b6
+}
+
+.Type.fighting {
+  background: linear-gradient(#c03028, #9d2721);
+  border-color: #82211b
+}
+
+.Type.poison {
+  background: linear-gradient(#a040a0, #803380);
+  border-color: #662966
+}
+
+.Type.ground {
+  background: linear-gradient(#e0c068, #d4a82f);
+  border-color: #aa8623
+}
+
+.Type.flying {
+  background: linear-gradient(#a890f0, #9180c4);
+  border-color: #7762b6
+}
+
+.Type.psychic {
+  background: linear-gradient(#f85888, #f61c5d);
+  border-color: #d60945
+}
+
+.Type.bug {
+  background: linear-gradient(#a8b820, #8d9a1b);
+  border-color: #616b13
+}
+
+.Type.rock {
+  background: linear-gradient(#b8a038, #93802d);
+  border-color: #746523
+}
+
+.Type.ghost {
+  background: linear-gradient(#705898, #554374);
+  border-color: #413359
+}
+
+.Type.dragon {
+  background: linear-gradient(#7038f8, #4c08ef);
+  border-color: #3d07c0
+}
+
+.Type.steel {
+  background: linear-gradient(#b8b8d0, #9797ba);
+  border-color: #7a7aa7
+}
+
+.Type.dark {
+  background: linear-gradient(#705848, #513f34);
+  border-color: #362a23
+}
+
+.Type.stellar {
+  background: url("./stellar-MZZL7FQV.svg");
+  background-size: cover;
+  border-color: #3f00ff
+}
