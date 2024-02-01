@@ -53,10 +53,6 @@ function pkmnLoad() {
         $(".normal").html(`${data.abilities[0].ability.name}`),
 
         $(".hidden").html(`<span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}`)
-      if (data.types.length == 1) {
-        alert("pootis");
-      }
-
     });
 
 }
