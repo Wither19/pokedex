@@ -8,8 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   </head>
 
   <body onload="pkmnLoad()">
@@ -17,14 +16,20 @@
       Surprise Me!
     </button>
     <center><input id="no" onsubmit="changeIToSomething();" type="number"><br>
-      <sub>Search by Pokedex number!</sub>
+      <sub>Search by Pokédex number!</sub>
     </center>
     <div class="aside">
-      <kbd>r</kbd> - Surprise Me button
+      <kbd>R</kbd> - Surprise Me button
       <br><br>
-      <kbd>s</kbd> - preview shinies
+      <kbd>S</kbd> - preview shinies
       <br><br>
-      <kbd>m</kbd> - see minified sprites
+      <kbd>M</kbd> - see minified sprites
+	  <br><br>
+      <kbd>V</kbd> - cycle through variants
+	  <br><br>
+	  <kbd>Arrow Keys</kbd> - Navigate to previous / next Pokémon
+	  <br><br>
+	  <kbd>,</kbd> - <kbd>.</kbd> -  +10 / -10
     </div>
     <h1 class="pokemon-name">
     </h1>
@@ -63,7 +68,6 @@
         < Prev</button>
           <button class="next">Next ></button>
     </div>
-	<script src="scripts.js"></script>
   </body>
 
 </html>
