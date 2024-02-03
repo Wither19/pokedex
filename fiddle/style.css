@@ -143,23 +143,21 @@ kbd {
   left: 78%;
 }
 
-.damage-category-block,
-.Type {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 0px 12px;
-  height: 36px;
-  color: #fff;
-  text-shadow: 1px 1px 1px #333;
-  width: 96px;
-  font-size: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-sizing: border-box;
-  text-transform: capitalize;
+.damage-category-block, .Type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0px 12px;
+    height: 64px;
+    color: #fff;
+    text-shadow: 1px 1px 1px #333;
+    width: 170px;
+    font-size: 36px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-transform: capitalize;
 }
-
 .Type {
   color: #fff !important;
   text-decoration: none
