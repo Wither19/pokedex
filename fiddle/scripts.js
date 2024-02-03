@@ -99,10 +99,21 @@ $(document).keydown(function(e) {
   }
 });
 
+$(".shinyToggle").click(function() {
+    $(".pokemon-artwork").toggleClass("hide");
+    $(".pokemon-sprite").toggleClass("hide");
+    $(".shiny-artwork").toggleClass("show");
+    $(".shiny-sprite").toggleClass("show");
+});
+
 $(document).keydown(function(e) {
   if (e.which == 77) {
     $(".sprite-wrapper").toggleClass("hide");
   }
+});
+
+$(".tinySprite").click(function() {
+  $(".sprite-wrapper").toggleClass("hide");  
 });
 
 $(document).keydown(function(e) {
@@ -122,6 +133,9 @@ $(document).keydown(function(e) {
   }
 });
 
+$(".variantToggle").click(function() {
+  callVariants();
+});
 
 function callVariants() {
 
