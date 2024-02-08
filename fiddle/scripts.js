@@ -31,25 +31,25 @@ function pkmnLoad() {
   if (i <= 0) {
     i = 1;
   } else if (i > 0 && i < 152) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kanto"> Kanto');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kanto"> Kanto')
   } else if (i > 151 && i < 252) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#johto"> Johto');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#johto"> Johto')
   } else if (i > 251 && i < 387) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#hoenn"> Hoenn');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#hoenn"> Hoenn')
   } else if (i > 386 && i < 494) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#sinnoh"> Sinnoh');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#sinnoh"> Sinnoh')
   } else if (i > 493 && i < 650) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#unova"> Unova');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#unova"> Unova')
   } else if (i > 649 && i < 722) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos')
   } else if (i > 721 && i < 810) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#alola"> Alola');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#alola"> Alola')
   } else if (i > 809 && i < 899) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#galar"> Galar');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#galar"> Galar')
   } else if (i > 898 && i < 906) {
-    $(".region").html('Hisui');
+    $(".region").html('Hisui')
   } else if (i > 905 && i < 1026) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#paldea"> Paldea');
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#paldea"> Paldea')
   }
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
     // Getting Pokémon data from API, showing in markup
@@ -79,11 +79,19 @@ function pkmnLoad() {
       <span class="sp-def">Sp-Def: ${data.stats[4].base_stat}</span>
       <span class="spd">Spd: ${data.stats[5].base_stat}</span>`),
 
-      $(".norm").html(`${data.abilities[0].ability.name}`),
-
-      $(".hidden").html(`<span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}`),
-
-      $("audio").attr("src", `https://github.com/PokeAPI/cries/raw/main/cries/pokemon/latest/${i}.ogg`)
+	$(".abilities").html(""),
+	
+	$(".abilities").append(`
+	<span class="norm">${data.abilities[0].ability.name}</span>
+      <span class="hidden"><span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}</span>`),
+	  
+      $("audio").attr("src", data.cries.latest),
+	  
+	$(".tidbits").html(""),
+	
+	$(".tidbits").append(`
+	<span class="height">${Math.floor(data.height / 3.048)} ft.</span>
+	<span class="weight">${Math.floor(data.weight / 4.536)} lbs.</span>`)
   });
 
 }
@@ -116,6 +124,10 @@ $(".stats-header").click(function() {
 
 $(".abilities-header").click(function() {
   $(".abilities").toggleClass("show");
+});
+
+$(".tidbits-header").click(function() {
+  $(".tidbits").toggleClass("show");
 });
 
 $(document).keydown(function(e) {
@@ -385,3 +397,4 @@ function callVariants() {
 
   pkmnLoad();
 }
+
