@@ -13,7 +13,7 @@
   </head>
 
   <body onload="pkmnLoad()">
-  <audio controls src="https://github.com/PokeAPI/cries/raw/main/cries/pokemon/latest/1.ogg" style="display: none;"></audio>
+    <audio controls src="https://github.com/PokeAPI/cries/raw/main/cries/pokemon/latest/1.ogg" style="display: none;"></audio>
     <button onclick="surprise()" style="font-size: 24px; cursor: pointer;">
       Surprise Me!
     </button>
@@ -37,10 +37,14 @@
       <kbd>Left</kbd> - <kbd>Right</kbd> - Navigate to previous / next Pokémon
       <br><br>
       <kbd>Up</kbd> - <kbd>Down</kbd> - +10 / -10
-	  <br><br>
-	  <kbd>C</kbd> - Play Pokémon cries
+      <br><br>
+      <kbd>C</kbd> - Play Pokémon cries
+      <br><br>
+      <kbd>0</kbd> - Toggle all dropdowns
+      <br><br>
+      <kbd>1-9</kbd> - Toggle specific dropdowns
     </div>
-		<center><sub class="region"></sub></center>
+    <center><sub class="region"></sub></center>
     <h1 class="pokemon-name"></h1>
     <center class="sprite-wrapper hide">
       <img class="pokemon-sprite" src="">
@@ -72,13 +76,13 @@
       <span class="norm"></span>
       <span class="hidden"></span>
     </div>
-	<h1 class="tidbits-header">
-	Other Tidbits
-	</h1>
-	<div class="tidbits">
-	<span class="height"></span>
-	<span class="weight"></span>
-	</div>
+    <h1 class="tidbits-header">
+      Other Tidbits
+    </h1>
+    <div class="tidbits">
+      <span class="height"></span>
+      <span class="weight"></span>
+    </div>
     <div class="buttons">
       <button class="prev">
         < Prev</button>
