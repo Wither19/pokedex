@@ -182,9 +182,9 @@ kbd {
 }
 
 .Type:hover {
-	filter: brightness(1.1) drop-shadow(10px 10px 4px black);
-	top: -5px;
-	left: -5;
+  filter: brightness(1.1) drop-shadow(10px 10px 4px black);
+  top: -5px;
+  left: -5;
 }
 
 .Type.normal {
@@ -289,6 +289,48 @@ kbd {
 
 .region {
   font-size: 32px;
+}
+
+.grid {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: linear-gradient(90deg, slategray 50%, gray);
+  z-index: 5;
+  position: absolute;
+}
+
+.grid button {
+  font-size: 20px;
+  margin: 10px;
+  width: 20%;
+  text-transform: capitalize;
+  border: 3px solid lightgray;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 80ms ease-in-out;
+}
+
+.grid button img {
+  width: 100%;
+}
+
+.grid button:hover {
+  color: white;
+  background-color: slateblue;
+  border: 3px solid darkslateblue;
+}
+
+.bigolpokeball img {
+	transition: 0.55s;
+}
+
+.bigolpokeball:hover img {
+	transform: rotate(360deg);
+}
+
+.show {
+  display: flex;
 }
 
 @media screen and (orientation: portrait) {
