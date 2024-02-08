@@ -1,5 +1,104 @@
 var i = 1;
 const numberInput = document.querySelector("#no");
+var f = 1;
+
+function init() {
+  fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).then(data => {
+    for (let i = 1; i < data.pokemon_entries.length; i++) {
+      const newDex = document.createElement("button");
+      document.querySelector(".grid").appendChild(newDex);
+      newDex.setAttribute("id", i);
+      newDex.addEventListener("click", pkmnSelect);
+      newDex.innerHTML = `
+	#${data.pokemon_entries[i - 1].entry_number} ${data.pokemon_entries[i - 1].pokemon_species.name}
+	<br>
+	<img src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.pokemon_entries[i - 1].pokemon_species.name}.png">
+	`;
+    }
+  });
+}
+
+$(".grid").click(function() {
+  $(".grid").toggleClass("show");
+});
+
+$(".bigolpokeball").click(function() {
+  $(".grid").toggleClass("show");
+});
+
+function pkmnSelect(event) {
+  f = event.currentTarget.id;
+  pkmnLoadFromDex();
+}
+
+function pkmnLoadFromDex() {
+  if (f <= 0) {
+    f = 1;
+  } else if (f > 0 && f < 152) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kanto"> Kanto')
+  } else if (f > 151 && f < 252) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#johto"> Johto')
+  } else if (f > 251 && f < 387) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#hoenn"> Hoenn')
+  } else if (f > 386 && f < 494) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#sinnoh"> Sinnoh')
+  } else if (f > 493 && f < 650) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#unova"> Unova')
+  } else if (f > 649 && f < 722) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos')
+  } else if (f > 721 && f < 810) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#alola"> Alola')
+  } else if (f > 809 && f < 899) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#galar"> Galar')
+  } else if (f > 898 && f < 906) {
+    $(".region").html('Hisui')
+  } else if (f > 905 && f < 1026) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#paldea"> Paldea')
+  }
+  fetch(`https://pokeapi.co/api/v2/pokemon/${f}`).then(response => response.json()).then(data => {
+    // Getting Pokémon data from API, showing in markup
+    $(".pokemon-name").html(`#${data.id} - ${data.name}`),
+
+      $(".pokemon-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/regular/${data.name}.png`),
+
+      $(".pokemon-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${f}.png`),
+
+      $(".shiny-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${f}.png`),
+
+      $(".shiny-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`),
+
+      $(".types").html(""),
+
+      $(".types").prepend(`<span class="Type ${data.types[0].type.name}">${data.types[0].type.name}</span>`),
+
+      $(".types").append(`<span class="Type ${data.types[1].type.name}">${data.types[1].type.name}</span>`),
+
+      $(".stats").html(""),
+
+      $(".abilities").html(""),
+
+      $(".tidbits").html(""),
+
+      $(".stats").append(`
+	  <span class="hp">${data.stats[0].stat.name}: ${data.stats[0].base_stat}</span>
+      <span class="atk">Atk: ${data.stats[1].base_stat}</span>
+      <span class="def">Def: ${data.stats[3].base_stat}</span>
+      <span class="sp-atk">Sp-Atk: ${data.stats[2].base_stat}</span>
+      <span class="sp-def">Sp-Def: ${data.stats[4].base_stat}</span>
+      <span class="spd">Spd: ${data.stats[5].base_stat}</span>`),
+
+      $(".abilities").append(`
+	<span class="norm">${data.abilities[0].ability.name}</span>
+      <span class="hidden"><span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}</span>`),
+
+      $("audio").attr("src", data.cries.latest),
+
+      $(".tidbits").append(`
+	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span>
+	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`)
+  });
+
+}
 
 $(".prev").click(function() {
   i--;
@@ -14,44 +113,61 @@ $(document).keydown(function(e) {
   if (e.which == 37) {
     i--;
     pkmnLoad();
+	$(".grid").toggleClass("show");
   } else if (e.which == 39) {
     i++;
     pkmnLoad();
+	$(".grid").toggleClass("show");
   } else if (e.which == 38) {
     e.preventDefault();
     i -= 10;
     pkmnLoad();
+	$(".grid").toggleClass("show");
   } else if (e.which == 40) {
     e.preventDefault();
     i += 10;
     pkmnLoad();
+	$(".grid").toggleClass("show");
   } else if (e.which == 13) {
     changeIToSomething();
+	$(".grid").toggleClass("show");
   } else if (e.which == 67) {
     document.querySelector("audio").play();
+	$(".grid").toggleClass("show");
   } else if (e.which == 48) {
     $(".stats").toggleClass("show");
     $(".abilities").toggleClass("show");
     $(".tidbits").toggleClass("show");
+	$(".grid").toggleClass("show");
   } else if (e.which == 49) {
     $(".stats").toggleClass("show");
+	$(".grid").toggleClass("show");
   } else if (e.which == 50) {
     $(".abilities").toggleClass("show");
+	$(".grid").toggleClass("show");
   } else if (e.which == 51) {
     $(".tidbits").toggleClass("show");
+	$(".grid").toggleClass("show");
   } else if (e.which == 83) {
     $(".pokemon-artwork").toggleClass("hide");
     $(".pokemon-sprite").toggleClass("hide");
     $(".shiny-artwork").toggleClass("show");
     $(".shiny-sprite").toggleClass("show");
+	$(".grid").toggleClass("show");
   } else if (e.which == 77) {
-    $(".sprite-wrapper").toggleClass("hide");
+    $(".sprite-wrapper").toggleClass("show");
+	$(".grid").toggleClass("show");
   } else if (e.which == 86) {
     callVariants();
+	$(".grid").toggleClass("show");
   } else if (e.which == 82) {
     surprise();
+	$(".grid").toggleClass("show");
   } else if (e.which == 191) {
     $(".aside").toggleClass("aside-show");
+	$(".grid").toggleClass("show");
+  } else if (e.which == 27) {
+    $(".grid").toggleClass("show");
   }
 });
 
@@ -154,7 +270,7 @@ $(".shinyToggle").click(function() {
 });
 
 $(".tinySprite").click(function() {
-  $(".sprite-wrapper").toggleClass("hide");
+  $(".sprite-wrapper").toggleClass("show");
 });
 
 function surprise() {
@@ -165,6 +281,8 @@ function surprise() {
 $(".variantToggle").click(function() {
   callVariants();
 });
+
+
 
 function callVariants() {
 
