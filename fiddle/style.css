@@ -25,9 +25,9 @@ button {
 
 .pokemon-artwork,
 .shiny-artwork {
-  width: 40%;
+  width: 35%;
   transition: filter 0.3s;
-  filter: drop-shadow(0px 2px 12px black);
+  filter: drop-shadow(0px 0px 6px black);
 }
 
 .pokemon-artwork,
@@ -143,21 +143,23 @@ kbd {
   left: 78%;
 }
 
-.damage-category-block, .Type {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin: 0px 12px;
-    height: 64px;
-    color: #fff;
-    text-shadow: 1px 1px 1px #333;
-    width: 170px;
-    font-size: 36px;
-    border: 1px solid black;
-    border-radius: 5px;
-    box-sizing: border-box;
-    text-transform: capitalize;
+.damage-category-block,
+.Type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0px 12px;
+  height: 64px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #333;
+  width: 140px;
+  font-size: 32px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-transform: capitalize;
 }
+
 .Type {
   color: #fff !important;
   text-decoration: none
@@ -258,46 +260,55 @@ kbd {
   background-size: cover;
   border-color: #3f00ff
 }
+
 .mobile {
   display: none;
 }
 
+.region {
+	font-size: 32px;
+}
+
 @media screen and (orientation: portrait) {
-.aside {
+  .aside {
     display: none;
-}
-sub {
+  }
+
+  sub {
     font-size: 29px;
-}
-input {
+  }
+
+  input {
     font-size: 44px;
     margin: 40px;
-}
-button {
+  }
+
+  button {
     font-size: 64px !important;
-}
-.pokemon-name, .stats-header, .abilities-header {
+  }
+
+  .pokemon-name,
+  .stats-header,
+  .abilities-header {
     font-size: 76px;
-}
-.damage-category-block, .Type {
+  }
+
+  .damage-category-block,
+  .Type {
     margin: 0px 12px;
-    height: 70px;
-    width: 250px;
+    height: 52px;
+    width: 180px;
     font-size: 36px;
-}
-.stats, .abilities {
+  }
+
+  .stats,
+  .abilities {
     font-size: 44px;
     line-height: 175%;
-}
-    .mobile {
-        position: sticky;
-        top: 0;
-        display: block;
-        margin: 40px;
-    }
-  .pokemon-artwork, .shiny-artwork {
-    width: 53%;
-    transition: filter 0.3s;
-    filter: drop-shadow(0px 2px 12px black);
-}
+  }
+
+  .mobile {
+    display: block;
+    margin: 40px;
+  }
 }
