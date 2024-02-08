@@ -9,6 +9,7 @@ $(".next").click(function() {
   i++;
 });
 
+// Every keyboard shortcut, all clumped into this block of code
 $(document).keydown(function(e) {
   if (e.which == 37) {
     i--;
@@ -24,6 +25,33 @@ $(document).keydown(function(e) {
     e.preventDefault();
     i += 10;
     pkmnLoad();
+  } else if (e.which == 13) {
+    changeIToSomething();
+  } else if (e.which == 67) {
+    document.querySelector("audio").play();
+  } else if (e.which == 48) {
+    $(".stats").toggleClass("show");
+    $(".abilities").toggleClass("show");
+    $(".tidbits").toggleClass("show");
+  } else if (e.which == 49) {
+    $(".stats").toggleClass("show");
+  } else if (e.which == 50) {
+    $(".abilities").toggleClass("show");
+  } else if (e.which == 51) {
+    $(".tidbits").toggleClass("show");
+  } else if (e.which == 83) {
+    $(".pokemon-artwork").toggleClass("hide");
+    $(".pokemon-sprite").toggleClass("hide");
+    $(".shiny-artwork").toggleClass("show");
+    $(".shiny-sprite").toggleClass("show");
+  } else if (e.which == 77) {
+    $(".sprite-wrapper").toggleClass("hide");
+  } else if (e.which == 86) {
+    callVariants();
+  } else if (e.which == 82) {
+    surprise();
+  } else if (e.which == 191) {
+    $(".aside").toggleClass("aside-show");
   }
 });
 
@@ -69,7 +97,11 @@ function pkmnLoad() {
 
       $(".types").append(`<span class="Type ${data.types[1].type.name}">${data.types[1].type.name}</span>`),
 
-	$(".stats").html("");
+      $(".stats").html(""),
+
+      $(".abilities").html(""),
+
+      $(".tidbits").html(""),
 
       $(".stats").append(`
 	  <span class="hp">${data.stats[0].stat.name}: ${data.stats[0].base_stat}</span>
@@ -79,19 +111,15 @@ function pkmnLoad() {
       <span class="sp-def">Sp-Def: ${data.stats[4].base_stat}</span>
       <span class="spd">Spd: ${data.stats[5].base_stat}</span>`),
 
-	$(".abilities").html(""),
-	
-	$(".abilities").append(`
+      $(".abilities").append(`
 	<span class="norm">${data.abilities[0].ability.name}</span>
       <span class="hidden"><span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}</span>`),
-	  
+
       $("audio").attr("src", data.cries.latest),
-	  
-	$(".tidbits").html(""),
-	
-	$(".tidbits").append(`
-	<span class="height">${Math.floor(data.height / 3.048)} ft.</span>
-	<span class="weight">${Math.floor(data.weight / 4.536)} lbs.</span>`)
+
+      $(".tidbits").append(`
+	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span>
+	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`)
   });
 
 }
@@ -106,18 +134,6 @@ function changeIToSomething() {
   pkmnLoad();
 }
 
-$(document).keydown(function(e) {
-  if (e.which == 67) {
-    document.querySelector("audio").play();
-  }
-});
-
-$("#no").keydown(function(e) {
-  if (e.which == 13) {
-    changeIToSomething();
-  }
-});
-
 $(".stats-header").click(function() {
   $(".stats").toggleClass("show");
 });
@@ -130,15 +146,6 @@ $(".tidbits-header").click(function() {
   $(".tidbits").toggleClass("show");
 });
 
-$(document).keydown(function(e) {
-  if (e.which == 83) {
-    $(".pokemon-artwork").toggleClass("hide");
-    $(".pokemon-sprite").toggleClass("hide");
-    $(".shiny-artwork").toggleClass("show");
-    $(".shiny-sprite").toggleClass("show");
-  }
-});
-
 $(".shinyToggle").click(function() {
   $(".pokemon-artwork").toggleClass("hide");
   $(".pokemon-sprite").toggleClass("hide");
@@ -146,32 +153,14 @@ $(".shinyToggle").click(function() {
   $(".shiny-sprite").toggleClass("show");
 });
 
-$(document).keydown(function(e) {
-  if (e.which == 77) {
-    $(".sprite-wrapper").toggleClass("hide");
-  }
-});
-
 $(".tinySprite").click(function() {
   $(".sprite-wrapper").toggleClass("hide");
-});
-
-$(document).keydown(function(e) {
-  if (e.which == 82) {
-    surprise();
-  }
 });
 
 function surprise() {
   i = Math.floor(Math.random() * 1025) + 1;
   pkmnLoad();
 }
-
-$(document).keydown(function(e) {
-  if (e.which == 86) {
-    callVariants();
-  }
-});
 
 $(".variantToggle").click(function() {
   callVariants();
@@ -397,4 +386,3 @@ function callVariants() {
 
   pkmnLoad();
 }
-
