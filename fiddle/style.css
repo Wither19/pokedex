@@ -175,8 +175,16 @@ kbd {
 }
 
 .Type {
+  position: relative;
   color: #fff !important;
-  text-decoration: none
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Type:hover {
+	filter: brightness(1.1) drop-shadow(10px 10px 4px black);
+	top: -5px;
+	left: -5;
 }
 
 .Type.normal {
