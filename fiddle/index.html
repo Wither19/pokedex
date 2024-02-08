@@ -13,13 +13,14 @@
   </head>
 
   <body onload="pkmnLoad()">
+  <audio controls src="https://github.com/PokeAPI/cries/raw/main/cries/pokemon/latest/1.ogg" style="display: none;"></audio>
     <button onclick="surprise()" style="font-size: 24px; cursor: pointer;">
       Surprise Me!
     </button>
-	<center class="mobile">
-       <button class="tinySprite">Minified Sprites</button>
-       <button class="shinyToggle">Shiny</button>
-       <button class="variantToggle">Variant</button>
+    <center class="mobile">
+      <button class="tinySprite">Minified Sprites</button>
+      <button class="shinyToggle">Shiny</button>
+      <button class="variantToggle">Variant</button>
     </center>
     <center><input id="no" onsubmit="changeIToSomething();" type="number"><br>
       <sub>Search by Pokédex number!</sub>
@@ -30,15 +31,17 @@
       <kbd>S</kbd> - preview shinies
       <br><br>
       <kbd>M</kbd> - see minified sprites
-	  <br><br>
+      <br><br>
       <kbd>V</kbd> - cycle through variants
+      <br><br>
+      <kbd>Left</kbd> - <kbd>Right</kbd> - Navigate to previous / next Pokémon
+      <br><br>
+      <kbd>Up</kbd> - <kbd>Down</kbd> - +10 / -10
 	  <br><br>
-	  <kbd>Arrow Keys</kbd> - Navigate to previous / next Pokémon
-	  <br><br>
-	  <kbd>,</kbd> - <kbd>.</kbd> -  +10 / -10
+	  <kbd>C</kbd> - Play Pokémon cries
     </div>
-    <h1 class="pokemon-name">
-    </h1>
+		<center><sub class="region"></sub></center>
+    <h1 class="pokemon-name"></h1>
     <div class="sprite-wrapper hide">
       <img class="pokemon-sprite" src="">
       <img class="shiny-sprite" src="">
@@ -74,7 +77,7 @@
         < Prev</button>
           <button class="next">Next ></button>
     </div>
-	<script src="scripts.js"></script>
+    <script src="scripts.js"></script>
   </body>
 
 </html>
