@@ -69,19 +69,17 @@ function pkmnLoad() {
 
       $(".types").append(`<span class="Type ${data.types[1].type.name}">${data.types[1].type.name}</span>`),
 
-      $(".hp").html(`${data.stats[0].stat.name}: ${data.stats[0].base_stat}`),
+	$(".stats").html("");
 
-      $(".atk").html(`Atk: ${data.stats[1].base_stat}`),
+      $(".stats").append(`
+	  <span class="hp">${data.stats[0].stat.name}: ${data.stats[0].base_stat}</span>
+      <span class="atk">Atk: ${data.stats[1].base_stat}</span>
+      <span class="def">Def: ${data.stats[3].base_stat}</span>
+      <span class="sp-atk">Sp-Atk: ${data.stats[2].base_stat}</span>
+      <span class="sp-def">Sp-Def: ${data.stats[4].base_stat}</span>
+      <span class="spd">Spd: ${data.stats[5].base_stat}</span>`),
 
-      $(".sp-atk").html(`Sp-Atk: ${data.stats[2].base_stat}`),
-
-      $(".def").html(`Def: ${data.stats[3].base_stat}`),
-
-      $(".sp-def").html(`Sp-Def: ${data.stats[4].base_stat}`),
-
-      $(".spd").html(`Spd: ${data.stats[5].base_stat}`),
-
-      $(".normal").html(`${data.abilities[0].ability.name}`),
+      $(".norm").html(`${data.abilities[0].ability.name}`),
 
       $(".hidden").html(`<span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}`),
 
