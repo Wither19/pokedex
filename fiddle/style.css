@@ -9,7 +9,7 @@ button {
 .tidbits-header {
   display: block;
   text-align: center;
-  font-size: 48px;
+  font-size: 38px;
   text-transform: capitalize;
   cursor: pointer;
   user-select: none;
@@ -59,7 +59,8 @@ p {
   justify-content: space-around;
 }
 
-.buttons button, .log {
+.buttons button,
+.log {
   font-size: 50px;
   padding: 0px 16px;
   cursor: pointer;
@@ -103,7 +104,7 @@ p {
   text-transform: capitalize;
   margin: 2px 6px;
   margin: 20px;
-  font-size: 32px;
+  font-size: 24px;
 }
 
 input {
@@ -146,9 +147,14 @@ kbd {
 }
 
 .aside {
+  display: none;
   position: absolute;
   top: 1%;
   left: 78%;
+}
+
+.aside-show {
+  display: block;
 }
 
 .damage-category-block,
@@ -274,13 +280,14 @@ kbd {
 }
 
 .region {
-	font-size: 32px;
+  font-size: 32px;
 }
 
 @media screen and (orientation: portrait) {
   .aside {
     display: none;
   }
+
 
   sub {
     font-size: 29px;
