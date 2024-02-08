@@ -18,9 +18,6 @@ button {
 .shiny-sprite {
   display: inline-block;
   width: 150px;
-  text-align: center;
-  position: relative;
-  left: 40%;
 }
 
 .pokemon-artwork,
