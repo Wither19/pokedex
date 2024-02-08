@@ -31,25 +31,25 @@ function pkmnLoad() {
   if (i <= 0) {
     i = 1;
   } else if (i > 0 && i < 152) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kanto"> Kanto')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kanto"> Kanto');
   } else if (i > 151 && i < 252) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#johto"> Johto')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#johto"> Johto');
   } else if (i > 251 && i < 387) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#hoenn"> Hoenn')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#hoenn"> Hoenn');
   } else if (i > 386 && i < 494) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#sinnoh"> Sinnoh')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#sinnoh"> Sinnoh');
   } else if (i > 493 && i < 650) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#unova"> Unova')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#unova"> Unova');
   } else if (i > 649 && i < 722) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos');
   } else if (i > 721 && i < 810) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#alola"> Alola')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#alola"> Alola');
   } else if (i > 809 && i < 899) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#galar"> Galar')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#galar"> Galar');
   } else if (i > 898 && i < 906) {
-    $(".region").html('Hisui')
+    $(".region").html('Hisui');
   } else if (i > 905 && i < 1026) {
-    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#paldea"> Paldea')
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#paldea"> Paldea');
   }
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
     // Getting Pokémon data from API, showing in markup
@@ -385,4 +385,3 @@ function callVariants() {
 
   pkmnLoad();
 }
-
