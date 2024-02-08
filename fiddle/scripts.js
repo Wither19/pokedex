@@ -16,10 +16,12 @@ $(document).keydown(function(e) {
   } else if (e.which == 39) {
     i++;
     pkmnLoad();
-  } else if (e.which == 188) {
+  } else if (e.which == 38) {
+    e.preventDefault();
     i -= 10;
     pkmnLoad();
-  } else if (e.which == 190) {
+  } else if (e.which == 40) {
+    e.preventDefault();
     i += 10;
     pkmnLoad();
   }
@@ -28,41 +30,63 @@ $(document).keydown(function(e) {
 function pkmnLoad() {
   if (i <= 0) {
     i = 1;
+  } else if (i > 0 && i < 152) {
+    $(".region").html("Kanto")
+  } else if (i > 151 && i < 252) {
+    $(".region").html("Johto")
+  } else if (i > 251 && i < 387) {
+    $(".region").html("Hoenn")
+  } else if (i > 386 && i < 494) {
+    $(".region").html("Sinnoh")
+  } else if (i > 493 && i < 650) {
+    $(".region").html("Unova")
+  } else if (i > 649 && i < 722) {
+    $(".region").html("Kalos")
+  } else if (i > 721 && i < 810) {
+    $(".region").html("Alola")
+  } else if (i > 809 && i < 899) {
+    $(".region").html("Galar")
+  } else if (i > 898 && i < 906) {
+    $(".region").html("Hisui")
+  } else if (i > 905 && i < 1026) {
+    $(".region").html("Paldea")
   }
-  fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
-    .then(response => response.json())
-    .then(data => {
-      $(".pokemon-name").html(`#${data.id} - ${data.name}`),
-        $(".pokemon-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/regular/${data.name}.png`),
+  fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
+    // Getting Pokémon data from API, showing in markup
+    $(".pokemon-name").html(`#${data.id} - ${data.name}`),
 
-        $(".pokemon-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${i}.png`),
+      $(".pokemon-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/regular/${data.name}.png`),
 
-        $(".shiny-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/${i}.png`),
+      $(".pokemon-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i}.png`),
 
-        $(".shiny-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`),
+      $(".shiny-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${i}.png`),
 
-        $(".types").html(""),
+      $(".shiny-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`),
 
-        $(".types").prepend(`<span class="Type ${data.types[0].type.name}">${data.types[0].type.name}</span>`),
+      $(".types").html(""),
 
-        $(".types").append(`<span class="Type ${data.types[1].type.name}">${data.types[1].type.name}</span>`),
+      $(".types").prepend(`<span class="Type ${data.types[0].type.name}">${data.types[0].type.name}</span>`),
 
-        $(".hp").html(`${data.stats[0].stat.name}: ${data.stats[0].base_stat}`),
+      $(".types").append(`<span class="Type ${data.types[1].type.name}">${data.types[1].type.name}</span>`),
 
-        $(".atk").html(`Atk: ${data.stats[1].base_stat}`),
+      $(".hp").html(`${data.stats[0].stat.name}: ${data.stats[0].base_stat}`),
 
-        $(".sp-atk").html(`Sp-Atk: ${data.stats[2].base_stat}`),
+      $(".atk").html(`Atk: ${data.stats[1].base_stat}`),
 
-        $(".def").html(`Def: ${data.stats[3].base_stat}`),
+      $(".sp-atk").html(`Sp-Atk: ${data.stats[2].base_stat}`),
 
-        $(".sp-def").html(`Sp-Def: ${data.stats[4].base_stat}`),
+      $(".def").html(`Def: ${data.stats[3].base_stat}`),
 
-        $(".spd").html(`Spd: ${data.stats[5].base_stat}`),
+      $(".sp-def").html(`Sp-Def: ${data.stats[4].base_stat}`),
 
-        $(".normal").html(`${data.abilities[0].ability.name}`),
+      $(".spd").html(`Spd: ${data.stats[5].base_stat}`),
 
-        $(".hidden").html(`<span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}`)
-    });
+      $(".normal").html(`${data.abilities[0].ability.name}`),
+
+      $(".hidden").html(`<span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}`),
+
+      $("audio").attr("src", `https://github.com/PokeAPI/cries/raw/main/cries/pokemon/latest/${i}.ogg`)
+  });
 
 }
 
@@ -75,6 +99,12 @@ function changeIToSomething() {
   i = daValue;
   pkmnLoad();
 }
+
+$(document).keydown(function(e) {
+  if (e.which == 67) {
+    document.querySelector("audio").play();
+  }
+});
 
 $("#no").keydown(function(e) {
   if (e.which == 13) {
@@ -100,10 +130,10 @@ $(document).keydown(function(e) {
 });
 
 $(".shinyToggle").click(function() {
-    $(".pokemon-artwork").toggleClass("hide");
-    $(".pokemon-sprite").toggleClass("hide");
-    $(".shiny-artwork").toggleClass("show");
-    $(".shiny-sprite").toggleClass("show");
+  $(".pokemon-artwork").toggleClass("hide");
+  $(".pokemon-sprite").toggleClass("hide");
+  $(".shiny-artwork").toggleClass("show");
+  $(".shiny-sprite").toggleClass("show");
 });
 
 $(document).keydown(function(e) {
@@ -113,7 +143,7 @@ $(document).keydown(function(e) {
 });
 
 $(".tinySprite").click(function() {
-  $(".sprite-wrapper").toggleClass("hide");  
+  $(".sprite-wrapper").toggleClass("hide");
 });
 
 $(document).keydown(function(e) {
@@ -188,6 +218,10 @@ function callVariants() {
     i = 10110;
   } else if (i == 76) {
     i = 10111;
+  } else if (i == 77) {
+    i = 10162;
+  } else if (i == 78) {
+    i = 10163;
   } else if (i == 79) {
     i = 10164;
   } else if (i == 80) {
@@ -214,6 +248,8 @@ function callVariants() {
     i = 10167;
   } else if (i == 115) {
     i = 10039;
+  } else if (i == 122) {
+    i = 10168;
   } else if (i == 127) {
     i = 10040;
   } else if (i == 128) {
@@ -222,6 +258,8 @@ function callVariants() {
     i = 10251;
   } else if (i == 10251) {
     i = 10252;
+  } else if (i == 130) {
+    i = 10041;
   } else if (i == 142) {
     i = 10042;
   } else if (i == 144) {
@@ -234,7 +272,16 @@ function callVariants() {
     i = 10043;
   } else if (i == 10043) {
     i = 10044;
+  } else if (i == 157) {
+    i = 10233;
+  } else if (i == 181) {
+    i = 10045;
+  } else if (i == 194) {
+    i = 10253;
+  } else if (i == 199) {
+    i = 10172;
   }
+
   // Toggling back to original 'Mon for endless cycling
   else if (i == 10033) {
     i = 3;
@@ -280,6 +327,10 @@ function callVariants() {
     i = 75;
   } else if (i == 10111) {
     i = 76;
+  } else if (i == 10162) {
+    i = 77;
+  } else if (i == 10163) {
+    i = 78;
   } else if (i == 10164) {
     i = 79;
   } else if (i == 10071) {
@@ -304,10 +355,14 @@ function callVariants() {
     i = 110;
   } else if (i == 10039) {
     i = 115;
+  } else if (i == 10168) {
+    i = 122;
   } else if (i == 10040) {
     i = 127;
   } else if (i == 10252) {
     i = 128;
+  } else if (i == 10041) {
+    i = 130;
   } else if (i == 10042) {
     i = 142;
   } else if (i == 10169) {
@@ -318,6 +373,14 @@ function callVariants() {
     i = 146;
   } else if (i == 10044) {
     i = 150;
+  } else if (i == 10233) {
+    i = 157;
+  } else if (i == 10045) {
+    i = 181;
+  } else if (i == 10253) {
+    i = 194;
+  } else if (i == 10172) {
+    i = 199;
   } else {
     alert("This Pokémon does not have another variant!");
   }
