@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
 
   <head>
@@ -12,7 +11,9 @@
     <link rel="stylesheet" href="style.css">
   </head>
 
-  <body onload="pkmnLoad()">
+  <body onload="pkmnLoad(); init()">
+    <div class="grid">
+    </div>
     <audio controls src="https://github.com/PokeAPI/cries/raw/main/cries/pokemon/latest/1.ogg" style="display: none;"></audio>
     <button onclick="surprise()" style="font-size: 24px; cursor: pointer;">
       Surprise Me!
@@ -22,10 +23,13 @@
       <button class="shinyToggle">Shiny</button>
       <button class="variantToggle">Variant</button>
     </center>
-    <center><input id="no" onsubmit="changeIToSomething();" type="number"><br>
+    <center>
+	<a class="bigolpokeball" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/640px-Poké_Ball_icon.svg.png" style="width: 128px;"></a><br><input id="no" onsubmit="changeIToSomething();" type="number"><br>
       <sub>Search by Pokédex number!</sub>
     </center>
     <div class="aside">
+	  <kbd>Esc</kbd> - Go to Pokedex
+	  <br><br>
       <kbd>R</kbd> - Surprise Me button
       <br><br>
       <kbd>S</kbd> - preview shinies
