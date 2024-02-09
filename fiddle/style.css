@@ -301,18 +301,18 @@ kbd {
 }
 
 .grid button {
-  font-size: 20px;
-  margin: 10px;
-  width: 20%;
-  text-transform: capitalize;
-  border: 3px solid lightgray;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: 80ms ease-in-out;
+    font-size: 20px;
+    margin: 16px;
+    width: 15%;
+    text-transform: capitalize;
+    border: 3px solid lightgray;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 80ms ease-in-out;
 }
 
 .grid button img {
-  width: 100%;
+    width: 70%;
 }
 
 .grid button:hover {
