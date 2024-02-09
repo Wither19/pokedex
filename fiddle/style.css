@@ -294,7 +294,7 @@ kbd {
 .grid {
   display: none;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   background: linear-gradient(90deg, slategray 50%, gray);
   z-index: 5;
   position: absolute;
@@ -302,7 +302,7 @@ kbd {
 
 .grid button {
   font-size: 18px;
-  margin: 4px;
+  margin: 8px;
   width: 25%;
   text-transform: capitalize;
   border: 3px solid lightgray;
