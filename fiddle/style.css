@@ -319,7 +319,7 @@ kbd {
   color: white;
   background-color: slateblue;
   border: 3px solid darkslateblue;
-  transform: rotateZ(5deg);
+  transform: scale(1.15);
 }
 
 .bigolpokeball img {
