@@ -301,32 +301,33 @@ kbd {
 }
 
 .grid button {
-    font-size: 20px;
-    margin: 16px;
-    width: 15%;
-    text-transform: capitalize;
-    border: 3px solid lightgray;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 80ms ease-in-out;
+  font-size: 18px;
+  margin: 16px;
+  width: 15%;
+  text-transform: capitalize;
+  border: 3px solid lightgray;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 80ms ease-in-out, color 80ms ease-in-out, border 80ms ease-in-out, transform 0.15s;
 }
 
 .grid button img {
-    width: 70%;
+  width: 72px;
 }
 
 .grid button:hover {
   color: white;
   background-color: slateblue;
   border: 3px solid darkslateblue;
+  transform: rotateZ(8deg);
 }
 
 .bigolpokeball img {
-	transition: 0.55s;
+  transition: 0.55s;
 }
 
 .bigolpokeball:hover img {
-	transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .show {
@@ -377,8 +378,8 @@ kbd {
     display: block;
     margin: 40px;
   }
-  
+
   .grid button {
-  	font-size: 18px;
+    font-size: 18px;
   }
 }
