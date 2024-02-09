@@ -18,11 +18,11 @@ function init() {
 }
 
 $(".grid").click(function() {
-  $(".grid").toggleClass("show");
+	pokedex();
 });
 
 $(".bigolpokeball").click(function() {
-  $(".grid").toggleClass("show");
+  pokedex();
 });
 
 function pkmnSelect(event) {
@@ -82,7 +82,7 @@ $(document).keydown(function(e) {
   } else if (e.which == 191) {
     $(".aside").toggleClass("aside-show");
   } else if (e.which == 27) {
-    $(".grid").toggleClass("show");
+    pokedex();
   }
 });
 
@@ -198,7 +198,10 @@ $(".variantToggle").click(function() {
   callVariants();
 });
 
-
+function pokedex() {
+$(".grid").toggleClass("show");
+window.scrollTo(0, 0);
+}
 
 function callVariants() {
 
