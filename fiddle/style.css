@@ -302,7 +302,7 @@ kbd {
 
 .grid button {
   font-size: 18px;
-  margin: 8px;
+  margin: 12px;
   width: 25%;
   text-transform: capitalize;
   border: 3px solid lightgray;
@@ -321,6 +321,12 @@ kbd {
   background-color: slateblue;
   border: 3px solid darkslateblue;
   transform: scale(1.15);
+}
+
+.grid button:active {
+	background-color: lime;
+	border: 3px solid green;
+	transform: scale(1.05);
 }
 
 .grid button:hover img {
