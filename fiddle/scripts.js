@@ -113,59 +113,44 @@ $(document).keydown(function(e) {
   if (e.which == 37) {
     i--;
     pkmnLoad();
-	$(".grid").toggleClass("show");
   } else if (e.which == 39) {
     i++;
     pkmnLoad();
-	$(".grid").toggleClass("show");
   } else if (e.which == 38) {
     e.preventDefault();
     i -= 10;
     pkmnLoad();
-	$(".grid").toggleClass("show");
   } else if (e.which == 40) {
     e.preventDefault();
     i += 10;
     pkmnLoad();
-	$(".grid").toggleClass("show");
   } else if (e.which == 13) {
     changeIToSomething();
-	$(".grid").toggleClass("show");
   } else if (e.which == 67) {
     document.querySelector("audio").play();
-	$(".grid").toggleClass("show");
   } else if (e.which == 48) {
     $(".stats").toggleClass("show");
     $(".abilities").toggleClass("show");
     $(".tidbits").toggleClass("show");
-	$(".grid").toggleClass("show");
   } else if (e.which == 49) {
     $(".stats").toggleClass("show");
-	$(".grid").toggleClass("show");
   } else if (e.which == 50) {
     $(".abilities").toggleClass("show");
-	$(".grid").toggleClass("show");
   } else if (e.which == 51) {
     $(".tidbits").toggleClass("show");
-	$(".grid").toggleClass("show");
   } else if (e.which == 83) {
     $(".pokemon-artwork").toggleClass("hide");
     $(".pokemon-sprite").toggleClass("hide");
     $(".shiny-artwork").toggleClass("show");
     $(".shiny-sprite").toggleClass("show");
-	$(".grid").toggleClass("show");
   } else if (e.which == 77) {
     $(".sprite-wrapper").toggleClass("show");
-	$(".grid").toggleClass("show");
   } else if (e.which == 86) {
     callVariants();
-	$(".grid").toggleClass("show");
   } else if (e.which == 82) {
     surprise();
-	$(".grid").toggleClass("show");
   } else if (e.which == 191) {
     $(".aside").toggleClass("aside-show");
-	$(".grid").toggleClass("show");
   } else if (e.which == 27) {
     $(".grid").toggleClass("show");
   }
