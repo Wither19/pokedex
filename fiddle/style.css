@@ -354,7 +354,8 @@ kbd {
 
   .pokemon-name,
   .stats-header,
-  .abilities-header {
+  .abilities-header,
+  .tidbits-header {
     font-size: 76px;
   }
 
