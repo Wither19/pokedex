@@ -302,8 +302,8 @@ kbd {
 
 .grid button {
   font-size: 18px;
-  margin: 16px;
-  width: 15%;
+  margin: 6px;
+  width: 17%;
   text-transform: capitalize;
   border: 3px solid lightgray;
   border-radius: 15px;
@@ -319,7 +319,7 @@ kbd {
   color: white;
   background-color: slateblue;
   border: 3px solid darkslateblue;
-  transform: rotateZ(8deg);
+  transform: rotateZ(5deg);
 }
 
 .bigolpokeball img {
@@ -333,6 +333,7 @@ kbd {
 .show {
   display: flex;
 }
+
 
 @media screen and (orientation: portrait) {
   .aside {
