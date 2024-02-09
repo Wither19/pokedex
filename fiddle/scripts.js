@@ -11,7 +11,7 @@ function init() {
       newDex.innerHTML = `
 	#${data.pokemon_entries[i - 1].entry_number} ${data.pokemon_entries[i - 1].pokemon_species.name}
 	<br>
-	<img src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.pokemon_entries[i - 1].pokemon_species.name}.png">
+	<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png">
 	`;
     }
   });
@@ -86,6 +86,7 @@ $(document).keydown(function(e) {
   }
 });
 
+// The function that grabs individual Pokemon
 function pkmnLoad() {
   if (i <= 0) {
     i = 1;
