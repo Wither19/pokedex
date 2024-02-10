@@ -392,6 +392,10 @@ kbd {
   }
 
   .grid button {
-    font-size: 18px;
+    font-size: 36px;
+  }
+
+  .grid button img {
+   width: 200px;
   }
 }
