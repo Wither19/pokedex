@@ -65,17 +65,17 @@ $(".next").click(function() {
 
 // Every keyboard shortcut, all clumped into this block of code
 $(document).keydown(function(e) {
-  if (e.key == "arrowLeft") {
+  if (e.which == 37) {
     i--;
     pkmnLoad();
-  } else if (e.key == "arrowRight") {
+  } else if (e.which == 39) {
     i++;
     pkmnLoad();
-  } else if (e.key == "arrowUp") {
+  } else if (e.which == 38) {
     e.preventDefault();
     i -= 10;
     pkmnLoad();
-  } else if (e.key == "arrowDown") {
+  } else if (e.which == 40) {
     e.preventDefault();
     i += 10;
     pkmnLoad();
