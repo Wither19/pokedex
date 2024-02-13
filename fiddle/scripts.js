@@ -1,7 +1,12 @@
 var i = 1;
+var e = 1;
 const numberInput = document.querySelector("#no");
 
 function init() {
+	let header = document.createElement("h1");
+	header.innerHTML = "Pokédex";
+	header.classList.add("spanning");
+	document.querySelector(".grid").appendChild(header);
   fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).then(data => {
     for (let i = 1; i < data.pokemon_entries.length; i++) {
       const newDex = document.createElement("button");
@@ -17,8 +22,28 @@ function init() {
   });
 }
 
+function extraInit() {
+	let header = document.createElement("h1");
+	header.innerHTML = "Variants";
+	header.classList.add("spanning");
+	document.querySelector(".grid").appendChild(header);
+  fetch(`https://pokeapi.co/api/v2/pokemon?offset=1025&limit=10277`).then(response => response.json()).then(extra => {
+    for (let e = 10001; e < 10277; e++) {
+      const extraDex = document.createElement("button");
+      document.querySelector(".grid").appendChild(extraDex);
+      extraDex.setAttribute("id", e);
+      extraDex.addEventListener("click", pkmnSelect);
+      extraDex.innerHTML = `
+	${extra.results[e - 10001].name}
+	<br>
+	<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${e}.png">
+	`;
+    }
+  });
+}
+
 $(".grid").click(function() {
-	pokedex();
+  pokedex();
 });
 
 $(".bigolpokeball").click(function() {
@@ -40,48 +65,48 @@ $(".next").click(function() {
 
 // Every keyboard shortcut, all clumped into this block of code
 $(document).keydown(function(e) {
-  if (e.which == 37) {
+  if (e.key == "arrowLeft") {
     i--;
     pkmnLoad();
-  } else if (e.which == 39) {
+  } else if (e.key == "arrowRight") {
     i++;
     pkmnLoad();
-  } else if (e.which == 38) {
+  } else if (e.key == "arrowUp") {
     e.preventDefault();
     i -= 10;
     pkmnLoad();
-  } else if (e.which == 40) {
+  } else if (e.key == "arrowDown") {
     e.preventDefault();
     i += 10;
     pkmnLoad();
-  } else if (e.which == 13) {
+  } else if (e.key == "Enter") {
     changeIToSomething();
-  } else if (e.which == 67) {
+  } else if (e.key == "c") {
     document.querySelector("audio").play();
-  } else if (e.which == 48) {
+  } else if (e.key == "0") {
     $(".stats").toggleClass("show");
     $(".abilities").toggleClass("show");
     $(".tidbits").toggleClass("show");
-  } else if (e.which == 49) {
+  } else if (e.key == "1") {
     $(".stats").toggleClass("show");
-  } else if (e.which == 50) {
+  } else if (e.key == "2") {
     $(".abilities").toggleClass("show");
-  } else if (e.which == 51) {
+  } else if (e.key == "3") {
     $(".tidbits").toggleClass("show");
-  } else if (e.which == 83) {
+  } else if (e.key == "s") {
     $(".pokemon-artwork").toggleClass("hide");
     $(".pokemon-sprite").toggleClass("hide");
     $(".shiny-artwork").toggleClass("show");
     $(".shiny-sprite").toggleClass("show");
-  } else if (e.which == 77) {
+  } else if (e.key == "m") {
     $(".sprite-wrapper").toggleClass("show");
-  } else if (e.which == 86) {
+  } else if (e.key == "v") {
     callVariants();
-  } else if (e.which == 82) {
+  } else if (e.key == "r") {
     surprise();
-  } else if (e.which == 191) {
+  } else if (e.key == "/") {
     $(".aside").toggleClass("aside-show");
-  } else if (e.which == 27) {
+  } else if (e.key == "p") {
     pokedex();
   }
 });
@@ -199,8 +224,8 @@ $(".variantToggle").click(function() {
 });
 
 function pokedex() {
-$(".grid").toggleClass("show");
-window.scrollTo(0, 0);
+  $(".grid").toggleClass("show");
+  window.scrollTo(0, 0);
 }
 
 function callVariants() {
