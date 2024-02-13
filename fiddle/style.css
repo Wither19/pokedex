@@ -184,7 +184,6 @@ kbd {
 
 .Type:hover {
   filter: brightness(1.1) drop-shadow(0px 10px 10px black);
-  top: -8px;
 }
 
 .Type.normal {
@@ -316,7 +315,8 @@ kbd {
   transition: transform 0.25s;
 }
 
-.grid button:hover, .grid button:focus {
+.grid button:hover,
+.grid button:focus {
   color: white;
   background-color: slateblue;
   border: 3px solid darkslateblue;
@@ -324,13 +324,13 @@ kbd {
 }
 
 .grid button:active {
-	background-color: lime;
-	border: 3px solid green;
-	transform: scale(1.025);
+  background-color: lime;
+  border: 3px solid green;
+  transform: scale(1.025);
 }
 
 .grid button:hover img {
-	transform: scale(1.3);
+  transform: scale(1.3);
 }
 
 .bigolpokeball img {
@@ -346,10 +346,10 @@ kbd {
 }
 
 .spanning {
-	flex-basis: 100%;
-	text-align: center;
-	color: antiquewhite;
-	font-size: 64px;
+  flex-basis: 100%;
+  text-align: center;
+  color: antiquewhite;
+  font-size: 64px;
 }
 
 
@@ -403,6 +403,6 @@ kbd {
   }
 
   .grid button img {
-   width: 200px;
+    width: 200px;
   }
 }
