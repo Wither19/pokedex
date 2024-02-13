@@ -3,10 +3,10 @@ var e = 1;
 const numberInput = document.querySelector("#no");
 
 function init() {
-	let header = document.createElement("h1");
-	header.innerHTML = "Pokédex";
-	header.classList.add("spanning");
-	document.querySelector(".grid").appendChild(header);
+  let header = document.createElement("h1");
+  header.innerHTML = "Pokédex";
+  header.classList.add("spanning");
+  document.querySelector(".grid").appendChild(header);
   fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).then(data => {
     for (let i = 1; i < data.pokemon_entries.length; i++) {
       const newDex = document.createElement("button");
@@ -20,13 +20,14 @@ function init() {
 	`;
     }
   });
+  console.log("Fetched National Pokédex");
 }
 
 function extraInit() {
-	let header = document.createElement("h1");
-	header.innerHTML = "Variants";
-	header.classList.add("spanning");
-	document.querySelector(".grid").appendChild(header);
+  let header = document.createElement("h1");
+  header.innerHTML = "Variants";
+  header.classList.add("spanning");
+  document.querySelector(".grid").appendChild(header);
   fetch(`https://pokeapi.co/api/v2/pokemon?offset=1025&limit=10277`).then(response => response.json()).then(extra => {
     for (let e = 10001; e < 10277; e++) {
       const extraDex = document.createElement("button");
@@ -40,6 +41,7 @@ function extraInit() {
 	`;
     }
   });
+  console.log("Fetched Pokémon Variants");
 }
 
 $(".grid").click(function() {
@@ -135,7 +137,29 @@ function pkmnLoad() {
     $(".region").html('Hisui')
   } else if (i > 905 && i < 1026) {
     $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#paldea"> Paldea')
-  }
+  } else if (i > 10000 && i < 10004) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#hoenn"> Hoenn')
+  } else if (i > 10003 && i < 10013) {
+    $(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#sinnoh"> Sinnoh')
+  } else if (i > 10012 && i < 10016) {
+	$(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#hoenn"> Hoenn')
+} else if (i > 10015 && i < 10025) {
+	$(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#unova"> Unova')
+} else if (i > 10024 && i < 10033) {
+	$(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos')
+} else if (i > 10032 && i < 10061) {
+	$(".region").html('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/2a6a6b66983a97a6bdc889b9e0a2a42a25e2522e/sprites/items/key-stone.png"> Mega Evolutions')
+} else if (i == 10061) {
+	$(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos')
+} else if (i > 10061 && i < 10080) {
+	$(".region").html('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/2a6a6b66983a97a6bdc889b9e0a2a42a25e2522e/sprites/items/key-stone.png"> Mega Evolutions')
+} else if (i > 10079 && i < 10086) {
+	$(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kanto"> Kanto')
+} else if (i == 10086) {
+	$(".region").html('<img src="https://pfq-static.com/img/dex/flags/all.svg/t=1674162478#kalos"> Kalos')
+} else if (i > 10086 && i < 10091) {
+	$(".region").html('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/2a6a6b66983a97a6bdc889b9e0a2a42a25e2522e/sprites/items/key-stone.png"> Mega Evolutions')
+}
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
     // Getting Pokémon data from API, showing in markup
     $(".pokemon-name").html(`#${data.id} - ${data.name}`),
