@@ -179,12 +179,12 @@ kbd {
   color: #fff !important;
   text-decoration: none;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .Type:hover {
-  filter: brightness(1.1) drop-shadow(10px 10px 4px black);
-  top: -5px;
-  left: -5;
+  filter: brightness(1.1) drop-shadow(0px 10px 10px black);
+  top: -8px;
 }
 
 .Type.normal {
