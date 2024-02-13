@@ -345,6 +345,13 @@ kbd {
   display: flex;
 }
 
+.spanning {
+	flex-basis: 100%;
+	text-align: center;
+	color: antiquewhite;
+	font-size: 64px;
+}
+
 
 @media screen and (orientation: portrait) {
   .aside {
