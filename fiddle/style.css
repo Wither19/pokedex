@@ -312,11 +312,11 @@ kbd {
 }
 
 .grid button img {
-  width: 90px;
+  width: 80px;
   transition: transform 0.25s;
 }
 
-.grid button:hover {
+.grid button:hover, .grid button:focus {
   color: white;
   background-color: slateblue;
   border: 3px solid darkslateblue;
@@ -326,7 +326,7 @@ kbd {
 .grid button:active {
 	background-color: lime;
 	border: 3px solid green;
-	transform: scale(1.05);
+	transform: scale(1.025);
 }
 
 .grid button:hover img {
