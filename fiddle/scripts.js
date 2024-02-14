@@ -10,15 +10,18 @@ function init() {
   let miniView = document.createElement("button");
   miniView.classList.add("miniview");
   miniView.innerHTML = "Mini View";
-  miniView.style.flexBasis = "90%";
-  miniView.style.padding = "20px";
+  miniView.style.flexBasis = "100%";
+  miniView.style.padding = "16px";
+  miniView.style.textAlign = "center";
   miniView.addEventListener("click", minify);
   document.querySelector(".grid").appendChild(miniView);
   let largeView = document.createElement("button");
   largeView.classList.add("largeview");
-  largeView.innerHTML = "Enlargened View";
-  largeView.style.flexBasis = "90%";
-  largeView.style.padding = "20px";
+  largeView.innerHTML = "Enlarged View";
+  largeView.style.flexBasis = "100%";
+  largeView.style.padding = "16px";
+  largeView.style.textAlign = "center";
+  largeView.style.display = "none";
   largeView.addEventListener("click", bigify);
   document.querySelector(".grid").appendChild(largeView);
   fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).then(data => {
@@ -72,11 +75,13 @@ function minify() {
 	});
 	
 	$(".miniview").css({
-		"flex-basis": "85%"
+		"flex-basis": "85%",
+		"display": "none"
 	});
 	
 	$(".largeview").css({
-		"flex-basis": "85%"
+		"flex-basis": "85%",
+		"display": "flex"
 	});
 }
 
@@ -92,11 +97,13 @@ function bigify() {
 	});
 	
 	$(".miniview").css({
-		"flex-basis": "85%"
+		"flex-basis": "85%",
+		"display": "flex"
 	});
 	
 	$(".largeview").css({
-		"flex-basis": "85%"
+		"flex-basis": "85%",
+		"display": "none"
 	});
 }
 
