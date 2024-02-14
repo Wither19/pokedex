@@ -10,14 +10,14 @@ function init() {
   let miniView = document.createElement("button");
   miniView.classList.add("miniview");
   miniView.innerHTML = "Mini View";
-  miniView.style.flexBasis = "85%";
+  miniView.style.flexBasis = "90%";
   miniView.style.padding = "20px";
   miniView.addEventListener("click", minify);
   document.querySelector(".grid").appendChild(miniView);
   let largeView = document.createElement("button");
   largeView.classList.add("largeview");
   largeView.innerHTML = "Enlargened View";
-  largeView.style.flexBasis = "85%";
+  largeView.style.flexBasis = "90%";
   largeView.style.padding = "20px";
   largeView.addEventListener("click", bigify);
   document.querySelector(".grid").appendChild(largeView);
