@@ -185,6 +185,439 @@ kbd {
   cursor: pointer;
   transition: 0.3s;
   flex-basis: 30%;
+  filter: brightness(1.15);
+  animation: brighten 3s linear infinite;
+}
+
+@keyframes brighten {
+	0% {
+		filter: brightness(0.95);
+	}
+	50% {
+		filter: brightness(1.15);
+	}
+	100% {
+		filter: brightness(0.95);
+	}
+}
+
+.Type:hover {
+  filter: brightness(1.5);
+}
+
+.Type.normal {
+  background: linear-gradient(#a8a878, #8a8a59);
+  border-color: #79794e
+}
+
+.Type.fire {
+  background: linear-gradient(#f08030, #dd6610);
+  border-color: #b4530d
+}
+
+.Type.water {
+  background: linear-gradient(#6890f0, #386ceb);
+  border-color: #1753e3
+}
+
+.Type.electric {
+  background: linear-gradient(#f8d030, #f0c108);
+  border-color: #c19b07
+}
+
+.Type.fairy {
+  background: linear-gradient(#f98cff, #f540ff);
+  border-color: #c1079b
+}
+
+.Type.grass {
+  background: linear-gradient(#78c850, #5ca935);
+  border-color: #4a892b
+}
+
+.Type.ice {
+  background: linear-gradient(#98d8d8, #69c6c6);
+  border-color: #45b6b6
+}
+
+.Type.fighting {
+  background: linear-gradient(#c03028, #9d2721);
+  border-color: #82211b
+}
+
+.Type.poison {
+  background: linear-gradient(#a040a0, #803380);
+  border-color: #662966
+}
+
+.Type.ground {
+  background: linear-gradient(#e0c068, #d4a82f);
+  border-color: #aa8623
+}
+
+.Type.flying {
+  background: linear-gradient(#a890f0, #9180c4);
+  border-color: #7762b6
+}
+
+.Type.psychic {
+  background: linear-gradient(#f85888, #f61c5d);
+  border-color: #d60945
+}
+
+.Type.bug {
+  background: linear-gradient(#a8b820, #8d9a1b);
+  border-color: #616b13
+}
+
+.Type.rock {
+  background: linear-gradient(#b8a038, #93802d);
+  border-color: #746523
+}
+
+.Type.ghost {
+  background: linear-gradient(#705898, #554374);
+  border-color: #413359
+}
+
+.Type.dragon {
+  background: linear-gradient(#7038f8, #4c08ef);
+  border-color: #3d07c0
+}
+
+.Type.steel {
+  background: linear-gradient(#b8b8d0, #9797ba);
+  border-color: #7a7aa7
+}
+
+.Type.dark {
+  background: linear-gradient(#705848, #513f34);
+  border-color: #362a23
+}
+
+.Type.stellar {
+  background: url("./stellar-MZZL7FQV.svg");
+  background-size: cover;
+  border-color: #3f00ff
+}
+
+.mobile {
+  display: none;
+}
+
+.region {
+  font-size: 32px;
+}
+
+.grid {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: linear-gradient(90deg, slategray 50%, gray);
+  z-index: 5;
+  position: absolute;
+}
+
+.grid button {
+  font-size: 18px;
+  margin: 16px;
+  width: 5%;
+  flex-basis: 20%;
+  text-transform: capitalize;
+  border: 3px solid lightgray;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 80ms ease-in-out, color 80ms ease-in-out, border 80ms ease-in-out, transform 0.15s;
+}
+
+.grid button img {
+  width: 120px;
+  transition: transform 0.25s;
+}
+
+.grid button:hover,
+.grid button:focus {
+  color: white;
+  background-color: slateblue;
+  border: 3px solid darkslateblue;
+  transform: scale(1.15);
+}
+
+.grid button:active {
+  background-color: lime;
+  border: 3px solid green;
+  transform: scale(1.025);
+}
+
+.grid button:hover img {
+  transform: scale(1.3);
+}
+
+.bigolpokeball {
+	position: sticky;
+	top: 110px;
+}
+
+.bigolpokeball img {
+  transition: 0.75s;
+}
+
+.bigolpokeball:hover img {
+  transform: rotate(720deg);
+}
+
+.show {
+  display: flex;
+}
+
+.spanning {
+  flex-basis: 100%;
+  text-align: center;
+  color: antiquewhite;
+  font-size: 64px;
+}
+
+
+@media screen and (orientation: portrait) {
+  .aside {
+    display: none;
+  }
+
+
+  sub {
+    font-size: 29px;
+  }
+
+  input {
+    font-size: 44px;
+    margin: 40px;
+  }
+
+  button {
+    font-size: 64px;
+  }
+
+  .pokemon-name,
+  .stats-header,
+  .abilities-header,
+  .tidbits-header {
+    font-size: 76px;
+  }
+
+  .damage-category-block,
+  .Type {
+    margin: 0px 12px;
+    height: 52px;
+    width: 180px;
+    font-size: 36px;
+  }
+
+  .stats,
+  .abilities {
+    font-size: 44px;
+    line-height: 175%;
+  }
+
+  .mobile {
+    display: block;
+    margin: 40px;
+  }
+
+  .grid button {
+    font-size: 36px;
+  }
+
+  .grid button img {
+    width: 200px;
+  }
+}
+:root,
+button {
+  font-family: Inter, sans-serif;
+}
+
+.pokemon-name,
+.stats-header,
+.abilities-header,
+.tidbits-header {
+  display: block;
+  text-align: center;
+  font-size: 38px;
+  text-transform: capitalize;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pokemon-sprite,
+.shiny-sprite {
+  display: inline-block;
+  width: 150px;
+}
+
+.pokemon-artwork,
+.shiny-artwork {
+  width: 250px;
+  transition: filter 0.3s;
+  filter: drop-shadow(0px 0px 5px black);
+}
+
+.pokemon-artwork,
+.pokemon-sprite {
+  display: flex;
+}
+
+.shiny-artwork,
+.shiny-sprite {
+  display: none;
+}
+
+.img-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+p {
+  line-height: 200%;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 24px;
+}
+
+.types,
+.buttons {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.buttons button,
+.log {
+  font-size: 50px;
+  padding: 0px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.type-1,
+.type-2 {
+  text-transform: capitalize;
+}
+
+.stats {
+  display: none;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 700;
+}
+
+.tidbits {
+  display: none;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 700;
+  text-transform: lowercase !important;
+}
+
+.hp,
+.atk,
+.sp-atk,
+.def,
+.sp-def,
+.spd,
+.norm,
+.hidden,
+.height,
+.weight {
+  text-transform: capitalize;
+  margin: 2px 6px;
+  margin: 20px;
+  font-size: 24px;
+}
+
+input {
+  font-size: 24px;
+
+}
+
+.search {
+  background: teal;
+  color: white;
+  padding: 4px;
+  position: absolute;
+  top: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search:hover {
+  background: skyblue;
+}
+
+.show {
+  display: flex !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.abilities {
+  display: none;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+kbd {
+  border: 1px solid gray;
+  box-shadow: 1px -1px 2px inset lightgray, -1px -1px 2px inset lightgray;
+  padding: 0px 2px;
+}
+
+.aside {
+  display: none;
+  position: absolute;
+  top: 1%;
+  left: 78%;
+}
+
+.aside-show {
+  display: block;
+}
+
+.damage-category-block,
+.Type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0px 12px;
+  height: 64px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #333;
+  width: 140px;
+  font-size: 32px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+.Type:only-child {
+	flex-basis: 50%;
+}
+
+.Type {
+  position: relative;
+  color: #fff !important;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-basis: 30%;
   filter: brightness(1.3);
   animation: brighten 2s linear infinite;
 }
