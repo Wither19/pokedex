@@ -7,18 +7,22 @@ function init() {
   header.innerHTML = "Pokédex";
   header.classList.add("spanning");
   document.querySelector(".grid").appendChild(header);
-  let miniView = document.createElement("button");
+  let miniView = document.createElement("a");
   miniView.classList.add("miniview");
   miniView.innerHTML = "Mini View";
+  miniView.setAttribute("href", "#");
   miniView.style.flexBasis = "100%";
+  miniView.style.textDecoration = "none";
   miniView.style.padding = "16px";
   miniView.style.textAlign = "center";
   miniView.addEventListener("click", minify);
   document.querySelector(".grid").appendChild(miniView);
-  let largeView = document.createElement("button");
+  let largeView = document.createElement("a");
   largeView.classList.add("largeview");
   largeView.innerHTML = "Enlarged View";
+  largeView.setAttribute("href", "#");
   largeView.style.flexBasis = "100%";
+  largeView.style.textDecoration = "none";
   largeView.style.padding = "16px";
   largeView.style.textAlign = "center";
   largeView.style.display = "none";
@@ -81,7 +85,7 @@ function minify() {
 	
 	$(".largeview").css({
 		"flex-basis": "85%",
-		"display": "flex"
+		"display": "block"
 	});
 }
 
@@ -98,7 +102,7 @@ function bigify() {
 	
 	$(".miniview").css({
 		"flex-basis": "85%",
-		"display": "flex"
+		"display": "block"
 	});
 	
 	$(".largeview").css({
