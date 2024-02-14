@@ -301,9 +301,9 @@ kbd {
 
 .grid button {
   font-size: 18px;
-  margin: 16px 32px;
+  margin: 16px;
   width: 5%;
-  flex-basis: 80%;
+  flex-basis: 20%;
   text-transform: capitalize;
   border: 3px solid lightgray;
   border-radius: 15px;
