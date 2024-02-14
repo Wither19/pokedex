@@ -7,12 +7,27 @@ function init() {
   header.innerHTML = "Pokédex";
   header.classList.add("spanning");
   document.querySelector(".grid").appendChild(header);
+  let miniView = document.createElement("button");
+  miniView.classList.add("miniview");
+  miniView.innerHTML = "Mini View";
+  miniView.style.flexBasis = "85%";
+  miniView.style.padding = "20px";
+  miniView.addEventListener("click", minify);
+  document.querySelector(".grid").appendChild(miniView);
+  let largeView = document.createElement("button");
+  largeView.classList.add("largeview");
+  largeView.innerHTML = "Enlargened View";
+  largeView.style.flexBasis = "85%";
+  largeView.style.padding = "20px";
+  largeView.addEventListener("click", bigify);
+  document.querySelector(".grid").appendChild(largeView);
   fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).then(data => {
     for (let i = 1; i < data.pokemon_entries.length; i++) {
       const newDex = document.createElement("button");
       document.querySelector(".grid").appendChild(newDex);
       newDex.setAttribute("id", i);
       newDex.addEventListener("click", pkmnSelect);
+	  newDex.addEventListener("click", pokedex);
       newDex.innerHTML = `
 	#${data.pokemon_entries[i - 1].entry_number} ${data.pokemon_entries[i - 1].pokemon_species.name}
 	<br>
@@ -34,6 +49,7 @@ function extraInit() {
       document.querySelector(".grid").appendChild(extraDex);
       extraDex.setAttribute("id", e);
       extraDex.addEventListener("click", pkmnSelect);
+	  extraDex.addEventListener("click", pokedex);
       extraDex.innerHTML = `
 	${extra.results[e - 10001].name}
 	<br>
@@ -44,9 +60,45 @@ function extraInit() {
   console.log("Fetched Pokémon Variants");
 }
 
-$(".grid").click(function() {
-  pokedex();
-});
+function minify() {
+	$(".grid button").css({
+		"font-size": "10px",
+		"margin": "14px",
+		"flex-basis": "10%"
+	});
+	
+	$(".grid button img").css({
+		"width": "48px"
+	});
+	
+	$(".miniview").css({
+		"flex-basis": "85%"
+	});
+	
+	$(".largeview").css({
+		"flex-basis": "85%"
+	});
+}
+
+function bigify() {
+	$(".grid button").css({
+		"font-size": "18px",
+		"margin": "16px",
+		"flex-basis": "20%"
+	});
+	
+	$(".grid button img").css({
+		"width": "120px"
+	});
+	
+	$(".miniview").css({
+		"flex-basis": "85%"
+	});
+	
+	$(".largeview").css({
+		"flex-basis": "85%"
+	});
+}
 
 $(".bigolpokeball").click(function() {
   pokedex();
