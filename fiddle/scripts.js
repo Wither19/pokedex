@@ -45,7 +45,6 @@ function init() {
 	`;
     }
   });
-  console.log("Fetched National Pokédex");
 }
 
 function extraInit() {
@@ -67,7 +66,6 @@ function extraInit() {
 	`;
     }
   });
-  console.log("Fetched Pokémon Variants");
 }
 
 function minify() {
