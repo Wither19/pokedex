@@ -74,7 +74,7 @@ function minify() {
   $(".grid button").css({
     "font-size": "10px",
     "margin": "14px",
-    "flex-basis": "10%"
+    "flex-basis": "15%"
   });
 
   $(".grid button img").css({
