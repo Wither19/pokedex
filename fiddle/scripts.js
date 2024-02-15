@@ -240,9 +240,9 @@ function pkmnLoad() {
 
       $(".types").html(""),
 
-      $(".types").prepend(`<span class="Type ${data.types[0].type.name}">${data.types[0].type.name}</span>`),
+      $(".types").prepend(`<span class="Type ${data.types[0].type.name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.types[0].type.name}.svg">${data.types[0].type.name}</span>`),
 
-      $(".types").append(`<span class="Type ${data.types[1].type.name}">${data.types[1].type.name}</span>`),
+      $(".types").append(`<span class="Type ${data.types[1].type.name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.types[1].type.name}.svg">${data.types[1].type.name}</span>`),
 
       $(".stats").html(""),
 
