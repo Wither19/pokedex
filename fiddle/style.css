@@ -175,7 +175,12 @@ kbd {
 }
 
 .Type:only-child {
-  flex-basis: 25%;
+  flex-basis: 20%;
+}
+
+.Type:only-child img {
+	position: relative;
+	left: 10px;
 }
 
 .Type {
