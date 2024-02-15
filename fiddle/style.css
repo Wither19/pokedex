@@ -175,7 +175,7 @@ kbd {
 }
 
 .Type:only-child {
-  flex-basis: 20%;
+  flex-basis: 15%;
 }
 
 .Type:only-child img {
