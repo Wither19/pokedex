@@ -1,12 +1,13 @@
 :root,
 button {
-  font-family: Inter, sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .pokemon-name,
 .stats-header,
 .abilities-header,
 .tidbits-header {
+  font-family: "Noto Sans", sans-serif;
   display: block;
   text-align: center;
   font-size: 38px;
