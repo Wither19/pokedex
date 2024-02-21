@@ -43,6 +43,66 @@ function init() {
 	<br>
 	<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png">
 	`;
+	if (i < 1) {
+	  let g1 = document.createElement("h2");
+  g1.innerHTML = "Kanto";
+  g1.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g1);
+	}
+	else if (i == 151) {
+  let g2 = document.createElement("h2");
+  g2.innerHTML = "Johto";
+  g2.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g2);
+	}
+	else if (i == 251) {
+  let g3 = document.createElement("h2");
+  g3.innerHTML = "Hoenn";
+  g3.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g3);
+	}
+else if (i == 386) {
+  let g4 = document.createElement("h2");
+  g4.innerHTML = "Sinnoh";
+  g4.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g4);
+	}
+else if (i == 493) {
+  let g5 = document.createElement("h2");
+  g5.innerHTML = "Unova";
+  g5.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g5);
+	}
+else if (i == 649) {
+  let g6 = document.createElement("h2");
+  g6.innerHTML = "Kalos";
+  g6.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g6);
+	}
+else if (i == 721) {
+  let g7 = document.createElement("h2");
+  g7.innerHTML = "Alola";
+  g7.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g7);
+	}
+else if (i == 809) {
+  let g8 = document.createElement("h2");
+  g8.innerHTML = "Galar";
+  g8.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g8);
+	}
+else if (i == 898) {
+  let hisuiDex = document.createElement("h2");
+  hisuiDex.innerHTML = "Hisui";
+  hisuiDex.classList.add("spanning");
+  document.querySelector(".grid").appendChild(hisuiDex);
+	}
+else if (i == 905) {
+  let g9 = document.createElement("h2");
+  g9.innerHTML = "Paldea";
+  g9.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g9);
+	}
     }
   });
 }
