@@ -6,7 +6,8 @@ button {
 .pokemon-name,
 .stats-header,
 .abilities-header,
-.tidbits-header {
+.tidbits-header,
+.other-sprites-header {
   font-family: "Noto Sans", sans-serif;
   display: block;
   text-align: center;
@@ -29,13 +30,21 @@ button {
   filter: drop-shadow(0px 0px 5px black);
 }
 
+.pokemon-gif,
+.shiny-gif {
+	width: 100px;
+	margin: 10px auto;
+}
+
 .pokemon-artwork,
-.pokemon-sprite {
+.pokemon-sprite,
+.pokemon-gif {
   display: flex;
 }
 
 .shiny-artwork,
-.shiny-sprite {
+.shiny-sprite,
+.shiny-gif {
   display: none;
 }
 
@@ -82,7 +91,7 @@ p {
   font-weight: 700;
 }
 
-.tidbits {
+.tidbits, .other-sprites {
   display: none;
   justify-content: space-evenly;
   flex-wrap: wrap;
