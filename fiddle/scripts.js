@@ -283,13 +283,13 @@ function pkmnLoad() {
     // Getting Pokémon data from API, showing in markup
     $(".pokemon-name").html(`#${data.id} - ${data.name}`),
 
-      $(".pokemon-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/regular/${data.name}.png`),
+      $(".pokemon-sprite").attr("src", data.sprites.other.home.front_default),
 
       $(".pokemon-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i}.png`),
 
       $(".shiny-artwork").attr("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${i}.png`),
 
-      $(".shiny-sprite").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`),
+      $(".shiny-sprite").attr("src", data.sprites.other.home.front_shiny),
 
       $(".pokemon-gif").attr("src", data.sprites.other.showdown.front_default),
 
