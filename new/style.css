@@ -11,7 +11,7 @@ div.entry {
   background: lightblue;
   user-select: none;
   transition: transform 0.2s;
-  width: 92%;
+  width: 100%;
 }
 
 div.entry:hover,
