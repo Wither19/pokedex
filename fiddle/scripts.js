@@ -15,6 +15,9 @@ function init() {
   miniView.style.textDecoration = "none";
   miniView.style.padding = "16px";
   miniView.style.textAlign = "center";
+  miniView.style.position = "sticky";
+  miniView.style.top = "0";
+  miniView.style.zIndex = "2";
   miniView.addEventListener("click", minify);
   document.querySelector(".grid").appendChild(miniView);
   let largeView = document.createElement("a");
@@ -25,9 +28,16 @@ function init() {
   largeView.style.textDecoration = "none";
   largeView.style.padding = "16px";
   largeView.style.textAlign = "center";
+  largeView.style.position = "sticky";
+  largeView.style.top = "0";
+  largeView.style.zIndex = "2";
   largeView.style.display = "none";
   largeView.addEventListener("click", bigify);
   document.querySelector(".grid").appendChild(largeView);
+  let g1 = document.createElement("h2");
+  g1.innerHTML = "Kanto";
+  g1.classList.add("spanning");
+  document.querySelector(".grid").appendChild(g1);
   let newLine = document.createElement("br");
   newLine.style.flexBasis = "100%";
   document.querySelector(".grid").appendChild(newLine);
@@ -43,12 +53,7 @@ function init() {
 	<br>
 	<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png">
 	`;
-      if (i < 1) {
-        let g1 = document.createElement("h2");
-        g1.innerHTML = "Kanto";
-        g1.classList.add("spanning");
-        document.querySelector(".grid").appendChild(g1);
-      } else if (i == 151) {
+      if (i == 151) {
         let g2 = document.createElement("h2");
         g2.innerHTML = "Johto";
         g2.classList.add("spanning");
