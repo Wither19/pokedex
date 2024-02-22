@@ -72,7 +72,12 @@ document.querySelector("body").onkeydown = function(e) {
   } else if (e.key == "r") {
     i = Math.floor(Math.random() * 898 + 1);
     pkmnLoad();
-  } else if (e.key == " " || e.which == 13) {
+  } 
+  	else if (e.key == "s") {
+	$(".regular").toggleClass("hide");
+	$(".shiny").toggleClass("hide");
+	}
+  else if (e.key == " " || e.which == 13) {
     document.querySelector(".entry:focus").click();
   }
 };
