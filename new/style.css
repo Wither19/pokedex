@@ -50,7 +50,7 @@ img.sprite {
 
 h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 48px;
   text-transform: capitalize;
 }
 
@@ -230,6 +230,10 @@ img.artwork {
 .abilities,
 .tidbits {
   text-transform: capitalize;
-  font-size: 24px;
-  margin: 20px;
+  font-size: 28px;
+  margin: 30px;
+}
+
+.hide {
+	display: none;
 }
