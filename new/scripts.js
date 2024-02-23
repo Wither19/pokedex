@@ -67,7 +67,7 @@ function preSelect(event) {
 }
 
 $("i").click(function() {
-	$(".wrapper").toggleClass("shown");
+  $(".wrapper").toggleClass("shown");
 });
 
 document.querySelector("body").onkeydown = function(e) {
@@ -96,9 +96,14 @@ $(".wrapper").click(function() {
 
 $(".setStartup").click(function() {
   localStorage.setItem("startupMon", i);
-  localStorage.setItem("startupMonName", document.querySelector("h1").textContent)
+  localStorage.setItem("startupMonName", document.querySelector("h1").textContent);
   alert(`${startupMonName} will now display when the page is opened/refreshed!`);
+  setTimeout(locInput, 250);
 });
+
+function locInput() {
+	document.querySelector(".current").value = localStorage.getItem("startupMonName");
+}
 
 function localCall() {
   i = localStorage.getItem("startupMon");
