@@ -237,3 +237,7 @@ img.artwork {
 .hide {
 	display: none;
 }
+
+.setStartup {
+	font-size: 24px;
+}
