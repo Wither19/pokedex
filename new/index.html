@@ -2,10 +2,10 @@
 
   <head>
 	<link rel="stylesheet" href="style.css">
-	  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body onload="setTimeout(localCall, 250);">
     <div class="wrapper"></div>
     <center>
     	<img class="artwork regular" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png">
@@ -39,6 +39,7 @@
         <span class="height">2.30 Ft.</span>
         <span class="weight"> 15.21 Lbs.</span>
       </div>
+	  <button class="setStartup">Display this Pokémon on startup</button>
     </center>
 	<script src="scripts.js"></script>
   </body>
