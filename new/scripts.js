@@ -98,4 +98,5 @@ $(".setStartup").click(function() {
 function localCall() {
   i = localStorage.getItem("startupMon");
   pkmnLoad();
+  document.querySelector(".current").value = localStorage.getItem("startupMon");
 }
