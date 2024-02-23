@@ -8,7 +8,7 @@ div.entry {
   text-transform: capitalize;
   border: 1px none;
   font-size: 36px;
-  padding: 10px 20px;
+  padding: 20px;
   cursor: pointer;
   background: lightblue;
   user-select: none;
