@@ -66,6 +66,10 @@ function preSelect(event) {
   pkmnLoad(event);
 }
 
+$("i").click(function() {
+	$(".wrapper").toggleClass("shown");
+});
+
 document.querySelector("body").onkeydown = function(e) {
   if (e.key == "p") {
     $(".wrapper").toggleClass("shown");
