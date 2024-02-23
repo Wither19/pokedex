@@ -6,9 +6,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+      @media screen and (orientation: portrait) {
+        img.sprite {
+          transform: scale(1.65);
+        }
+
+        div.entry:hover img {
+          transform: scale(1.8) translate(0px, -8px);
+        }
+
+        img.artwork {
+          width: 350px;
+        }
+
+        h1 {
+          font-size: 52px;
+        }
+
+        .Type {
+          width: 1000px !important;
+          height: 70px;
+        }
+
+
+      }
+
+    </style>
   </head>
 
   <body onload="setTimeout(localCall, 250);">
+    <a href="#"><i class="bi bi-list"></i></a>
     <div class="wrapper"></div>
     <center>
       <img class="artwork regular" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png">
@@ -43,7 +72,7 @@
         <span class="weight"> 15.21 Lbs.</span>
       </div>
       <button class="setStartup">Display this Pokémon on startup</button>
-	  <br><sub>Current Startup Pokémon:</sub><br><input type="text" class="current" style="text-align: center; font-size: 24px; text-transform: capitalize;" readonly>
+      <br><sub>Current Startup Pokémon:</sub><br><input type="text" class="current" style="text-align: center; font-size: 24px; text-transform: capitalize;" readonly>
     </center>
     <script src="scripts.js"></script>
   </body>
