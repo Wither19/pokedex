@@ -247,9 +247,16 @@ img.artwork {
 }
 
 i {
+	display: block;
+	width: 64px;
 	font-size: 64px; 
 	color: black; 
 	position: sticky; 
 	top: 0;	
 	transition: 300ms;
+}
+
+i:hover {
+	transform: rotate(90deg);
+	color: lightblue;
 }
