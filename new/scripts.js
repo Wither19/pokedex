@@ -21,7 +21,7 @@ function pkmnLoad(event) {
   }
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
 
-    $("h1").html(`#${data.id} - ${data.name}`);
+    $("h1").html(`<img class="sprite" style="position: relative; top: -16px;" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"> #${data.id} - ${data.name}`);
 
     $("img.artwork").attr("src", data.sprites.other["official-artwork"].front_default);
 
