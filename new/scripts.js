@@ -85,3 +85,12 @@ document.querySelector("body").onkeydown = function(e) {
 $(".wrapper").click(function() {
   $(".wrapper").toggleClass("shown");
 });
+
+$(".setStartup").click(function() {
+	localStorage.setItem("startupMon", i);
+});
+
+function localCall() {
+	i = localStorage.getItem("startupMon");
+	pkmnLoad();
+}
