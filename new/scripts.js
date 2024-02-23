@@ -13,6 +13,12 @@ fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).t
 });
 
 function pkmnLoad(event) {
+
+  if (i < 1) {
+    i = 1;
+  } else if (i > 898 && i < 9999) {
+    i = 898;
+  }
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
 
     $("h1").html(`#${data.id} - ${data.name}`);
@@ -72,12 +78,10 @@ document.querySelector("body").onkeydown = function(e) {
   } else if (e.key == "r") {
     i = Math.floor(Math.random() * 898 + 1);
     pkmnLoad();
-  } 
-  	else if (e.key == "s") {
-	$(".regular").toggleClass("hide");
-	$(".shiny").toggleClass("hide");
-	}
-  else if (e.key == " " || e.which == 13) {
+  } else if (e.key == "s") {
+    $(".regular").toggleClass("hide");
+    $(".shiny").toggleClass("hide");
+  } else if (e.key == " " || e.which == 13) {
     document.querySelector(".entry:focus").click();
   }
 };
@@ -87,11 +91,11 @@ $(".wrapper").click(function() {
 });
 
 $(".setStartup").click(function() {
-	localStorage.setItem("startupMon", i);
-	alert(`${document.querySelector("h1").textContent} will now display when the page is opened/refreshed!`);
+  localStorage.setItem("startupMon", i);
+  alert(`${document.querySelector("h1").textContent} will now display when the page is opened/refreshed!`);
 });
 
 function localCall() {
-	i = localStorage.getItem("startupMon");
-	pkmnLoad();
+  i = localStorage.getItem("startupMon");
+  pkmnLoad();
 }
