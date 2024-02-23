@@ -1,4 +1,6 @@
-:root, button, .Type {
+:root,
+button,
+.Type {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -11,7 +13,7 @@ div.entry {
   background: lightblue;
   user-select: none;
   color: white;
-  transition: transform 0.2s;
+  transition: transform 0.2s, color 0.1s, background 0.1s;
   width: 100%;
 }
 
@@ -237,9 +239,9 @@ img.artwork {
 }
 
 .hide {
-	display: none;
+  display: none;
 }
 
 .setStartup {
-	font-size: 24px;
+  font-size: 24px;
 }
