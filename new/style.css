@@ -59,7 +59,7 @@ h1 {
 }
 
 img.artwork {
-  width: 300px;
+  width: 350px;
 }
 
 .types,
@@ -244,4 +244,12 @@ img.artwork {
 
 .setStartup {
   font-size: 24px;
+}
+
+i {
+	font-size: 64px; 
+	color: black; 
+	position: sticky; 
+	top: 0;	
+	transition: 300ms;
 }
