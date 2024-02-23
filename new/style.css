@@ -1,5 +1,5 @@
-:root {
-  font-family: trebuchet ms;
+:root, button, .Type {
+  font-family: "Open Sans", sans-serif;
 }
 
 div.entry {
@@ -10,6 +10,7 @@ div.entry {
   cursor: pointer;
   background: lightblue;
   user-select: none;
+  color: white;
   transition: transform 0.2s;
   width: 100%;
 }
@@ -20,6 +21,7 @@ div.entry:focus,
 div.entry:nth-child(odd):focus {
   background: yellow;
   transform: scale(1.05);
+  color: black;
 }
 
 div.entry:hover img,
