@@ -88,6 +88,7 @@ $(".wrapper").click(function() {
 
 $(".setStartup").click(function() {
 	localStorage.setItem("startupMon", i);
+	alert(`${document.querySelector("h1").textContent} will now display when the page is opened/refreshed!`);
 });
 
 function localCall() {
