@@ -92,11 +92,12 @@ $(".wrapper").click(function() {
 
 $(".setStartup").click(function() {
   localStorage.setItem("startupMon", i);
-  alert(`${document.querySelector("h1").textContent} will now display when the page is opened/refreshed!`);
+  localStorage.setItem("startupMonName", document.querySelector("h1").textContent)
+  alert(`${startupMonName} will now display when the page is opened/refreshed!`);
 });
 
 function localCall() {
   i = localStorage.getItem("startupMon");
   pkmnLoad();
-  document.querySelector(".current").value = localStorage.getItem("startupMon");
+  document.querySelector(".current").value = localStorage.getItem("startupMonName");
 }
