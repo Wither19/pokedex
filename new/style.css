@@ -5,16 +5,16 @@ button,
 }
 
 div.entry {
-  text-transform: capitalize;
-  border: 1px none;
-  font-size: 36px;
-  padding: 20px 55px;
-  cursor: pointer;
-  background: lightblue;
-  user-select: none;
-  color: white;
-  transition: transform 0.2s, color 0.1s, background 0.1s;
-  width: 100%;
+    text-transform: capitalize;
+    border: 1px none;
+    font-size: 36px;
+    padding: 24px 64px;
+    cursor: pointer;
+    background: lightblue;
+    user-select: none;
+    color: white;
+    transition: transform 0.2s, color 0.1s, background 0.1s;
+    width: 100%;
 }
 
 div.entry:hover,
