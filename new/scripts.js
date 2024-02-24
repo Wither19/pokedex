@@ -50,8 +50,8 @@ function pkmnLoad(event) {
     $(".abilities").html("");
 
     $(".abilities").append(`
-	<span class="norm">${data.abilities[0].ability.name}</span> /
-      <span class="hidden"><span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}</span>`);
+	<span class="norm"><a href="https://www.smogon.com/dex/sv/abilities/${data.abilities[0].ability.name}" target="_blank">${data.abilities[0].ability.name}</a></span> /
+      <span class="hidden"><a href="https://www.smogon.com/dex/sv/abilities/${data.abilities[1].ability.name}" target="_blank"><span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}</a></span>`);
 
     $(".tidbits").html("");
 
