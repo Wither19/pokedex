@@ -260,3 +260,15 @@ i:hover {
 	transform: rotate(90deg);
 	color: lightblue;
 }
+
+.abilities a {
+	color: black;
+}
+
+.abilties a:hover {
+	color: blue;
+}
+
+.abilities a:visited {
+	color: black;
+}
