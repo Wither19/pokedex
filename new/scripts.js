@@ -66,13 +66,16 @@ function pkmnLoad(event) {
 
     $(".genus").html("");
 
-    document.querySelector(".jp").innerHTML = data.names[0].name;
+	$(".flavor").html("");
+	
+    $(".jp").html(data.names[0].name);
 
     for (let f = 0; f <= data.flavor_text_entries.length; f++) {
       var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
 
       if (langMatch == 0) {
         $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><hr><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
+		}
       }
 
       for (let g = 0; g <= data.genera.length; g++) {
@@ -83,7 +86,7 @@ function pkmnLoad(event) {
         }
 
       }
-    }
+    
   });
 }
 
