@@ -13,13 +13,15 @@ fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).t
 });
 
 function pkmnLoad(event) {
-
   if (i < 1) {
     i = 1;
   } else if (i > 898 && i < 9999) {
     i = 898;
   }
+  
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
+
+    $("h1").html("");
 
     $("h1").html(`<img class="sprite" style="position: relative; top: -16px;" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"> #${data.id} - ${data.name}`);
 
@@ -59,16 +61,28 @@ function pkmnLoad(event) {
 	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span> /
 	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`);
   });
-  
-  fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
-  for (let f = 0; f <= data.flavor_text_entries.length; f++) {
-  	var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
-	if (langMatch == 0) {
-	 $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><hr><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
-	}
-  }
-  });
 
+  fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
+  
+    document.querySelector("h1").innerHTML += `<br><sub style="color: gray">${data.names[0].name}</sub>`;
+
+    for (let f = 0; f <= data.flavor_text_entries.length; f++) {
+      var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
+	  
+      if (langMatch == 0) {
+        $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><hr><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
+      }
+	  
+      for (let g = 0; g <= data.genera.length; g++) {
+        var genusMatch = data.genera[g].language.name.lastIndexOf("en");
+		
+        if (genusMatch == 0) {
+          document.querySelector("h1").innerHTML += `<br><sub>${data.genera[g].genus}</sub>`;
+        }
+		
+      }
+    }
+  });
 }
 
 function preSelect(event) {
