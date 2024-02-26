@@ -59,6 +59,16 @@ function pkmnLoad(event) {
 	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span> /
 	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`);
   });
+  
+  fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
+  for (let f = 0; f <= data.flavor_text_entries.length; f++) {
+  	var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
+	if (langMatch == 0) {
+	 $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><hr><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name}</span></sub>`);
+	}
+  }
+  });
+
 }
 
 function preSelect(event) {
