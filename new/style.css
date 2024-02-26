@@ -1,3 +1,10 @@
+:root {
+  --color-1: #e9f6ff;
+  --color-2: #280274;
+  --color-3: #3652ad;
+  --color-4: #fe7a36;
+}
+
 :root,
 button,
 .Type {
@@ -5,16 +12,16 @@ button,
 }
 
 div.entry {
-    text-transform: capitalize;
-    border: 1px none;
-    font-size: 36px;
-    padding: 24px 64px;
-    cursor: pointer;
-    background: lightblue;
-    user-select: none;
-    color: white;
-    transition: transform 0.2s, color 0.1s, background 0.1s;
-    width: 100%;
+  text-transform: capitalize;
+  border: 1px none;
+  font-size: 36px;
+  padding: 20px 55px;
+  cursor: pointer;
+  background: var(--color-2);
+  user-select: none;
+  color: white;
+  transition: transform 0.2s, color 0.1s, background 0.1s;
+  width: 100%;
 }
 
 div.entry:hover,
@@ -32,7 +39,7 @@ div.entry:focus img {
 }
 
 div.entry:nth-child(odd) {
-  background: skyblue;
+  background: var(--color-3);
 }
 
 img.sprite {
@@ -247,28 +254,25 @@ img.artwork {
 }
 
 i {
-	display: block;
-	width: 64px;
-	font-size: 64px; 
-	color: black; 
-	position: sticky; 
-	top: 0;	
-	transition: 300ms;
+  display: block;
+  width: 64px;
+  font-size: 64px;
+  color: black;
+  position: sticky;
+  top: 0;
+  transition: 300ms;
 }
 
 i:hover {
-	transform: rotate(90deg);
-	color: lightblue;
+  transform: rotate(90deg);
+  color: lightblue;
 }
 
 .abilities a {
-	color: black;
+  color: black;
 }
 
-.abilties a:hover {
-	color: blue;
-}
-
-.abilities a:visited {
-	color: black;
+.abilties a:hover,
+.abilities span:hover a {
+  color: blue;
 }
