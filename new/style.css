@@ -276,3 +276,9 @@ i:hover {
 .abilities span:hover a {
   color: blue;
 }
+
+.flavor {
+	margin: 20px 20%;
+	line-height: 150%;
+	font-size: 20px;
+}
