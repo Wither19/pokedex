@@ -56,13 +56,14 @@ function pkmnLoad(event) {
     $(".tidbits").html("");
 
     $(".tidbits").append(`
-	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span>
+	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span> /
 	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`);
   });
 }
 
 function preSelect(event) {
   i = event.currentTarget.id;
+  window.scroll(0, 65);
   pkmnLoad(event);
 }
 
@@ -73,6 +74,7 @@ $("i").click(function() {
 document.querySelector("body").onkeydown = function(e) {
   if (e.key == "p") {
     $(".wrapper").toggleClass("shown");
+    window.scroll(0, 65);
   } else if (e.which == 37) {
     i--;
     pkmnLoad();
@@ -102,7 +104,7 @@ $(".setStartup").click(function() {
 });
 
 function locInput() {
-	document.querySelector(".current").value = localStorage.getItem("startupMonName");
+  document.querySelector(".current").value = localStorage.getItem("startupMonName");
 }
 
 function localCall() {
