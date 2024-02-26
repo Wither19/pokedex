@@ -63,17 +63,17 @@ h1,
 .jp,
 .genus {
   text-align: center;
-  font-size: 40px;
+  font-size: 36px;
   text-transform: capitalize;
 }
 
 img.artwork {
-  width: 350px;
+  width: 300px;
 }
 
 .types,
 .buttons {
-  margin: 10px;
+  margin: 6px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -257,8 +257,8 @@ img.artwork {
 
 i {
   display: block;
-  width: 64px;
-  font-size: 64px;
+  width: 48px;
+  font-size: 48px;
   color: black;
   position: sticky;
   top: 0;
