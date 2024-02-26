@@ -64,7 +64,7 @@ function pkmnLoad(event) {
   for (let f = 0; f <= data.flavor_text_entries.length; f++) {
   	var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
 	if (langMatch == 0) {
-	 $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><hr><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name}</span></sub>`);
+	 $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><hr><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
 	}
   }
   });
