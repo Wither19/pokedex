@@ -34,12 +34,12 @@ function pkmnLoad(event) {
     $(".tidbits").html("");
 
     $(".stats").append(`
-	  <span class="hp">${data.stats[0].stat.name}: ${data.stats[0].base_stat}</span><br>
-      <span class="atk">Atk: ${data.stats[1].base_stat}</span><br>
-      <span class="def">Def: ${data.stats[3].base_stat}</span><br>
-      <span class="sp-atk">Sp-Atk: ${data.stats[2].base_stat}</span><br>
-      <span class="sp-def">Sp-Def: ${data.stats[4].base_stat}</span><br>
-      <span class="spd">Spd: ${data.stats[5].base_stat}</span>`);
+	  <span class="hp">HP: <span style="font-weight: bold;">${data.stats[0].base_stat}</span></span><br>
+      <span class="atk">Atk: <span style="font-weight: bold;">${data.stats[1].base_stat}</span></span><br>
+      <span class="def">Def: <span style="font-weight: bold;">${data.stats[3].base_stat}</span></span><br>
+      <span class="sp-atk">Sp-Atk: <span style="font-weight: bold;">${data.stats[2].base_stat}</span></span><br>
+      <span class="sp-def">Sp-Def: <span style="font-weight: bold;">${data.stats[4].base_stat}</span></span><br>
+      <span class="spd">Spd: <span style="font-weight: bold;">${data.stats[5].base_stat}</span></span>`);
 
     $(".types").html("");
 
