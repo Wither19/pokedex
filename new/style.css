@@ -266,7 +266,8 @@ i {
   color: black;
   position: sticky;
   top: 0;
-  transition: 300ms;
+  left: 5%;
+  transition: color 300ms, translate 300ms, left 0.75s;
 }
 
 i:hover {
@@ -284,24 +285,26 @@ i:hover {
 }
 
 .flavor {
-  margin: 20px 20%;
-  position: absolute;
-  left: 200%;
-  top: 650px;
-  z-index: 3;
-  width: 400px;
+  z-index: 1;
   line-height: 150%;
-  font-size: 28px;
-  background: gray;
+  font-size: 20px;
+  background: slategray;
   color: antiquewhite;
   border: 8px solid black;
   border-radius: 16px;
   padding: 10px;
-  transition: left 0.95s;
+  transition: left 0.75s;
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0px;
+  left: -28%;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-.flavor.shown {
-	left: 15%;
+.flavor:hover {
+	left: 0px;
 }
 
 .variants * {
