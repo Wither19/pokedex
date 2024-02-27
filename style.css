@@ -305,7 +305,7 @@ i:hover {
   padding-top: 20px;
 }
 
-.flavor:hover {
+.flavor.shown {
 	left: 0px;
 }
 
