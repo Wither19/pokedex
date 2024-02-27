@@ -62,7 +62,6 @@ function pkmnLoad(event) {
 
   fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
   
-  console.log(data)
 
     $(".jp").html("");
 
@@ -72,7 +71,21 @@ function pkmnLoad(event) {
 
 	$(".capture").html("");
 
-	$(".capture").html(`Catch Rate: ${(data.capture_rate / 2.55).toFixed()}%`)
+	$(".capture").html(`Catch Rate: ${(data.capture_rate / 2.55).toFixed()}%`);
+	if (data.capture_rate <= 25) {
+		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png">`;
+
+	}
+	
+	else if (data.capture_rate <= 84) {
+		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png">`;
+	}
+	else if (data.capture_rate <= 168) {
+		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png">`;
+	}
+	else if (data.capture_rate <= 255) {
+		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">`;
+	}
 
     $(".jp").html(data.names[0].name);
 	
