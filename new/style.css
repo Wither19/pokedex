@@ -11,6 +11,10 @@ button,
   font-family: "Open Sans", sans-serif;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 div.entry {
   text-transform: capitalize;
   border: 1px none;
@@ -281,8 +285,23 @@ i:hover {
 
 .flavor {
   margin: 20px 20%;
+  position: absolute;
+  left: 200%;
+  top: 115%;
+  z-index: 3;
+  width: 400px;
   line-height: 150%;
-  font-size: 20px;
+  font-size: 28px;
+  background: gray;
+  color: antiquewhite;
+  border: 8px solid black;
+  border-radius: 16px;
+  padding: 10px;
+  transition: left 0.75s;
+}
+
+.flavor.shown {
+	left: 0%;
 }
 
 .variants * {
