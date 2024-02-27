@@ -145,12 +145,12 @@ function localCall() {
 
 $(".flavor").mouseover(function() {
 	$("i").css({
-	"left": "33%"
+	"left": "240px"
 	});
 });
 
 $(".flavor").mouseout(function() {
 	$("i").css({
-	"left": "5%"
+	"left": "40px"
 	});
 });
