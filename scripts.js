@@ -150,15 +150,3 @@ function localCall() {
   pkmnLoad();
   document.querySelector(".current").value = localStorage.getItem("startupMonName");
 }
-
-$(".flavor").mouseover(function() {
-	$("i").css({
-	"left": "240px"
-	});
-});
-
-$(".flavor").mouseout(function() {
-	$("i").css({
-	"left": "40px"
-	});
-});
