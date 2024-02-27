@@ -286,8 +286,8 @@ i:hover {
 .flavor {
   margin: 20px 20%;
   position: absolute;
-  left: 2000px;
-  top: 680px;
+  left: 200%;
+  top: 630px;
   z-index: 3;
   width: 400px;
   line-height: 150%;
@@ -301,7 +301,7 @@ i:hover {
 }
 
 .flavor.shown {
-	left: 0px;
+	left: 0%;
 }
 
 .variants * {
