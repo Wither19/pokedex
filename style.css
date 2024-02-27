@@ -268,7 +268,7 @@ i {
   color: black;
   position: sticky;
   top: 0;
-  left: 16px;
+  left: 60px;
   transition: left 750ms, color 350ms, transform 350ms;
 }
 
@@ -317,5 +317,5 @@ i:hover {
 
 .stats {
 	position: fixed;	
-	top: 350px;
+	top: 380px;
 }
