@@ -39,7 +39,7 @@ div.entry:nth-child(odd):focus {
 
 div.entry:hover img,
 div.entry:focus img {
-  transform: scale(1.9) translate(0px, -8px);
+  transform: scale(1.7) translate(3px, -8px);
 }
 
 div.entry:nth-child(odd) {
