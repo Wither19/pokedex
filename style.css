@@ -18,8 +18,8 @@ body {
 div.entry {
   text-transform: capitalize;
   border: 1px none;
-  font-size: 36px;
-  padding: 20px 55px;
+  font-size: 24px;
+  padding: 10px 27px;
   cursor: pointer;
   background: var(--color-2);
   user-select: none;
@@ -47,7 +47,7 @@ div.entry:nth-child(odd) {
 }
 
 img.sprite {
-  transform: scale(1.7);
+  transform: scale(1.4);
   transition: transform 0.2s;
 }
 
