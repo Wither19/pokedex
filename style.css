@@ -268,7 +268,7 @@ i {
   color: black;
   position: sticky;
   top: 0;
-  left: 40px;
+  left: 16px;
   transition: left 750ms, color 350ms, transform 350ms;
 }
 
@@ -301,7 +301,7 @@ i:hover {
   width: 200px;
   position: fixed;
   top: 0px;
-  left: -200px;
+  left: -240px;
   overflow-x: hidden;
   padding-top: 20px;
 }
