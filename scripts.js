@@ -102,7 +102,7 @@ $("i").click(function() {
 document.querySelector("body").onkeydown = function(e) {
   if (e.key == "p") {
     $(".wrapper").toggleClass("shown");
-    window.scroll(0, 65);
+    window.scroll(0, 0);
   } else if (e.which == 37) {
     i--;
     pkmnLoad();
