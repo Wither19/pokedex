@@ -12,7 +12,7 @@ button,
 }
 
 body {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 div.entry {
@@ -307,8 +307,8 @@ i:hover {
 }
 
 .flavor.shown {
-	left: 0px;
-	color: antiquewhite;
+  left: 0px;
+  color: antiquewhite;
 }
 
 .variants * {
@@ -316,6 +316,13 @@ i:hover {
 }
 
 .stats {
-	position: fixed;	
-	top: 380px;
+  position: fixed;
+  top: 380px;
+}
+
+.capture img {
+	position: relative;
+	top: 8px;
+	left: 10px;
+	transform: scale(1.75);
 }
