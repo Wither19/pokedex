@@ -130,7 +130,7 @@ $(".setStartup").click(function() {
   localStorage.setItem("startupMon", i);
   localStorage.setItem("startupMonName", document.querySelector("h1").textContent);
   alert(`${startupMonName} will now display when the page is opened/refreshed!`);
-  setTimeout(locInput, 250);
+  setTimeout(locInput, 10);
 });
 
 function locInput() {
