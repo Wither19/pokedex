@@ -125,7 +125,7 @@ document.querySelector("body").onkeydown = function(e) {
   } else if (e.key == "h") {
   	document.querySelector(".flavor").classList.remove("shown");
 	$("i").css({
-		"left": "60px"
+		"left": "40px"
 	});
   }
 };
