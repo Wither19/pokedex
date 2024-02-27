@@ -66,27 +66,26 @@ function pkmnLoad(event) {
 
     $(".genus").html("");
 
-	$(".flavor").html("");
-	
+    $(".flavor").html("");
+
     $(".jp").html(data.names[0].name);
 
     for (let f = 0; f <= data.flavor_text_entries.length; f++) {
       var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
-
+	  
       if (langMatch == 0) {
-        $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><hr><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
-		}
+        $(".flavor").html(`${data.flavor_text_entries[f].flavor_text}<br><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
       }
+    }
+	
+    for (let g = 0; g <= data.genera.length; g++) {
+      var genusMatch = data.genera[g].language.name.lastIndexOf("en");
 
-      for (let g = 0; g <= data.genera.length; g++) {
-        var genusMatch = data.genera[g].language.name.lastIndexOf("en");
-
-        if (genusMatch == 0) {
-          document.querySelector(".genus").innerHTML += `<br><sub>${data.genera[g].genus}</sub>`;
-        }
-
+      if (genusMatch == 0) {
+        $(".genus").html(data.genera[g].genus);
+		console.log(genusMatch);
       }
-    
+	}
   });
 }
 
@@ -118,6 +117,8 @@ document.querySelector("body").onkeydown = function(e) {
     $(".shiny").toggleClass("hide");
   } else if (e.key == " " || e.which == 13) {
     document.querySelector(".entry:focus").click();
+  } else if (e.key == "i") {
+  	$(".flavor").toggleClass("shown");
   }
 };
 
