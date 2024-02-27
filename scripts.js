@@ -61,6 +61,8 @@ function pkmnLoad(event) {
   });
 
   fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
+  
+  console.log(data)
 
     $(".jp").html("");
 
@@ -68,8 +70,12 @@ function pkmnLoad(event) {
 
     $(".actual").html("");
 
-    $(".jp").html(data.names[0].name);
+	$(".capture").html("");
 
+	$(".capture").html(`Catch Rate: ${(data.capture_rate / 2.55).toFixed()}%`)
+
+    $(".jp").html(data.names[0].name);
+	
     for (let f = 0; f <= data.flavor_text_entries.length; f++) {
       var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
 	  
