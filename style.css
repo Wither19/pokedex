@@ -269,7 +269,7 @@ i {
   position: sticky;
   top: 0;
   left: 40px;
-  transition: color 300ms, translate 300ms, left 0.75s;
+  transition: left 750ms, color 350ms, transform 350ms;
 }
 
 i:hover {
@@ -290,23 +290,25 @@ i:hover {
   z-index: 1;
   line-height: 150%;
   font-size: 20px;
-  background: slategray;
-  color: antiquewhite;
+  background: linear-gradient(0deg, slategray, gray);
+  color: slategray;
   border: 8px solid black;
   border-radius: 16px;
   padding: 10px;
-  transition: left 0.75s;
+  transition: left 0.75s, color 0.9s;
+  transition-delay: color 0.2s;
   height: 100%;
   width: 200px;
   position: fixed;
   top: 0px;
-  left: -205px;
+  left: -200px;
   overflow-x: hidden;
   padding-top: 20px;
 }
 
 .flavor.shown {
 	left: 0px;
+	color: antiquewhite;
 }
 
 .variants * {
