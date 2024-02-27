@@ -61,7 +61,7 @@ function pkmnLoad(event) {
   });
 
   fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
-  
+
 
     $(".jp").html("");
 
@@ -69,42 +69,37 @@ function pkmnLoad(event) {
 
     $(".actual").html("");
 
-	$(".capture").html("");
+    $(".capture").html("");
 
-	$(".capture").html(`Catch Rate: ${(data.capture_rate / 2.55).toFixed()}%`);
-	if (data.capture_rate <= 25) {
-		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png">`;
+    if (data.capture_rate <= 25) {
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png">`);
 
-	}
-	
-	else if (data.capture_rate <= 84) {
-		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png">`;
-	}
-	else if (data.capture_rate <= 168) {
-		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png">`;
-	}
-	else if (data.capture_rate <= 255) {
-		document.querySelector(".capture").innerHTML += `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">`;
-	}
+    } else if (data.capture_rate <= 84) {
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png">`);
+    } else if (data.capture_rate <= 168) {
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png">`);
+    } else if (data.capture_rate <= 255) {
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">`);
+    }
 
     $(".jp").html(data.names[0].name);
-	
+
     for (let f = 0; f <= data.flavor_text_entries.length; f++) {
       var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
-	  
+
       if (langMatch == 0) {
         $(".actual").html(`${data.flavor_text_entries[f].flavor_text}<br><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
       }
     }
-	
+
     for (let g = 0; g <= data.genera.length; g++) {
       var genusMatch = data.genera[g].language.name.lastIndexOf("en");
 
       if (genusMatch == 0) {
         $(".genus").html(data.genera[g].genus);
-		console.log(genusMatch);
+        console.log(genusMatch);
       }
-	}
+    }
   });
 }
 
@@ -137,15 +132,15 @@ document.querySelector("body").onkeydown = function(e) {
   } else if (e.key == " " || e.which == 13) {
     document.querySelector(".entry:focus").click();
   } else if (e.key == "i") {
-  	document.querySelector(".flavor").classList.add("shown");
-	$("i").css({
-		"left": "290px"
-	});
+    document.querySelector(".flavor").classList.add("shown");
+    $("i").css({
+      "left": "290px"
+    });
   } else if (e.key == "h") {
-  	document.querySelector(".flavor").classList.remove("shown");
-	$("i").css({
-		"left": "40px"
-	});
+    document.querySelector(".flavor").classList.remove("shown");
+    $("i").css({
+      "left": "40px"
+    });
   }
 };
 
