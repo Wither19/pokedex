@@ -120,12 +120,12 @@ document.querySelector("body").onkeydown = function(e) {
   } else if (e.key == "i") {
   	document.querySelector(".flavor").classList.add("shown");
 	$("i").css({
-		"left": "240px"
+		"left": "290px"
 	});
   } else if (e.key == "h") {
   	document.querySelector(".flavor").classList.remove("shown");
 	$("i").css({
-		"left": "40px"
+		"left": "60px"
 	});
   }
 };
