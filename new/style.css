@@ -266,7 +266,7 @@ i {
   color: black;
   position: sticky;
   top: 0;
-  left: 5%;
+  left: 40px;
   transition: color 300ms, translate 300ms, left 0.75s;
 }
 
