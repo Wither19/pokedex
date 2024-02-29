@@ -289,14 +289,14 @@ i:hover {
 .flavor {
   z-index: 1;
   line-height: 150%;
-  font-size: 20px;
+  font-size: 18px;
   background: linear-gradient(0deg, slategray, gray);
   color: slategray;
   border: 8px solid black;
   border-radius: 16px;
   padding: 10px;
-  transition: left 0.75s, color 0.9s;
-  transition-delay: color 0.2s;
+  transition: left 0.75s, color 0.8s;
+  transition-delay: color 0.1s;
   height: 100%;
   width: 250px;
   position: fixed;
@@ -321,8 +321,18 @@ i:hover {
 }
 
 .capture img {
-	position: relative;
-	top: 8px;
-	left: 10px;
-	transform: scale(1.75);
+  position: relative;
+  top: 8px;
+  left: 10px;
+  transform: scale(1.75);
+}
+
+.captureInfo {
+  opacity: 0;
+  transition: opacity 700ms;
+  line-height: 80% !important;
+}
+
+.capture:hover+sub {
+  opacity: 1;
 }
