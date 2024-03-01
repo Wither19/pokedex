@@ -74,14 +74,14 @@ function pkmnLoad(event) {
     let falseSwiped = ((data.capture_rate / 2.55) * 1.5).toFixed() + "%";
 
     if (data.capture_rate <= 25) {
-      $(".capture").html(`Catch Rate: ${falseSwiped} <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png">`);
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png">`);
 
     } else if (data.capture_rate <= 84) {
-      $(".capture").html(`Catch Rate: ${falseSwiped} <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png">`);
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png">`);
     } else if (data.capture_rate <= 168) {
-      $(".capture").html(`Catch Rate: ${falseSwiped} <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png">`);
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png">`);
     } else if (data.capture_rate <= 255) {
-      $(".capture").html(`Catch Rate: ${falseSwiped} <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">`);
+      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">`);
     }
 
     $(".jp").html(data.names[0].name);
