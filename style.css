@@ -17,7 +17,7 @@ body {
 
 div.entry {
   text-transform: capitalize;
-  border: 1px solid;
+  border: 1px none;
   border-color: var(--color-2);
   font-size: 24px;
   text-align: center;
@@ -27,7 +27,7 @@ div.entry {
   user-select: none;
   color: white;
   transition: transform 0.2s, color 0.1s, background 0.1s;
-  flex-basis: 25.8%;
+  flex-basis: 30%;
 }
 
 div.entry:hover,
@@ -145,6 +145,7 @@ img.artwork {
   flex-basis: 15%;
   filter: brightness(1.15);
   animation: brighten 3s linear infinite;
+  transform-style: preserve-3d;
 }
 
 @keyframes brighten {
