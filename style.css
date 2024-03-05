@@ -27,7 +27,7 @@ div.entry {
   user-select: none;
   color: white;
   transition: transform 0.2s, color 0.1s, background 0.1s;
-  width: 25%;
+  width: 33%;
 }
 
 div.entry:hover,
