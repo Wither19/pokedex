@@ -17,42 +17,62 @@ body {
 
 div.entry {
   text-transform: capitalize;
-  border: 1px none;
+  border: 1px solid;
+  border-color: var(--color-2);
   font-size: 24px;
+  text-align: center;
   padding: 10px 27px;
   cursor: pointer;
-  background: var(--color-2);
+  background: var(--color-3);
   user-select: none;
   color: white;
   transition: transform 0.2s, color 0.1s, background 0.1s;
-  width: 100%;
+  flex-basis: 25.8%;
 }
 
 div.entry:hover,
 div.entry:nth-child(odd):hover,
+div.entry:last-child:hover,
 div.entry:focus,
-div.entry:nth-child(odd):focus {
+div.entry:nth-child(odd):focus,
+div.entry:last-child:focus {
   background: yellow;
-  transform: scale(1.05);
   color: black;
 }
 
 div.entry:hover img,
 div.entry:focus img {
-  transform: scale(1.7) translate(3px, -8px);
+  transform: scale(2) translate(0px, -6px);
+  filter: drop-shadow(3px 3px gray);
 }
 
 div.entry:nth-child(odd) {
-  background: var(--color-3);
+  background: var(--color-2);
+  border-color: var(--color-3);
+}
+
+div.entry:last-child {
+  flex-basis: 100%;
+  background: var(--color-4);
 }
 
 img.sprite {
-  transform: scale(1.4);
-  transition: transform 0.2s;
+  position: relative;
+  top: -16px;
+  left: -4px;
+  transform: scale(2);
+  transition: transform 0.2s, filter 0.4s;
+}
+
+.wrapper img.sprite {
+  transform: scale(1.7);
+  top: -4px;
+  left: -8px;
 }
 
 .wrapper {
   display: none;
+  flex-wrap: wrap;
   position: absolute;
   z-index: 2;
   width: 100%;
@@ -62,7 +82,7 @@ img.sprite {
 }
 
 .wrapper.shown {
-  display: block;
+  display: flex;
 }
 
 h1,
@@ -333,6 +353,6 @@ i:hover {
   line-height: 80% !important;
 }
 
-.capture:hover+sub {
+.capture:hover + sub {
   opacity: 1;
 }
