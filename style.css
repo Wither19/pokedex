@@ -27,7 +27,7 @@ div.entry {
   user-select: none;
   color: white;
   transition: transform 0.2s, color 0.1s, background 0.1s;
-  flex-basis: 25%;
+  width: 25%;
 }
 
 div.entry:hover,
@@ -52,7 +52,7 @@ div.entry:nth-child(odd) {
 }
 
 div.entry:last-child {
-  flex-basis: 100%;
+  width: 100%;
   background: var(--color-4);
 }
 
