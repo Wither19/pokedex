@@ -8,7 +8,7 @@ fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).t
     entry.classList.add("entry");
     entry.addEventListener("click", preSelect);
     document.querySelector(".wrapper").appendChild(entry);
-    entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"> #${data.pokemon_entries[i - 1].entry_number} - ${data.pokemon_entries[i - 1].pokemon_species.name}`;
+    entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br>${data.pokemon_entries[i - 1].pokemon_species.name}`;
   }
 });
 
@@ -21,7 +21,7 @@ function pkmnLoad(event) {
 
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
 
-    $("h1").html(`<img class="sprite" style="position: relative; top: -16px;" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"> #${data.id} - ${data.name}`);
+    $("h1").html(`<img class="sprite" src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.name}.png"> #${data.id} - ${data.name}`);
 
     $("img.artwork").attr("src", data.sprites.other["official-artwork"].front_default);
 
@@ -117,6 +117,7 @@ $("i").click(function() {
 
 document.querySelector("body").onkeydown = function(e) {
   if (e.key == "p") {
+    e.stopPropagation();
     $(".wrapper").toggleClass("shown");
     window.scroll(0, 0);
   } else if (e.which == 37) {
@@ -126,14 +127,17 @@ document.querySelector("body").onkeydown = function(e) {
     i++;
     pkmnLoad();
   } else if (e.key == "r") {
+    e.stopPropagation();
     i = Math.floor(Math.random() * 898 + 1);
     pkmnLoad();
   } else if (e.key == "s") {
+    e.stopPropagation();
     $(".regular").toggleClass("hide");
     $(".shiny").toggleClass("hide");
   } else if (e.key == " " || e.which == 13) {
     document.querySelector(".entry:focus").click();
   } else if (e.key == "i") {
+    e.stopPropagation();
     document.querySelector(".flavor").classList.add("shown");
     $("i").css({
       "left": "290px"
@@ -165,4 +169,10 @@ function localCall() {
   i = localStorage.getItem("startupMon");
   pkmnLoad();
   document.querySelector(".current").value = localStorage.getItem("startupMonName");
+}
+
+function input() {
+  fetch("https://pokeapi.com/api/v2/pokemon?limit=1025").then(pkmn => pkmn.json()).then(list => {
+    console.log(list);
+  });
 }
