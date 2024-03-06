@@ -21,7 +21,7 @@ body {
 	background: linear-gradient(0deg, slategray 30%, lightgray);
 	border: 3px ridge darkslategray;
 	margin: 10px auto;
-	min-width: 30%;
+	min-width: 20%;
 	text-align: center;
 	cursor: pointer;
 }
