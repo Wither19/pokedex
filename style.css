@@ -51,11 +51,10 @@ h1 img {
   transform: scale(1.4);
   position: relative;
   top: -8px;
-  transition: transform 0.2s, top 0.25s;
 }
 
 .entry:hover img {
-  transform: scale(1.75);
+  transform: scale(1.65);
 }
 
 .wrapper {
