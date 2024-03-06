@@ -74,13 +74,13 @@ function pkmnLoad(event) {
     $(".abilities").html("");
 	
     $(".abilities").append(`
-	<span class="norm"><a title="View ${data.abilities[0].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[0].ability.name}" target="_blank">${data.abilities[0].ability.name}</a></span>`);
+	<span class="norm"><a title="View ${data.abilities[0].ability.name.replace("-", " ")} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[0].ability.name.replace("-", " ")}" target="_blank">${data.abilities[0].ability.name.replace("-", " ")}</a></span>`);
 
     $(".abilities").append(`
-	 / <span class="norm"><a title="View ${data.abilities[1].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[1].ability.name}" target="_blank">${data.abilities[1].ability.name}</a></span>`);
+	 / <span class="norm"><a title="View ${data.abilities[1].ability.name.replace("-", " ")} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[1].ability.name.replace("-", " ")}" target="_blank">${data.abilities[1].ability.name.replace("-", " ")}</a></span>`);
 
     $(".abilities").append(`
-	 / <span class="norm"><a title="View ${data.abilities[2].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[2].ability.name}" target="_blank">${data.abilities[2].ability.name}</a></span>`);
+	 / <span class="norm"><a title="View ${data.abilities[2].ability.name.replace("-", " ")} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[2].ability.name.replace("-", " ")}" target="_blank">${data.abilities[2].ability.name.replace("-", " ")}</a></span>`);
 
     $(".tidbits").html("");
 
