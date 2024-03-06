@@ -15,52 +15,30 @@ body {
   overflow-x: hidden;
 }
 
-div.entry {
-  text-transform: capitalize;
-  border: 1px none;
-  border-color: var(--color-2);
-  font-size: 24px;
-  text-align: center;
-  padding: 10px 27px;
-  cursor: pointer;
-  background: var(--color-3);
-  user-select: none;
-  color: white;
-  transition: transform 0.2s, color 0.1s, background 0.1s;
-  width: 42%;
+.entry {
+	text-transform: capitalize;	
+	z-index: 2;
+	background: linear-gradient(0deg, slategray 30%, lightgray);
+	border: 3px ridge darkslategray;
+	margin: 10px auto;
+	min-width: 30%;
+	text-align: center;
+	cursor: pointer;
 }
 
-div.entry:hover,
-div.entry:nth-child(odd):hover,
-div.entry:focus,
-div.entry:nth-child(odd):focus {
-  background: yellow;
-  color: black;
+.entry:hover {
+	transform: scale(1.05);
+	background: linear-gradient(180deg, gold, yellow);
 }
 
-div.entry:hover img,
-div.entry:focus img {
-  transform: scale(2) translate(0px, -4px);
-  filter: drop-shadow(3px 3px gray);
+.entry img {
+	transform: scale(1.5);
+	position: relative;
+	top: -12px;
 }
 
-div.entry:nth-child(odd) {
-  background: var(--color-2);
-  border-color: var(--color-3);
-}
-
-img.sprite {
-  position: relative;
-  top: -16px;
-  left: -4px;
-  transform: scale(2);
-  transition: transform 0.2s, filter 0.4s;
-}
-
-.wrapper img.sprite {
-  transform: scale(1.7);
-  top: -4px;
-  left: -8px;
+.entry:hover img {
+	transform: scale(1.65);
 }
 
 .wrapper {
@@ -71,6 +49,7 @@ img.sprite {
   top: 0px;
   left: 0px;
   overflow-x: hidden;
+  background: linear-gradient(145deg, lightblue, skyblue, lightskyblue);
 }
 
 .wrapper.shown {
