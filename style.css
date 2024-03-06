@@ -16,35 +16,39 @@ body {
 }
 
 h1 img {
-	transform: scale(2);
-	position: relative;
-	top: -16px;
+  transform: scale(2);
+  position: relative;
+  top: -16px;
 }
 
 .entry {
-	text-transform: capitalize;	
-	z-index: 2;
-	background: linear-gradient(0deg, slategray 30%, lightgray);
-	border: 3px ridge darkslategray;
-	margin: 10px auto;
-	min-width: 20%;
-	text-align: center;
-	cursor: pointer;
+  text-transform: capitalize;
+  z-index: 2;
+  background: linear-gradient(0deg, slategray 30%, lightgray);
+  border: 2px groove darkslategray;
+  border-radius: 4px;
+  margin: 10px auto;
+  min-width: 20%;
+  text-align: center;
+  cursor: pointer;
+  color: white;
 }
 
 .entry:hover {
-	transform: scale(1.05);
-	background: linear-gradient(180deg, gold, yellow);
+  transform: scale(1.05);
+  background: linear-gradient(180deg, gold, yellow);
+  color: black;
 }
 
 .entry img {
-	transform: scale(1.5);
-	position: relative;
-	top: -12px;
+  transform: scale(1.5);
+  position: relative;
+  top: -10px;
+  transition: transform 0.2s, top 0.25s;
 }
 
 .entry:hover img {
-	transform: scale(1.8);
+  transform: scale(1.95);
 }
 
 .wrapper {
@@ -331,6 +335,6 @@ i:hover {
   line-height: 80% !important;
 }
 
-.capture:hover + sub {
+.capture:hover+sub {
   opacity: 1;
 }
