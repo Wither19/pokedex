@@ -40,7 +40,7 @@ div.entry:nth-child(odd):focus {
 
 div.entry:hover img,
 div.entry:focus img {
-  transform: scale(2) translate(0px, -6px);
+  transform: scale(2) translate(0px, -4px);
   filter: drop-shadow(3px 3px gray);
 }
 
