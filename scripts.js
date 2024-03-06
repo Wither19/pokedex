@@ -1,6 +1,12 @@
 var i = 1;
 
 fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).then(data => {
+	let dexHead = document.createElement("h2");
+	dexHead.innerHTML = "National Pokédex";
+	dexHead.style.flexBasis = "100%";
+	dexHead.style.textAlign = "center";
+	dexHead.style.fontSize = "48px";
+	 document.querySelector(".wrapper").appendChild(dexHead);
   for (let i = 1; i <= 898; i++) {
     let entry = document.createElement("div");
     entry.setAttribute("id", i);
@@ -20,6 +26,7 @@ function pkmnLoad(event) {
   }
 
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
+  var r = Math.floor(Math.random() * data.moves.length);
 
     $("h1").html(`<img class="sprite" src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.name}.png"> #${data.id} - ${data.name}`);
 
@@ -58,7 +65,7 @@ function pkmnLoad(event) {
     $(".tidbits").append(`
 	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span> /
 	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`);
-  });
+	 });
 
   fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
 
@@ -103,6 +110,7 @@ function pkmnLoad(event) {
       }
     }
   });
+  
 }
 
 function preSelect(event) {
