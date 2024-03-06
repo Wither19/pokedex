@@ -55,10 +55,7 @@ function pkmnLoad(event) {
     $("img.artwork.shiny").attr("src", data.sprites.other["official-artwork"].front_shiny);
 
     $(".stats").html("");
-
-    $(".abilities").html("");
-
-    $(".tidbits").html("");
+	$(".abilities").html("");
 
     $(".stats").append(`
 	  <span class="hp">HP: <span style="font-weight: bold;">${data.stats[0].base_stat}</span></span><br>
@@ -75,10 +72,15 @@ function pkmnLoad(event) {
     $(".types").append(`<span class="Type ${data.types[1].type.name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.types[1].type.name}.svg">${data.types[1].type.name}</span>`);
 
     $(".abilities").html("");
+	
+    $(".abilities").append(`
+	<span class="norm"><a title="View ${data.abilities[0].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[0].ability.name}" target="_blank">${data.abilities[0].ability.name}</a></span>`);
 
     $(".abilities").append(`
-	<span class="norm"><a title="View ${data.abilities[0].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[0].ability.name}" target="_blank">${data.abilities[0].ability.name}</a></span> /
-      <span class="hidden"><a title="View ${data.abilities[1].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[1].ability.name}" target="_blank"><span style="font-weight: bold">(H)</span> ${data.abilities[1].ability.name}</a></span>`);
+	 / <span class="norm"><a title="View ${data.abilities[1].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[1].ability.name}" target="_blank">${data.abilities[1].ability.name}</a></span>`);
+
+    $(".abilities").append(`
+	 / <span class="norm"><a title="View ${data.abilities[2].ability.name} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[2].ability.name}" target="_blank">${data.abilities[2].ability.name}</a></span>`);
 
     $(".tidbits").html("");
 
