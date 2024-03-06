@@ -1,12 +1,12 @@
 var i = 1;
 
-fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).then(data => {
-	let dexHead = document.createElement("h2");
-	dexHead.innerHTML = "National Pokédex";
-	dexHead.style.flexBasis = "100%";
-	dexHead.style.textAlign = "center";
-	dexHead.style.fontSize = "48px";
-	 document.querySelector(".wrapper").appendChild(dexHead);
+fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response.json()).then(data => {
+  let dexHead = document.createElement("h2");
+  dexHead.innerHTML = "National Pokédex";
+  dexHead.style.flexBasis = "100%";
+  dexHead.style.textAlign = "center";
+  dexHead.style.fontSize = "48px";
+  document.querySelector(".wrapper").appendChild(dexHead);
   for (let i = 1; i <= 898; i++) {
     let entry = document.createElement("div");
     entry.setAttribute("id", i);
@@ -14,7 +14,27 @@ fetch(`https://pokeapi.co/api/v2/pokedex/1`).then(response => response.json()).t
     entry.classList.add("entry");
     entry.addEventListener("click", preSelect);
     document.querySelector(".wrapper").appendChild(entry);
-    entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br>${data.pokemon_entries[i - 1].pokemon_species.name}`;
+    entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br>${data.results[i - 1].name}`;
+  }
+  setTimeout(vars, 1500);
+
+  function vars() {
+    let varHead = document.createElement("h2");
+    varHead.innerHTML = "Variants";
+    varHead.style.flexBasis = "100%";
+    varHead.style.textAlign = "center";
+    varHead.style.fontSize = "48px";
+    document.querySelector(".wrapper").appendChild(varHead);
+    for (let v = 10001; v <= 10090; v++) {
+      let entry = document.createElement("div");
+      entry.setAttribute("id", v);
+      entry.setAttribute("tabindex", v)
+      entry.classList.add("entry");
+      entry.addEventListener("click", preSelect);
+      document.querySelector(".wrapper").appendChild(entry);
+      entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${v}.png"><br>${data.results[v - 8976].name}`;
+
+    }
   }
 });
 
@@ -26,7 +46,7 @@ function pkmnLoad(event) {
   }
 
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
-  var r = Math.floor(Math.random() * data.moves.length);
+    var r = Math.floor(Math.random() * data.moves.length);
 
     $("h1").html(`<img class="sprite" src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.name}.png"> #${data.id} - ${data.name}`);
 
@@ -65,7 +85,7 @@ function pkmnLoad(event) {
     $(".tidbits").append(`
 	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span> /
 	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`);
-	 });
+  });
 
   fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
 
@@ -110,7 +130,7 @@ function pkmnLoad(event) {
       }
     }
   });
-  
+
 }
 
 function preSelect(event) {
