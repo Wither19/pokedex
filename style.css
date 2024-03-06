@@ -21,6 +21,10 @@ h1 img {
   top: -16px;
 }
 
+.norm, .norm * {
+	text-transform: capitalize;
+}
+
 .entry {
   text-transform: capitalize;
   z-index: 2;
@@ -75,7 +79,7 @@ h1,
 }
 
 img.artwork {
-  width: 300px;
+  width: 375px;
 }
 
 .types,
