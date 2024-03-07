@@ -13,6 +13,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response
     entry.setAttribute("tabindex", i)
     entry.classList.add("entry");
     entry.addEventListener("click", preSelect);
+	entry.addEventListener("click", showOrNah);
     document.querySelector(".wrapper").appendChild(entry);
     entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br>${data.results[i - 1].name}`;
   }
@@ -31,8 +32,9 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response
       entry.setAttribute("tabindex", v)
       entry.classList.add("entry");
       entry.addEventListener("click", preSelect);
+	  entry.addEventListener("click", showOrNah);
       document.querySelector(".wrapper").appendChild(entry);
-      entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${v}.png"><br>${data.results[v - 8976].name}`;
+      entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${v}.png"><br>${(data.results[v - 8976].name).replaceAll("-Mega", "<br><sub>(Mega)</sub>")}`;
 
     }
   }
@@ -178,11 +180,20 @@ document.querySelector("body").onkeydown = function(e) {
       "left": "40px"
     });
   }
+  	else if (e.which == 40) {
+	e.preventDefault();
+	window.scrollBy({top: 111.1, left: 0});
+	}
+	
+  	else if (e.which == 38) {
+	e.preventDefault();
+	window.scrollBy({top: -111.1, left: 0});
+	}
 };
 
-$(".wrapper").click(function() {
+function showOrNah() {
   $(".wrapper").toggleClass("shown");
-});
+}
 
 $(".setStartup").click(function() {
   localStorage.setItem("startupMon", i);
