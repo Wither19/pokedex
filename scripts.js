@@ -15,7 +15,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response
     entry.addEventListener("click", preSelect);
 	entry.addEventListener("click", showOrNah);
     document.querySelector(".wrapper").appendChild(entry);
-    entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br>${data.results[i - 1].name}`;
+    entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br><span>${data.results[i - 1].name}</span>`;
   }
   setTimeout(vars, 1500);
 
@@ -34,7 +34,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response
       entry.addEventListener("click", preSelect);
 	  entry.addEventListener("click", showOrNah);
       document.querySelector(".wrapper").appendChild(entry);
-      entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${v}.png"><br>${(data.results[v - 8976].name).replaceAll("-Mega", "<br><sub>(Mega)</sub>")}`;
+      entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${v}.png"><br><span>${(data.results[v - 8976].name).replaceAll("-Mega", "<br><sub>(Mega)</sub>")}</span>`;
 
     }
   }
