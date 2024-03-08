@@ -182,12 +182,19 @@ document.querySelector("body").onkeydown = function(e) {
   }
   	else if (e.which == 40) {
 	e.preventDefault();
-	window.scrollBy({top: 111.1, left: 0});
+	window.scrollBy(0, 111.1);
 	}
 	
   	else if (e.which == 38) {
 	e.preventDefault();
-	window.scrollBy({top: -111.1, left: 0});
+	window.scrollBy(0, -111.1);
+	}
+	else if (e.which == 221) {
+	window.scrollBy(0, 1111);
+	}
+	
+	else if (e.which == 219) {
+	window.scrollBy(0, -1111);
 	}
 };
 
