@@ -31,12 +31,11 @@ h1 img {
   background: linear-gradient(0deg, slategray 30%, lightgray);
   border: 2px groove darkslategray;
   border-radius: 4px;
-  margin: 10px auto;
-  min-width: 30%;
-  max-width: 45%;
+  margin: 4px auto;
+  min-width: 90%;
+  max-width: 90%;
   height: 100px;
-  font-size: 20px;
-  text-align: center;
+  font-size: 32px;
   cursor: pointer;
   color: white;
 }
@@ -47,14 +46,21 @@ h1 img {
   color: black;
 }
 
+.entry span {
+	position: relative;
+	left: 30%;
+	top: -24px;
+}
+
 .entry img {
-  transform: scale(1.4);
+  transform: scale(2);
   position: relative;
-  top: -8px;
+  left: 5%;
+  top: 4px;
 }
 
 .entry:hover img {
-  transform: scale(1.65);
+  transform: scale(2.1);
 }
 
 .wrapper {
