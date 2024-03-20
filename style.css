@@ -15,14 +15,16 @@ body {
   overflow-x: hidden;
 }
 
-h1 img {
-  transform: scale(2);
+img.sprite {
+  transform: scale(2.25);
   position: relative;
-  top: -16px;
+  top: -24px;
+  margin: 20px;
 }
 
-.norm, .norm * {
-	text-transform: capitalize;
+.norm,
+.norm * {
+  text-transform: capitalize;
 }
 
 .entry {
@@ -38,25 +40,27 @@ h1 img {
   font-size: 32px;
   cursor: pointer;
   color: white;
+  transition: 0.25s;
 }
 
-.entry:hover {
+.entry:hover,
+entry:focus {
   transform: scale(1.05);
   background: linear-gradient(180deg, gold, yellow);
   color: black;
 }
 
 .entry span {
-	position: relative;
-	left: 30%;
-	top: -24px;
+  position: relative;
+  left: 30%;
+  top: -72px;
 }
 
 .entry img {
-  transform: scale(2);
-  position: relative;
-  left: 5%;
-  top: 4px;
+  transform: scale(2) !important;
+  position: relative !important;
+  left: 5% !important;
+  top: -16px !important;
 }
 
 .entry:hover img {
