@@ -13,7 +13,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response
     entry.setAttribute("tabindex", i)
     entry.classList.add("entry");
     entry.addEventListener("click", preSelect);
-	entry.addEventListener("click", showOrNah);
+    entry.addEventListener("click", showOrNah);
     document.querySelector(".wrapper").appendChild(entry);
     entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br><span>${data.results[i - 1].name}</span>`;
   }
@@ -32,7 +32,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response
       entry.setAttribute("tabindex", v)
       entry.classList.add("entry");
       entry.addEventListener("click", preSelect);
-	  entry.addEventListener("click", showOrNah);
+      entry.addEventListener("click", showOrNah);
       document.querySelector(".wrapper").appendChild(entry);
       entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${v}.png"><br><span>${(data.results[v - 8976].name).replaceAll("-Mega", "<br><sub>(Mega)</sub>")}</span>`;
 
@@ -50,14 +50,18 @@ function pkmnLoad(event) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
     var r = Math.floor(Math.random() * data.moves.length);
 
-    $("h1").html(`<img class="sprite" src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.name}.png"> #${data.id} - ${data.name}`);
+    $("h1").html(`#${data.id} - ${data.name}`);
+
+    $("img.sprite.regular").attr("src", `https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.name}.png`);
+
+    $("img.sprite.shiny").attr("src", `https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`);
 
     $("img.artwork").attr("src", data.sprites.other["official-artwork"].front_default);
 
     $("img.artwork.shiny").attr("src", data.sprites.other["official-artwork"].front_shiny);
 
     $(".stats").html("");
-	$(".abilities").html("");
+    $(".abilities").html("");
 
     $(".stats").append(`
 	  <span class="hp">HP: <span style="font-weight: bold;">${data.stats[0].base_stat}</span></span><br>
@@ -74,7 +78,7 @@ function pkmnLoad(event) {
     $(".types").append(`<span class="Type ${data.types[1].type.name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.types[1].type.name}.svg">${data.types[1].type.name}</span>`);
 
     $(".abilities").html("");
-	
+
     $(".abilities").append(`
 	<span class="norm"><a title="View ${data.abilities[0].ability.name.replace("-", " ")} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[0].ability.name}" target="_blank">${data.abilities[0].ability.name.replace("-", " ")}</a></span>`);
 
@@ -179,23 +183,17 @@ document.querySelector("body").onkeydown = function(e) {
     $("i").css({
       "left": "40px"
     });
+  } else if (e.which == 40) {
+    e.preventDefault();
+    window.scrollBy(0, 111.1);
+  } else if (e.which == 38) {
+    e.preventDefault();
+    window.scrollBy(0, -111.1);
+  } else if (e.which == 221) {
+    window.scrollBy(0, 1111);
+  } else if (e.which == 219) {
+    window.scrollBy(0, -1111);
   }
-  	else if (e.which == 40) {
-	e.preventDefault();
-	window.scrollBy(0, 111.1);
-	}
-	
-  	else if (e.which == 38) {
-	e.preventDefault();
-	window.scrollBy(0, -111.1);
-	}
-	else if (e.which == 221) {
-	window.scrollBy(0, 1111);
-	}
-	
-	else if (e.which == 219) {
-	window.scrollBy(0, -1111);
-	}
 };
 
 function showOrNah() {
