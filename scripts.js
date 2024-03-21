@@ -52,9 +52,9 @@ function pkmnLoad(event) {
 
     $("h1").html(`#${data.id} - ${data.name}`);
 
-    $("img.sprite.regular").attr("src", `https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/${data.name}.png`);
+    $("img.sprite.regular").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/regular/${data.name}.png`);
 
-    $("img.sprite.shiny").attr("src", `https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`);
+    $("img.sprite.shiny").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`);
 
     $("img.artwork").attr("src", data.sprites.other["official-artwork"].front_default);
 
