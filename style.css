@@ -20,13 +20,13 @@ img.sprite {
   position: relative;
   top: -24px;
   margin: 20px;
-	image-rendering: pixelated;
+  image-rendering: pixelated;
 }
 
 img.model {
-	width: 170px;
-	position: relative;
-	top: 48px;
+  width: 170px;
+  position: relative;
+  top: 48px;
 }
 
 .norm,
@@ -100,7 +100,7 @@ h1,
 
 img.artwork {
   width: 375px;
-	filter: drop-shadow(4px 4px 10px black);
+  filter: drop-shadow(4px 4px 10px black);
 }
 
 .types,
