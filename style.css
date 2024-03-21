@@ -23,6 +23,12 @@ img.sprite {
 	image-rendering: pixelated;
 }
 
+img.model {
+	width: 170px;
+	position: relative;
+	top: 48px;
+}
+
 .norm,
 .norm * {
   text-transform: capitalize;
