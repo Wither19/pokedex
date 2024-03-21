@@ -8,7 +8,7 @@
 :root,
 button,
 .Type {
-  font-family: "Open Sans", sans-serif;
+  font-family: tahoma;
 }
 
 body {
@@ -20,6 +20,7 @@ img.sprite {
   position: relative;
   top: -24px;
   margin: 20px;
+	image-rendering: pixelated;
 }
 
 .norm,
@@ -63,6 +64,7 @@ entry:focus {
   top: -16px !important;
 }
 
+
 .entry:hover img {
   transform: scale(2.1);
 }
@@ -92,6 +94,7 @@ h1,
 
 img.artwork {
   width: 375px;
+	filter: drop-shadow(4px 4px 10px black);
 }
 
 .types,
