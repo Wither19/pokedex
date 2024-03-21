@@ -56,10 +56,6 @@ function pkmnLoad(event) {
 
     $("img.sprite.shiny").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`);
 
-    $("img.model.regular").attr("src", `https://raw.githubusercontent.com/Wither19/sprites/master/sprites/pokemon/versions/generation-vii/ultra-sun-ultra-moon/${i}.png`);
-
-    $("img.model.shiny").attr("src", `https://raw.githubusercontent.com/Wither19/sprites/master/sprites/pokemon/versions/generation-vii/ultra-sun-ultra-moon/shiny/${i}.png`);
-
     $("img.artwork").attr("src", data.sprites.other["official-artwork"].front_default);
 
     $("img.artwork.shiny").attr("src", data.sprites.other["official-artwork"].front_shiny);
