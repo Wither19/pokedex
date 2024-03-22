@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+h1,
+h2 {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.damage-category-block,
+.Type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0px 12px;
+  height: 64px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #333;
+  width: 140px;
+  font-size: 32px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+	margin: 10px;
+  text-transform: capitalize;
+}
+
+.Type:only-child {
+  flex-basis: 15%;
+}
+
+.Type:only-child img {
+  position: relative;
+  left: 10px;
+}
+
+.Type {
+  position: relative;
+  color: #fff !important;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-basis: 15%;
+  filter: brightness(1.15);
+
+  transform-style: preserve-3d;
+}
+
+.Type:hover {
+  filter: brightness(1.5);
+}
+
+.Type.normal {
+  background: linear-gradient(#a8a878, #8a8a59);
+  border-color: #79794e
+}
+
+.Type.fire {
+  background: linear-gradient(#f08030, #dd6610);
+  border-color: #b4530d
+}
+
+.Type.water {
+  background: linear-gradient(#6890f0, #386ceb);
+  border-color: #1753e3
+}
+
+.Type.electric {
+  background: linear-gradient(#f8d030, #f0c108);
+  border-color: #c19b07
+}
+
+.Type.fairy {
+  background: linear-gradient(#f98cff, #f540ff);
+  border-color: #c1079b
+}
+
+.Type.grass {
+  background: linear-gradient(#78c850, #5ca935);
+  border-color: #4a892b
+}
+
+.Type.ice {
+  background: linear-gradient(#98d8d8, #69c6c6);
+  border-color: #45b6b6
+}
+
+.Type.fighting {
+  background: linear-gradient(#c03028, #9d2721);
+  border-color: #82211b
+}
+
+.Type.poison {
+  background: linear-gradient(#a040a0, #803380);
+  border-color: #662966
+}
+
+.Type.ground {
+  background: linear-gradient(#e0c068, #d4a82f);
+  border-color: #aa8623
+}
+
+.Type.flying {
+  background: linear-gradient(#a890f0, #9180c4);
+  border-color: #7762b6
+}
+
+.Type.psychic {
+  background: linear-gradient(#f85888, #f61c5d);
+  border-color: #d60945
+}
+
+.Type.bug {
+  background: linear-gradient(#a8b820, #8d9a1b);
+  border-color: #616b13
+}
+
+.Type.rock {
+  background: linear-gradient(#b8a038, #93802d);
+  border-color: #746523
+}
+
+.Type.ghost {
+  background: linear-gradient(#705898, #554374);
+  border-color: #413359
+}
+
+.Type.dragon {
+  background: linear-gradient(#7038f8, #4c08ef);
+  border-color: #3d07c0
+}
+
+.Type.steel {
+  background: linear-gradient(#b8b8d0, #9797ba);
+  border-color: #7a7aa7
+}
+
+.Type.dark {
+  background: linear-gradient(#705848, #513f34);
+  border-color: #362a23
+}
+
+.Type.stellar {
+  background: url("./stellar-MZZL7FQV.svg");
+  background-size: cover;
+  border-color: #3f00ff
+}
+
+.Type img {
+  width: 40px;
+}
+
+.flex div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+h1.beeg {
+  font-size: 40px;
+}
+
+.flex h1 {
+  margin: 60px 0px 60px 0px;
+}
+
+    </style>
+  </head>
+
+  <body onload="getAllThat();">
+    <h1 class="beeg"></h1>
+    <div class="flex offensive">
+      <h1>Offensive</h1>
+      <h2>Super Effective</h2>
+      <div id="superEffective"></div>
+      <h2>Not Very Effective</h2>
+      <div id="notVeryEffective"></div>
+      <h2>No Effect</h2>
+      <div id="noEffect"></div>
+    </div>
+
+    <div class="flex defensive">
+      <h1>Defensive</h1>
+      <h2>Weak to</h2>
+      <div id="weak">
+
+      </div>
+      <h2>Resistant</h2>
+      <div id="resist">
+
+      </div>
+      <h2>Immune</h2>
+      <div id="immune">
+
+      </div>
+    </div>
+    <script>
+const base = "https://pokeapi.co/api/v2/type/";
+var t = 1;
+
+$(document).keydown(function(e) {
+  if (e.which == 37) {
+    t--;
+    getAllThat();
+  } else if (e.which == 39) {
+    t++;
+    getAllThat();
+  }
+});
+
+
+function getAllThat() {
+if (t <= 0) {
+	t = 1;
+}
+
+else if (t >= 19) {
+	t = 18;
+}
+  $("#superEffective").html("");
+  $("#notVeryEffective").html("");
+  $("#noEffect").html("");
+  $("#weak").html("");
+  $("#resist").html("");
+  $("#immune").html("");
+  fetch(base + t).then(response => response.json()).then(data => {
+    $("h1.beeg").html("The " + `<span style="font-weight: 400;" class="Type ${data.name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.name}.svg">${data.name}</span>` + " Type, at a glance");
+    for (let s = 0; s <= data.damage_relations.double_damage_to.length; s++) {
+      $("#superEffective").append(`<span class="Type ${data.damage_relations.double_damage_to[s].name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.damage_relations.double_damage_to[s].name}.svg">${data.damage_relations.double_damage_to[s].name}</span>`);
+    }
+  });
+
+  fetch(base + t).then(response => response.json()).then(data => {
+    for (let n = 0; n <= data.damage_relations.half_damage_to.length; n++) {
+      $("#notVeryEffective").append(`<span class="Type ${data.damage_relations.half_damage_to[n].name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.damage_relations.half_damage_to[n].name}.svg">${data.damage_relations.half_damage_to[n].name}</span>`);
+    }
+
+  });
+
+  fetch(base + t).then(response => response.json()).then(data => {
+    for (let o = 0; o <= data.damage_relations.no_damage_to.length; o++) {
+      $("#noEffect").append(`<span class="Type ${data.damage_relations.no_damage_to[o].name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.damage_relations.no_damage_to[o].name}.svg">${data.damage_relations.no_damage_to[o].name}</span>`);
+    }
+
+  });
+
+  fetch(base + t).then(response => response.json()).then(data => {
+    for (let w = 0; w <= data.damage_relations.double_damage_from.length; w++) {
+      $("#weak").append(`<span class="Type ${data.damage_relations.double_damage_from[w].name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.damage_relations.double_damage_from[w].name}.svg">${data.damage_relations.double_damage_from[w].name}</span>`);
+    }
+
+  });
+
+  fetch(base + t).then(response => response.json()).then(data => {
+    for (let r = 0; r <= data.damage_relations.half_damage_from.length; r++) {
+      $("#resist").append(`<span class="Type ${data.damage_relations.half_damage_from[r].name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.damage_relations.half_damage_from[r].name}.svg">${data.damage_relations.half_damage_from[r].name}</span>`);
+    }
+
+  });
+
+  fetch(base + t).then(response => response.json()).then(data => {
+    for (let i = 0; i <= data.damage_relations.no_damage_from.length; i++) {
+      $("#immune").append(`<span class="Type ${data.damage_relations.no_damage_from[i].name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.damage_relations.no_damage_from[i].name}.svg">${data.damage_relations.no_damage_from[i].name}</span>`);
+    }
+
+  });
+}
+
+    </script>
+  </body>
+
+</html>
