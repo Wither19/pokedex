@@ -1,93 +1,76 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-      @media screen and (orientation: portrait) {
-        img.sprite {
-          transform: scale(1.65);
-        }
-
-        div.entry:hover img {
-          transform: scale(1.8) translate(0px, -8px);
-        }
-
-        img.artwork {
-          width: 350px;
-        }
-
-        h1 {
-          font-size: 52px;
-        }
-
-        .Type {
-          width: 1000px !important;
-          height: 70px;
-        }
-
-        i {
-          font-size: 120px;
-        }
-
-      }
-
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
-
-  <body onload="setTimeout(localCall, 250);">
-    <a href="#"><i class="bi bi-list"></i></a>
-    <div class="flavor">
-      <p class="actual"></p>
-      <div class="stats">
-        <span class="hp"></span><br><br>
-        <span class="atk"></span><br><br>
-        <span class="def"></span><br><br>
-        <span class="sp-atk"></span><br><br>
-        <span class="sp-def"></span><br><br>
-        <span class="spd"></span>
+  <body onload="getNationalDex(); fetchMonFromDex();">
+    <!-- <button class="fastNav natlDex">Jump To National Pokedex</button>
+         <button class="fastNav forms">Jump to Alternate Forms</button> -->
+    <div class="app">
+      <div class="pkmnList">
+        <ul></ul>
       </div>
-      <p class="capture"></p>
+      <div class="pkmnInfo">
+        <h1></h1>
+        <sub></sub>
+        <div class="artwork">
+          <img src="" alt="" class="art reg" />
+          <img src="" alt="" class="art shiny hidden" />
+        </div>
+        <div class="types"></div>
+        <button id="shinyButton">
+          <img
+            width="48px"
+            src="https://archives.bulbagarden.net/media/upload/2/20/ShinyVIIIStar.png"
+          />
+        </button>
+        <button class="statToggle pogoStats">POGO Stats</button>
+        <button class="statToggle baseStats hidden">Base Stats</button>
+        <div class="stats">
+          <div class="statPage base">
+            <span>HP: <b id="hp"></b></span>
+            <div class="bar hp"></div>
+            <span>Attack: <b id="atk"></b></span>
+            <div class="bar atk"></div>
+            <span>Defense: <b id="def"></b></span>
+            <div class="bar def"></div>
+            <span>Sp. Attack: <b id="spatk"></b></span>
+            <div class="bar spatk"></div>
+            <span>Sp. Defense: <b id="spdef"></b></span>
+            <div class="bar spdef"></div>
+            <span>Speed: <b id="spd"></b></span>
+            <div class="bar spd"></div>
+          </div>
+          <br />
+          <div class="statPage pogo hidden">
+            <span>Attack: <b id="pogoAtk"></b></span>
+            <div class="bar pogoAtk"></div>
+            <span>Defense: <b id="pogoDef"></b></span>
+            <div class="bar pogoDef"></div>
+            <span>Stamina: <b id="pogoSta"></b></span>
+            <div class="bar pogoSta"></div>
+            <br /><br />
+            <span>Max CP: <b id="maxCP"></b></span>
+            <div class="bar maxCP"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="wrapper"></div>
-    <center>
-      <img class="artwork regular" src="">
-      <img class="artwork shiny hide" src=""><br>
-      <img class="sprite regular" src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/bulbasaur.png">
-      <img class="sprite shiny hide" src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/bulbasaur.png">
-    </center>
-    <h1>#1 - Bulbasaur</h1>
-    <center>
-      <sub style="color: gray;" class="jp"></sub>
-      <sub class="genus"></sub>
-    </center>
-    <div class="types">
-      <span class="Type grass">
-        <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/grass.svg">
-        Grass
-      </span>
-      <span class="Type poison">
-        <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/poison.svg">
-        Poison
-      </span>
-    </div>
-    <center>
-      <div class="abilities">
-        <span class="norm">Overgrow</span> /
-        <span class="hidden"><span style="font-weight: bold">(H)</span> Chlorophyll</span>
-      </div>
-      <div class="tidbits">
-        <span class="height">2.30 Ft.</span>
-        <span class="weight"> 15.21 Lbs.</span>
-      </div>
-      <button class="setStartup">Display this Pokémon on startup</button>
-      <br><sub>Current Startup Pokémon:</sub><br><input type="text" class="current" style="text-align: center; font-size: 24px; text-transform: capitalize;" readonly>
-    </center>
     <script src="scripts.js"></script>
+    <script src="stat-colors.js"></script>
   </body>
-
 </html>

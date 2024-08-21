@@ -1,224 +1,255 @@
-var i = 1;
+var p = 1;
+var shinyForm = false;
+var cpm = [
+  0.094, 0.16639787, 0.21573247, 0.25572005, 0.29024988, 0.3210876, 0.34921268,
+  0.3752356, 0.39956728, 0.4225, 0.44310755, 0.4627984, 0.48168495, 0.49985844,
+  0.51739395, 0.5343543, 0.5507927, 0.5667545, 0.5822789, 0.5974, 0.6121573,
+  0.6265671, 0.64065295, 0.65443563, 0.667934, 0.6811649, 0.69414365, 0.7068842,
+  0.7193991, 0.7317, 0.7377695, 0.74378943, 0.74976104, 0.7556855, 0.76156384,
+  0.76739717, 0.7731865, 0.77893275, 0.784637, 0.7903, 0.7953, 0.8003, 0.8053,
+  0.8103, 0.8153, 0.8203, 0.8253, 0.8303, 0.8353, 0.8403,
+];
 
-fetch(`https://pokeapi.co/api/v2/pokemon?limit=10228`).then(response => response.json()).then(data => {
-  let dexHead = document.createElement("h2");
-  dexHead.innerHTML = "National Pokédex";
-  dexHead.style.flexBasis = "100%";
-  dexHead.style.textAlign = "center";
-  dexHead.style.fontSize = "48px";
-  document.querySelector(".wrapper").appendChild(dexHead);
-  for (let i = 1; i <= 898; i++) {
-    let entry = document.createElement("div");
-    entry.setAttribute("id", i);
-    entry.setAttribute("tabindex", i)
-    entry.classList.add("entry");
-    entry.addEventListener("click", preSelect);
-    entry.addEventListener("click", showOrNah);
-    document.querySelector(".wrapper").appendChild(entry);
-    entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/Wither19/sprites/master/sprites/pokemon/versions/generation-viii/icons/${i}.png"><br><span>${data.results[i - 1].name}</span>`;
-  }
-  setTimeout(vars, 1500);
-
-  function vars() {
-    let varHead = document.createElement("h2");
-    varHead.innerHTML = "Variants";
-    varHead.style.flexBasis = "100%";
-    varHead.style.textAlign = "center";
-    varHead.style.fontSize = "48px";
-    document.querySelector(".wrapper").appendChild(varHead);
-    for (let v = 10001; v <= 10157; v++) {
-      let entry = document.createElement("div");
-      entry.setAttribute("id", v);
-      entry.setAttribute("tabindex", v)
-      entry.classList.add("entry");
-      entry.addEventListener("click", preSelect);
-      entry.addEventListener("click", showOrNah);
-      document.querySelector(".wrapper").appendChild(entry);
-      entry.innerHTML = `<img class="sprite" src="https://raw.githubusercontent.com/Wither19/sprites/master/sprites/pokemon/versions/generation-viii/icons/${v}.png"><br><span>${(data.results[v - 8976].name).replaceAll("-Mega", "<br><sub>(Mega)</sub>")}</span>`;
-
-    }
-  }
-});
-
-function pkmnLoad(event) {
-  if (i < 1) {
-    i = 1;
-  } else if (i > 898 && i < 9999) {
-    i = 898;
-  }
-
-  fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.json()).then(data => {
-    var r = Math.floor(Math.random() * data.moves.length);
-
-    $("h1").html(`#${data.id} - ${data.name}`);
-
-    $("img.sprite.regular").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/regular/${data.name}.png`);
-
-    $("img.sprite.shiny").attr("src", `https://raw.githubusercontent.com/Wither19/pokesprite/master/pokemon-gen8/shiny/${data.name}.png`);
-
-    $("img.artwork").attr("src", data.sprites.other["official-artwork"].front_default);
-
-    $("img.artwork.shiny").attr("src", data.sprites.other["official-artwork"].front_shiny);
-
-    $(".stats").html("");
-    $(".abilities").html("");
-
-    $(".stats").append(`
-	  <span class="hp">HP: <span style="font-weight: bold;">${data.stats[0].base_stat}</span></span><br>
-      <span class="atk">Atk: <span style="font-weight: bold;">${data.stats[1].base_stat}</span></span><br>
-      <span class="def">Def: <span style="font-weight: bold;">${data.stats[3].base_stat}</span></span><br>
-      <span class="sp-atk">Sp-Atk: <span style="font-weight: bold;">${data.stats[2].base_stat}</span></span><br>
-      <span class="sp-def">Sp-Def: <span style="font-weight: bold;">${data.stats[4].base_stat}</span></span><br>
-      <span class="spd">Spd: <span style="font-weight: bold;">${data.stats[5].base_stat}</span></span>`);
-
-    $(".types").html("");
-
-    $(".types").prepend(`<span class="Type ${data.types[0].type.name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.types[0].type.name}.svg">${data.types[0].type.name}</span>`);
-
-    $(".types").append(`<span class="Type ${data.types[1].type.name}"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/5781623f147f1bf850f426cfe1874ba56a9b75ee/icons/${data.types[1].type.name}.svg">${data.types[1].type.name}</span>`);
-
-    $(".abilities").html("");
-
-    $(".abilities").append(`
-	<span class="norm"><a title="View ${data.abilities[0].ability.name.replace("-", " ")} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[0].ability.name}" target="_blank">${data.abilities[0].ability.name.replace("-", " ")}</a></span>`);
-
-    $(".abilities").append(`
-	 / <span class="norm"><a title="View ${data.abilities[1].ability.name.replace("-", " ")} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[1].ability.name}" target="_blank">${data.abilities[1].ability.name.replace("-", " ")}</a></span>`);
-
-    $(".abilities").append(`
-	 / <span class="norm"><a title="View ${data.abilities[2].ability.name.replace("-", " ")} on Smogon" href="https://www.smogon.com/dex/sv/abilities/${data.abilities[2].ability.name}" target="_blank">${data.abilities[2].ability.name.replace("-", " ")}</a></span>`);
-
-    $(".tidbits").html("");
-
-    $(".tidbits").append(`
-	<span class="height">${(data.height / 3.048).toFixed(2)} ft.</span> /
-	<span class="weight">${(data.weight / 4.536).toFixed(2)} lbs.</span>`);
-  });
-
-  fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`).then(response => response.json()).then(data => {
-
-
-    $(".jp").html("");
-
-    $(".genus").html("");
-
-    $(".actual").html("");
-
-    $(".capture").html("");
-
-    let falseSwiped = ((data.capture_rate / 2.55) * 1.5).toFixed() + "%";
-
-    if (data.capture_rate <= 25) {
-      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png">`);
-
-    } else if (data.capture_rate <= 84) {
-      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png">`);
-    } else if (data.capture_rate <= 168) {
-      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png">`);
-    } else if (data.capture_rate <= 255) {
-      $(".capture").html(`Catch Rate: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">`);
-    }
-
-    $(".jp").html(data.names[0].name);
-
-    for (let f = 0; f <= data.flavor_text_entries.length; f++) {
-      var langMatch = data.flavor_text_entries[f].language.name.lastIndexOf("en");
-
-      if (langMatch == 0) {
-        $(".actual").html(`${data.flavor_text_entries[f].flavor_text}<br><br><sub>From Pokémon <span style="text-transform: capitalize;">${data.flavor_text_entries[f].version.name.replace("-", " ")}</span></sub>`);
+function getNationalDex() {
+  fetch("https://pokeapi.co/api/v2/pokedex/1")
+    .then((response) => response.json())
+    .then((data) => {
+      for (let i = 1; i <= data.pokemon_entries.length; i++) {
+        $("ul").append(
+          `<li onclick="setMon(event);" id="${i}">
+          <img src="https://raw.githubusercontent.com/Wither19/pokerogue/main/public/images/pokemon/icons/${i}.png">
+          #${i} - ${data.pokemon_entries[i - 1].pokemon_species.name}
+          </li>`
+        );
       }
-    }
+    });
+  setTimeout(getVariants, 500);
+}
 
-    for (let g = 0; g <= data.genera.length; g++) {
-      var genusMatch = data.genera[g].language.name.lastIndexOf("en");
-
-      if (genusMatch == 0) {
-        $(".genus").html(data.genera[g].genus);
-        console.log(genusMatch);
+function getVariants() {
+  fetch("https://pokeapi.co/api/v2/pokemon?limit=300&offset=1025")
+    .then((response) => response.json())
+    .then((data) => {
+      for (let v = 10001; v <= 10277; v++) {
+        $("ul").append(
+          `<li class="variant" onclick="setMon(event);" id="${v}">
+          ${data.results[v - 10001].name}
+          </li>`
+        );
       }
-    }
-  });
-
+    });
 }
 
-function preSelect(event) {
-  i = event.currentTarget.id;
-  window.scroll(0, 65);
-  pkmnLoad(event);
-}
-
-$("i").click(function() {
-  $(".wrapper").toggleClass("shown");
-});
-
-document.querySelector("body").onkeydown = function(e) {
-  if (e.key == "p") {
-    e.stopPropagation();
-    $(".wrapper").toggleClass("shown");
-    window.scroll(0, 0);
-  } else if (e.which == 37) {
-    i--;
-    pkmnLoad();
-  } else if (e.which == 39) {
-    i++;
-    pkmnLoad();
-  } else if (e.key == "r") {
-    e.stopPropagation();
-    i = Math.floor(Math.random() * 898 + 1);
-    pkmnLoad();
-  } else if (e.key == "s") {
-    e.stopPropagation();
-    $(".regular").toggleClass("hide");
-    $(".shiny").toggleClass("hide");
-  } else if (e.key == " " || e.which == 13) {
-    document.querySelector(".entry:focus").click();
-  } else if (e.key == "i") {
-    e.stopPropagation();
-    document.querySelector(".flavor").classList.add("shown");
-    $("i").css({
-      "left": "290px"
-    });
-  } else if (e.key == "h") {
-    document.querySelector(".flavor").classList.remove("shown");
-    $("i").css({
-      "left": "40px"
-    });
-  } else if (e.which == 40) {
-    e.preventDefault();
-    window.scrollBy(0, 111.1);
-  } else if (e.which == 38) {
-    e.preventDefault();
-    window.scrollBy(0, -111.1);
-  } else if (e.which == 221) {
-    window.scrollBy(0, 1111);
-  } else if (e.which == 219) {
-    window.scrollBy(0, -1111);
+function setMon(event) {
+  if (p > 1025 && p < 10001) {
+    p = 10001;
+  } else if (p === 10000) {
+    p = 1025;
+  } else {
+    p = event.currentTarget.id;
   }
-};
-
-function showOrNah() {
-  $(".wrapper").toggleClass("shown");
+  fetchMonFromDex();
 }
 
-$(".setStartup").click(function() {
-  localStorage.setItem("startupMon", i);
-  localStorage.setItem("startupMonName", document.querySelector("h1").textContent);
-  alert(`${startupMonName} will now display when the page is opened/refreshed!`);
-  setTimeout(locInput, 10);
-});
+function fetchMonFromDex() {
+  fetch(`https://pokeapi.co/api/v2/pokemon/${p}`)
+    .then((response) => response.json())
+    .then((data) => {
+      var hp = data.stats[0].base_stat;
+      var atk = data.stats[1].base_stat;
+      var def = data.stats[2].base_stat;
+      var spAtk = data.stats[3].base_stat;
+      var spDef = data.stats[4].base_stat;
+      var spd = data.stats[5].base_stat;
 
-function locInput() {
-  document.querySelector(".current").value = localStorage.getItem("startupMonName");
-}
+      $("h1").text(`#${data.id} - ${data.name}`);
+      $(".art.reg").attr("src", data.sprites.other.home.front_default);
+      $(".art.shiny").attr("src", data.sprites.other.home.front_shiny);
+      $(`li#${p}`).addClass("selected");
+      $(`li:not(#${p})`).removeClass("selected");
+      $(".types").html("");
+      if (data.types.length === 1) {
+        $(".types").append(
+          `<div class="icon ${data.types[0].type.name}">
+          <img src="https://duiker101.github.io/pokemon-type-svg-icons/icons/${data.types[0].type.name}.svg">
+          </div>`
+        );
+      } else {
+        $(".types").append(
+          `<div class="icon ${data.types[0].type.name}">
+          <img src="https://duiker101.github.io/pokemon-type-svg-icons/icons/${data.types[0].type.name}.svg">
+          </div>
+          <div class="icon ${data.types[1].type.name}">
+          <img src="https://duiker101.github.io/pokemon-type-svg-icons/icons/${data.types[1].type.name}.svg">
+          </div>`
+        );
+      }
+      $("#hp").text(data.stats[0].base_stat);
+      $(".hp").css({
+        width: `${data.stats[0].base_stat * 1.57}px`,
+      });
+      $("#atk").text(data.stats[1].base_stat);
+      $(".atk").css({
+        width: `${data.stats[1].base_stat * 1.57}px`,
+      });
+      $("#def").text(data.stats[2].base_stat);
+      $(".def").css({
+        width: `${data.stats[2].base_stat * 1.57}px`,
+      });
+      $("#spatk").text(data.stats[3].base_stat);
+      $(".spatk").css({
+        width: `${data.stats[3].base_stat * 1.57}px`,
+      });
+      $("#spdef").text(data.stats[4].base_stat);
+      $(".spdef").css({
+        width: `${data.stats[4].base_stat * 1.57}px`,
+      });
+      $("#spd").text(data.stats[5].base_stat);
+      $(".spd").css({
+        width: `${data.stats[5].base_stat * 1.57}px`,
+      });
 
-function localCall() {
-  i = localStorage.getItem("startupMon");
-  pkmnLoad();
-  document.querySelector(".current").value = localStorage.getItem("startupMonName");
-}
+      var higherAtk = Math.max(atk, spAtk);
+      var lowerAtk = Math.min(atk, spAtk);
+      var higherDef = Math.max(def, spDef);
+      var lowerDef = Math.min(def, spDef);
 
-function input() {
-  fetch("https://pokeapi.com/api/v2/pokemon?limit=1025").then(pkmn => pkmn.json()).then(list => {
-    console.log(list);
+      var scaledAtk = Math.round(
+        2 * ((7 / 8) * higherAtk + (1 / 8) * lowerAtk)
+      );
+
+      var scaledDef = Math.round(
+        2 * ((5 / 8) * higherDef + (3 / 8) * lowerDef)
+      );
+
+      var speedMod = 1 + (spd - 75) / 500;
+
+      var baseAtk = Math.round(scaledAtk * speedMod);
+      var baseDef = Math.round(scaledDef * speedMod);
+      var baseSta = Math.floor(hp * 1.75 + 50);
+      var nerfedAtk = Math.round(baseAtk * 0.91);
+      var nerfedDef = Math.round(baseDef * 0.91);
+      var nerfedSta = Math.round(baseSta * 0.91);
+      var hundoAtk = baseAtk + 15;
+      var hundoDef = baseDef + 15;
+      var hundoSta = baseSta + 15;
+
+      var lvl40 = Math.floor(
+        Math.max(
+          10,
+          (hundoAtk *
+            Math.pow(hundoDef, 0.5) *
+            Math.pow(hundoSta, 0.5) *
+            Math.pow(cpm[39], 2)) /
+            10
+        )
+      );
+
+      var maxCP = Math.floor(
+        Math.max(
+          10,
+          (hundoAtk *
+            Math.pow(hundoDef, 0.5) *
+            Math.pow(hundoSta, 0.5) *
+            Math.pow(cpm[49], 2)) /
+            10
+        )
+      );
+
+      var nerfedMaxCP = Math.floor(
+        Math.max(
+          10,
+          (hundoAtk *
+            Math.pow(hundoDef, 0.5) *
+            Math.pow(hundoSta, 0.5) *
+            Math.pow(cpm[49], 2)) /
+            10
+        ) * 0.9435
+      );
+
+      if (lvl40 > 4000) {
+        $("#pogoAtk").text(nerfedAtk);
+        $(".pogoAtk").css({
+          width: `${nerfedAtk * 0.94}px`,
+        });
+        $("#pogoDef").text(nerfedDef);
+        $(".pogoDef").css({
+          width: `${nerfedDef * 1.01}px`,
+        });
+        $("#pogoSta").text(nerfedSta);
+        $(".pogoSta").css({
+          width: `${nerfedAtk * 0.82}px`,
+        });
+        $("#maxCP").text(nerfedMaxCP);
+        $(".maxCP").css({
+          width: `${nerfedMaxCP * 0.06}px`,
+        });
+      } else {
+        $("#pogoAtk").text(baseAtk);
+        $(".pogoAtk").css({
+          width: `${baseAtk * 0.94}px`,
+        });
+        $("#pogoDef").text(baseDef);
+        $(".pogoDef").css({
+          width: `${baseDef * 1.01}px`,
+        });
+        $("#pogoSta").text(baseSta);
+        $(".pogoSta").css({
+          width: `${nerfedSta * 0.81}px`,
+        });
+        $("#maxCP").text(maxCP);
+        $(".maxCP").css({
+          width: `${maxCP * 0.06}px`,
+        });
+      }
+    });
+
+  setTimeout(statColors, 500);
+
+  document.getElementById(p - 5).scrollIntoView({
+    behavior: "smooth",
   });
 }
+
+function shinyToggle() {
+  $(".art").toggleClass("hidden");
+  $("#shinyButton").toggleClass("true");
+}
+
+$("#shinyButton").click(function () {
+  shinyToggle();
+});
+
+$(".statToggle").click(function () {
+  $(".statToggle").toggleClass("hidden");
+  $(".statPage").toggleClass("hidden");
+});
+
+$(".natlDex").click(function () {
+  document.getElementById("1").scrollIntoView({
+    behavior: "smooth",
+  });
+});
+
+$(".forms").click(function () {
+  document.getElementById("10001").scrollIntoView({
+    behavior: "smooth",
+  });
+});
+
+$(document).keydown(function (e) {
+  if (e.altKey && e.key === "r") {
+    p = Math.floor(Math.random() * 1025 + 1);
+    fetchMonFromDex();
+  } else if (e.key === "ArrowDown") {
+    e.preventDefault();
+    p++;
+    fetchMonFromDex();
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    p--;
+    fetchMonFromDex();
+  } else if (e.altKey && e.key === "s") {
+    shinyToggle();
+  }
+});
