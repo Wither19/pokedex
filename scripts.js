@@ -15,10 +15,11 @@ function getNationalDex() {
     .then((response) => response.json())
     .then((data) => {
       for (let i = 1; i <= data.pokemon_entries.length; i++) {
+        let leadingZero = i.toString().padStart(4, "0");
         $("ul").append(
           `<li onclick="setMon(event);" id="${i}">
           <img src="https://raw.githubusercontent.com/Wither19/pokerogue/main/public/images/pokemon/icons/${i}.png">
-          #${i} - ${data.pokemon_entries[i - 1].pokemon_species.name}
+          #${leadingZero} - ${data.pokemon_entries[i - 1].pokemon_species.name}
           </li>`
         );
       }
@@ -49,6 +50,8 @@ function setMon(event) {
     p = event.currentTarget.id;
   }
   fetchMonFromDex();
+  $(".pkmnList").addClass("hidden");
+  $(".pkmnInfo").removeClass("hidden");
 }
 
 function fetchMonFromDex() {
@@ -61,8 +64,9 @@ function fetchMonFromDex() {
       var spAtk = data.stats[3].base_stat;
       var spDef = data.stats[4].base_stat;
       var spd = data.stats[5].base_stat;
+      let leadingZero = data.id.toString().padStart(4, "0");
 
-      $("h1").text(`#${data.id} - ${data.name}`);
+      $("h1").text(`#${leadingZero} - ${data.name}`);
       $(".art.reg").attr("src", data.sprites.other.home.front_default);
       $(".art.shiny").attr("src", data.sprites.other.home.front_shiny);
       $(`li#${p}`).addClass("selected");
@@ -206,9 +210,9 @@ function fetchMonFromDex() {
 
   setTimeout(statColors, 500);
 
-  document.getElementById(p - 5).scrollIntoView({
-    behavior: "smooth",
-  });
+  if (p >= 10272) {
+    document.getElementById(p - 5).scrollIntoView();
+  }
 }
 
 function shinyToggle() {
@@ -225,31 +229,25 @@ $(".statToggle").click(function () {
   $(".statPage").toggleClass("hidden");
 });
 
-$(".natlDex").click(function () {
-  document.getElementById("1").scrollIntoView({
-    behavior: "smooth",
-  });
-});
-
-$(".forms").click(function () {
-  document.getElementById("10001").scrollIntoView({
-    behavior: "smooth",
-  });
-});
-
 $(document).keydown(function (e) {
   if (e.altKey && e.key === "r") {
     p = Math.floor(Math.random() * 1025 + 1);
+    document.getElementById(p - 5).scrollIntoView();
     fetchMonFromDex();
   } else if (e.key === "ArrowDown") {
     e.preventDefault();
     p++;
+    document.getElementById(p - 5).scrollIntoView();
     fetchMonFromDex();
   } else if (e.key === "ArrowUp") {
     e.preventDefault();
     p--;
+    document.getElementById(p - 5).scrollIntoView();
     fetchMonFromDex();
   } else if (e.altKey && e.key === "s") {
     shinyToggle();
+  } else if (e.altKey && e.key === "p") {
+    $(".pkmnList").removeClass("hidden");
+    $(".pkmnInfo").addClass("hidden");
   }
 });

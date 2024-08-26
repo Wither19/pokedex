@@ -138,9 +138,6 @@
 
 .pkmnList {
   flex-basis: 25%;
-  position: relative;
-  top: -24px;
-  left: -10px;
 }
 
 ul {
@@ -188,14 +185,11 @@ li img {
 }
 
 .pkmnInfo {
-  flex-basis: 75%;
   text-align: center;
 }
 
 h1 {
   text-transform: capitalize;
-  font-size: 40px;
-  top: -72px;
 }
 
 .artwork {
@@ -287,5 +281,51 @@ h1 {
   color: white;
 }
 
-@media screen and (min-width: 1080px) {
+@media screen and (max-width: 1520px) {
+  body {
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 32px;
+    position: relative;
+    top: -16px;
+    left: -20%;
+  }
+
+  .artwork {
+    position: relative;
+    top: -40px;
+    left: -290px;
+    width: 150px;
+  }
+
+  .types {
+    position: relative;
+    top: -10px;
+    left: -18.5%;
+  }
+
+  #shinyButton {
+    top: -200px;
+    left: 125px;
+  }
+
+  .statToggle {
+    position: relative;
+    top: -240px;
+    left: -70px;
+    font-size: 20px;
+    margin-right: none;
+  }
+
+  .stats {
+    position: relative;
+    top: -260px;
+    left: -140px;
+  }
+
+  ul {
+    height: 675px;
+  }
 }
