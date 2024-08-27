@@ -209,10 +209,6 @@ function fetchMonFromDex() {
     });
 
   setTimeout(statColors, 500);
-
-  if (p >= 10272) {
-    document.getElementById(p - 5).scrollIntoView();
-  }
 }
 
 function shinyToggle() {
@@ -232,22 +228,24 @@ $(".statToggle").click(function () {
 $(document).keydown(function (e) {
   if (e.altKey && e.key === "r") {
     p = Math.floor(Math.random() * 1025 + 1);
-    document.getElementById(p - 5).scrollIntoView();
     fetchMonFromDex();
   } else if (e.key === "ArrowDown") {
     e.preventDefault();
     p++;
-    document.getElementById(p - 5).scrollIntoView();
     fetchMonFromDex();
   } else if (e.key === "ArrowUp") {
     e.preventDefault();
     p--;
-    document.getElementById(p - 5).scrollIntoView();
     fetchMonFromDex();
   } else if (e.altKey && e.key === "s") {
     shinyToggle();
   } else if (e.altKey && e.key === "p") {
-    $(".pkmnList").removeClass("hidden");
-    $(".pkmnInfo").addClass("hidden");
+    $(".pkmnList").toggleClass("hidden");
+    $(".pkmnInfo").toggleClass("hidden");
   }
+});
+
+$("#listOpen").click(function () {
+  $(".pkmnList").toggleClass("hidden");
+  $(".pkmnInfo").toggleClass("hidden");
 });
