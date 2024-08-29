@@ -208,7 +208,25 @@ function fetchMonFromDex() {
       }
     });
 
+  fetchLore();
   setTimeout(statColors, 500);
+}
+
+function fetchLore() {
+  fetch(`https://pokeapi.co/api/v2/pokemon-species/${p}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const engGenera = data.genera.findLast(
+        (entry) => entry.language.name === "en"
+      );
+      $(".genus").html(`The ${engGenera.genus}`);
+
+      const engFlavor = data.flavor_text_entries.findLast(
+        (entry) => entry.language.name === "en"
+      );
+      $(".flavorText").text(engFlavor.flavor_text);
+      $(".whatGame").text(`From Pokémon ${engFlavor.version.name}`);
+    });
 }
 
 function shinyToggle() {

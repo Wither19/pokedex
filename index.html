@@ -39,19 +39,15 @@
           <img src="" alt="" class="art shiny hidden" />
         </div>
         <div class="types"></div>
-        <div class="flex">
-          <div>
-            <button class="statToggle pogoStats">POGO Stats</button>
-            <button class="statToggle baseStats hidden">Base Stats</button>
-          </div>
-          <div>
-            <button id="shinyButton">
-              <img
-                width="48px"
-                src="https://archives.bulbagarden.net/media/upload/2/20/ShinyVIIIStar.png"
-              />
-            </button>
-          </div>
+        <div class="flex buttons">
+          <button id="shinyButton">
+            <img
+              width="48px"
+              src="https://archives.bulbagarden.net/media/upload/2/20/ShinyVIIIStar.png"
+            />
+          </button>
+          <button class="statToggle pogoStats">POGO Stats</button>
+          <button class="statToggle baseStats hidden">Base Stats</button>
         </div>
         <div class="stats">
           <div class="statPage base">
@@ -80,6 +76,13 @@
             <span>Max CP: <b id="maxCP"></b></span>
             <div class="bar maxCP"></div>
           </div>
+        </div>
+        <div class="flavor">
+          <span class="genus"></span>
+          <br /><br /><br />
+          <span class="flavorText"></span>
+          <br /><br /><br />
+          <span class="whatGame"></span>
         </div>
       </div>
     </div>
