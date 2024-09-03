@@ -225,7 +225,15 @@ function fetchLore() {
         (entry) => entry.language.name === "en"
       );
       $(".flavorText").text(engFlavor.flavor_text);
-      $(".whatGame").text(`From Pokémon ${engFlavor.version.name}`);
+      $(".whatGame").text(
+        `${engFlavor.version.name
+          .replace("alpha-sapphire", "Pokémon Alpha Sapphire")
+          .replace("ultra-moon", "Pokémon Ultra Moon")
+          .replace("lets-go-eevee", "Pokémon: Let's Go, Eevee!")
+          .replace("shield", "Pokémon Shield")
+          .replace("legends-arceus", "Pokémon Legends Arceus")
+          .replace("violet", "Pokémon Violet")}`
+      );
     });
 }
 

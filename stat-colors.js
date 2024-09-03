@@ -67,7 +67,7 @@ function statColors() {
     $(".hp").css({
       background: greatColor,
     });
-  } else if (hpWidth < excellent) {
+  } else if (hpWidth < excellent || hpWidth >= excellent) {
     $(".hp").css({
       background: excellentColor,
     });
@@ -89,7 +89,7 @@ function statColors() {
     $(".atk").css({
       background: greatColor,
     });
-  } else if (atkWidth < excellent) {
+  } else if (atkWidth < excellent || atkWidth >= excellent) {
     $(".atk").css({
       background: excellentColor,
     });
@@ -111,7 +111,7 @@ function statColors() {
     $(".def").css({
       background: greatColor,
     });
-  } else if (defWidth < excellent) {
+  } else if (defWidth < excellent || defWidth >= excellent) {
     $(".def").css({
       background: excellentColor,
     });
@@ -133,7 +133,7 @@ function statColors() {
     $(".spatk").css({
       background: greatColor,
     });
-  } else if (spAtkWidth < excellent) {
+  } else if (spAtkWidth < excellent || spAtkWidth >= excellent) {
     $(".spatk").css({
       background: excellentColor,
     });
@@ -155,7 +155,7 @@ function statColors() {
     $(".spdef").css({
       background: greatColor,
     });
-  } else if (spDefWidth < excellent) {
+  } else if (spDefWidth < excellent || spDefWidth >= excellent) {
     $(".spdef").css({
       background: excellentColor,
     });
@@ -177,29 +177,7 @@ function statColors() {
     $(".spd").css({
       background: greatColor,
     });
-  } else if (spdWidth < excellent) {
-    $(".spd").css({
-      background: excellentColor,
-    });
-  }
-
-  if (spdWidth < poor) {
-    $(".spd").css({
-      background: poorColor,
-    });
-  } else if (spdWidth < average) {
-    $(".spd").css({
-      background: averageColor,
-    });
-  } else if (spdWidth < good) {
-    $(".spd").css({
-      background: goodColor,
-    });
-  } else if (spdWidth < great) {
-    $(".spd").css({
-      background: greatColor,
-    });
-  } else if (spdWidth < excellent) {
+  } else if (spdWidth < excellent || spdWidth >= excellent) {
     $(".spd").css({
       background: excellentColor,
     });
