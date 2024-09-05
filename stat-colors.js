@@ -199,7 +199,10 @@ function statColors() {
     $(".pogoAtk").css({
       background: greatColor,
     });
-  } else if (pogoAtkWidth < pogoAtkExcellent) {
+  } else if (
+    pogoAtkWidth < pogoAtkExcellent ||
+    pogoAtkWidth >= pogoAtkExcellent
+  ) {
     $(".pogoAtk").css({
       background: excellentColor,
     });
@@ -221,7 +224,10 @@ function statColors() {
     $(".pogoDef").css({
       background: greatColor,
     });
-  } else if (pogoDefWidth < pogoDefExcellent) {
+  } else if (
+    pogoDefWidth < pogoDefExcellent ||
+    pogoDefWidth >= pogoDefExcellent
+  ) {
     $(".pogoDef").css({
       background: excellentColor,
     });
@@ -243,7 +249,10 @@ function statColors() {
     $(".pogoSta").css({
       background: greatColor,
     });
-  } else if (pogoStaWidth < pogoStaExcellent) {
+  } else if (
+    pogoStaWidth < pogoStaExcellent ||
+    pogoStaWidth >= pogoStaExcellent
+  ) {
     $(".pogoSta").css({
       background: excellentColor,
     });
@@ -265,7 +274,10 @@ function statColors() {
     $(".maxCP").css({
       background: greatColor,
     });
-  } else if (pogoMaxCPWidth < pogoCPExcellent) {
+  } else if (
+    pogoMaxCPWidth < pogoCPExcellent ||
+    pogoMaxCPWidth >= pogoCPExcellent
+  ) {
     $(".maxCP").css({
       background: excellentColor,
     });

@@ -146,10 +146,12 @@
 li {
   list-style-type: none;
   text-transform: capitalize;
+  font-size: 24px;
+  margin: 10px;
 }
 
 li img {
-  transform: scale(1.15) translate(-3px, 5px);
+  transform: scale(1.5) translate(-3px, 2px);
 }
 
 h1 {
@@ -236,9 +238,9 @@ ul {
 
 .flavor {
   position: absolute;
-  top: 33%;
-  left: 66%;
-  text-align: center;
+  top: 65%;
+  left: 60%;
+  width: 33%;
 }
 
 .flavorText {
@@ -246,6 +248,23 @@ ul {
   text-align: left !important;
 }
 
+.genus {
+  display: block;
+  text-align: center;
+}
+
 .whatGame {
+  display: block;
   text-transform: capitalize;
+  text-align: center;
+}
+
+.abilities {
+  position: absolute;
+  top: 30%;
+  left: 60%;
+}
+
+.enabled {
+  background: linear-gradient(90deg, 0% yellow, 25% gold, 50% goldenrod)
 }

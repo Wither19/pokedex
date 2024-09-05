@@ -131,12 +131,12 @@ function fetchMonFromDex() {
       var baseAtk = Math.round(scaledAtk * speedMod);
       var baseDef = Math.round(scaledDef * speedMod);
       var baseSta = Math.floor(hp * 1.75 + 50);
-      var nerfedAtk = Math.round(baseAtk * 0.91);
-      var nerfedDef = Math.round(baseDef * 0.91);
-      var nerfedSta = Math.round(baseSta * 0.91);
       var hundoAtk = baseAtk + 15;
       var hundoDef = baseDef + 15;
       var hundoSta = baseSta + 15;
+      var nerfedAtk = Math.round(baseAtk * 0.91) + 15;
+      var nerfedDef = Math.round(baseDef * 0.91) + 15;
+      var nerfedSta = Math.round(baseSta * 0.91) + 15;
 
       var lvl40 = Math.floor(
         Math.max(
@@ -163,52 +163,37 @@ function fetchMonFromDex() {
       var nerfedMaxCP = Math.floor(
         Math.max(
           10,
-          (hundoAtk *
-            Math.pow(hundoDef, 0.5) *
-            Math.pow(hundoSta, 0.5) *
+          (nerfedAtk *
+            Math.pow(nerfedDef, 0.5) *
+            Math.pow(nerfedSta, 0.5) *
             Math.pow(cpm[49], 2)) /
             10
-        ) * 0.9435
+        )
       );
 
-      if (lvl40 > 4000) {
-        $("#pogoAtk").text(nerfedAtk);
-        $(".pogoAtk").css({
-          width: `${nerfedAtk * 0.94}px`,
-        });
-        $("#pogoDef").text(nerfedDef);
-        $(".pogoDef").css({
-          width: `${nerfedDef * 1.01}px`,
-        });
-        $("#pogoSta").text(nerfedSta);
-        $(".pogoSta").css({
-          width: `${nerfedAtk * 0.82}px`,
-        });
-        $("#maxCP").text(nerfedMaxCP);
-        $(".maxCP").css({
-          width: `${nerfedMaxCP * 0.06}px`,
-        });
-      } else {
-        $("#pogoAtk").text(baseAtk);
-        $(".pogoAtk").css({
-          width: `${baseAtk * 0.94}px`,
-        });
-        $("#pogoDef").text(baseDef);
-        $(".pogoDef").css({
-          width: `${baseDef * 1.01}px`,
-        });
-        $("#pogoSta").text(baseSta);
-        $(".pogoSta").css({
-          width: `${nerfedSta * 0.81}px`,
-        });
-        $("#maxCP").text(maxCP);
-        $(".maxCP").css({
-          width: `${maxCP * 0.06}px`,
-        });
+      if (lvl40 >= 4000) {
+        maxCP = nerfedMaxCP;
       }
+      $("#pogoAtk").text(baseAtk);
+      $(".pogoAtk").css({
+        width: `${baseAtk * 0.94}px`,
+      });
+      $("#pogoDef").text(baseDef);
+      $(".pogoDef").css({
+        width: `${baseDef * 1.01}px`,
+      });
+      $("#pogoSta").text(baseSta);
+      $(".pogoSta").css({
+        width: `${nerfedSta * 0.81}px`,
+      });
+      $("#maxCP").text(maxCP);
+      $(".maxCP").css({
+        width: `${maxCP * 0.06}px`,
+      });
     });
 
   fetchLore();
+  addAbilities();
   setTimeout(statColors, 500);
 }
 
@@ -234,6 +219,14 @@ function fetchLore() {
           .replace("legends-arceus", "Pokémon Legends Arceus")
           .replace("violet", "Pokémon Violet")}`
       );
+    });
+}
+
+function addAbilities() {
+  fetch(`https://pokeapi.co/api/v2/pokemon/${p}`)
+    .then((response) => response.json())
+    .then((data) => {
+      for (a = 0; a <= data.abilities.length; a++) {}
     });
 }
 
@@ -265,6 +258,7 @@ $(document).keydown(function (e) {
     fetchMonFromDex();
   } else if (e.altKey && e.key === "s") {
     shinyToggle();
+    $("#shinyButton").toggleClass("enabled");
   } else if (e.altKey && e.key === "p") {
     $(".pkmnList").toggleClass("hidden");
     $(".pkmnInfo").toggleClass("hidden");
