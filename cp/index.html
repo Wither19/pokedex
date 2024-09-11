@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+		<link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  </head>
+
+  <body onload="grab(); setTimeout(cpCalculate, 500);">
+    <h1 style="text-align: center; text-transform: capitalize;"></h1>
+    <div class="flex">
+      <div class="level">
+        <label for="level">Level: <span class="methodObtained"></span></label>
+        <br>
+        <br>
+        <input oninput="cpCalculate();" type="number" id="lvl" min="1" max="50" value="20">
+      </div>
+      <div class="ivs">
+        <label for="atk">Attack: <span class="atkLabel"></span> </label>
+        <br>
+        <br>
+        <input oninput="cpCalculate();" type="number" class="stat" id="atk" min="0" max="15" value="15">
+        <br>
+        <br>
+        <label for="def">Defense: <span class="defLabel"></span> </label>
+        <br>
+        <br>
+        <input oninput="cpCalculate();" type="number" class="stat" id="def" min="0" max="15" value="15">
+        <br>
+        <br>
+        <label for="sta">HP: <span class="staLabel"></span> </label>
+        <br>
+        <br>
+        <input oninput="cpCalculate();" type="number" class="stat" id="sta" min="0" max="15" value="15">
+      </div>
+    </div>
+    <br>
+    <div style="margin: 10px auto;">
+      <h2></h2>
+    </div>
+		<script src="scripts.js"></script>
+  </body>
+
+</html>
