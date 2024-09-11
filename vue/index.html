@@ -5,7 +5,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
       <style>
-         body {font-family: Arial;}
+         body {
+          font-family: Arial;
+        }
          /* Style the tab */
          .tab {
          overflow: hidden;
@@ -39,6 +41,8 @@
          padding: 6px 12px;
          border: 1px solid #ccc;
          border-top: none;
+         margin: 10px auto;
+         text-align: center;
          }
          :root {
          font-family: "Noto Sans", sans-serif;
@@ -171,52 +175,77 @@
          font-size: 24px;
          margin: 8px 4px 10px 4px;
          }
+         .sprite {
+          width: 200px;
+          display: block;
+         }
+         .sprite.hidden {
+          display: none;
+         }
+
+         .bar {
+          height: 12px;
+          background: blue;
+          text-align: left;
+         }
       </style>
    </head>
    <body>
       <div id="app">
-         <center>
-            <button class="nav" @click="fetchThat(-1)">&#8592;</button>
-            <button class="nav" @click="fetchThat(1)">&#8594;</button>
-            <br>
-            <button class="nav" @click="fetchThat(Math.floor(Math.random() * 1025) + 1)">Surprise Me!</button>
             <div class="tab">
                <button class="tablinks" @click="tab = 1">Battle</button>
                <button class="tablinks" @click="tab = 2">Tab 2</button>
                <button class="tablinks" @click="tab = 3">Tab 3</button>
             </div>
+            <center>
+              <button class="nav" @click="fetchThat(-1)">&#8592;</button>
+            <button class="nav" @click="fetchThat(1)">&#8594;</button>
+            <br>
+            <button class="nav" @click="fetchThat(Math.floor(Math.random() * 1025) + 1)">Surprise Me!</button>
+            <br>
+            <button class="nav" @click="shiny = !shiny"><img src="https://archives.bulbagarden.net/media/upload/2/20/ShinyVIIIStar.png"></button>
             <h1 style="text-transform: capitalize;">
                #{{ pkmn.id }} - {{ pkmn.name }}
             </h1>
-            <img
+            <img class="sprite" :class='shiny ? "hidden" : ""'
                :src='pkmn.sprites.other["official-artwork"].front_default'
-               width="250px"
                />
+            <img class="sprite" :class='shiny ? "" : "hidden"'
+               :src='pkmn.sprites.other["official-artwork"].front_shiny'
+               />
+            </center>
             <div class="tabcontent" v-cloak v-if="tab === 1">
-               <h2>Battle Information</h2>
-               <div class="flex alt">
-                  <div class="types"></div>
-                  <div v-for="(type, index) in pkmn.types">
-                     <div :class='"icon " + pkmn.types[index].type.name'>
-                        <img
-                           :src='"https://duiker101.github.io/pokemon-type-svg-icons/icons/" + pkmn.types[index].type.name + ".svg"'
-                           />
-                     </div>
-                  </div>
-               </div>
+              <h2>Battle Information</h2>
+              <div class="flex alt">
+                 <div class="types"></div>
+                 <div v-for="(type, index) in pkmn.types">
+                    <div :class='"icon " + pkmn.types[index].type.name'>
+                       <img
+                          :src='"https://duiker101.github.io/pokemon-type-svg-icons/icons/" + pkmn.types[index].type.name + ".svg"'
+                          />
+                    </div>
+                 </div>
+                 </div>
+                 
                <div class="flex">
                   <div class="stats">
                      <h3>Base Stats</h3>
                      <div>HP: <span v-text="pkmn.stats[0].base_stat"></span></div>
+                     <div class="bar" :style="{'width': pkmn.stats[0].base_stat + 'px'}"></div>
                      <div>Attack: <span v-text="pkmn.stats[1].base_stat"></span></div>
+                     <div class="bar" :style="{'width': pkmn.stats[1].base_stat + 'px'}"></div>
                      <div>Defense: <span v-text="pkmn.stats[2].base_stat"></span></div>
+                     <div class="bar" :style="{'width': pkmn.stats[2].base_stat + 'px'}"></div>
                      <div>
                         Sp. Attack: <span v-text="pkmn.stats[3].base_stat"></span>
                      </div>
+                     <div class="bar" :style="{'width': pkmn.stats[3].base_stat + 'px'}"></div>
                      <div>
                         Sp. Defense: <span v-text="pkmn.stats[4].base_stat"></span>
                      </div>
+                     <div class="bar" :style="{'width': pkmn.stats[4].base_stat + 'px'}"></div>
                      <div>Speed: <span v-text="pkmn.stats[5].base_stat"></span></div>
+                     <div class="bar" :style="{'width': pkmn.stats[5].base_stat + 'px'}"></div>
                   </div>
                   <div class="abilities">
                      <h3>Abilities</h3>
@@ -230,10 +259,10 @@
                   </div>
                </div>
             </div>
+          </div>
       </div>
       <div class="tabcontent" v-cloak v-else-if="tab === 2">{{ tab }}</div>
       <div class="tabcontent" v-cloak v-else>{{ tab }}</div>
-      </center>
       </div>
       <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
       <script>
@@ -241,6 +270,7 @@
            data() {
              return {
                tab: 1,
+               shiny: false,
                pkmn: {
                  abilities: [
                    {
