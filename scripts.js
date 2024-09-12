@@ -275,8 +275,9 @@ $("#listOpen").click(function () {
   $(".pkmnInfo").toggleClass("hidden");
 });
 
-$(".lvlSlide").on("input", function () {
-  lvlChange();
+$(".lvlSlide").on("input, change, keydown", function (event) {
+  event.stopPropagation();
+  setTimeout(lvlChange, 100);
 });
 
 function lvlChange() {
@@ -322,8 +323,17 @@ function lvlChange() {
     maxCP = nerfedMaxCP;
   }
   $("#maxCP").text(maxCP);
-  $(".maxCP").css({
-    width: `${maxCP * 0.06}px`,
-  });
+  if (maxCP <= 500) {
+    $(".maxCP").css({
+      width: `${500 * 0.06}px`,
+    });
+  }
+
+  else if (maxCP > 500) {
+    $(".maxCP").css({
+      width: `${maxCP * 0.06}px`,
+    });
+  }
+  $("#goLvlLabel").text(`Level ${lvlVal}`);
   setTimeout(statColors, 250);
 }
