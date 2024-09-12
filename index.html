@@ -1,85 +1,95 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
-    <title>Flash Card App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
-  <body>
-    <div id="app">
-      <h1 v-text="deckName"></h1>
-
-      <div @click="flipped = !flipped" :class="{again: isRepeat}" class="card">
-        <h2 v-if="!flipped" v-text="front"></h2>
-        <div v-else>
-          <div v-html="back"></div>
-          <div class="score">
-            <button @click.stop="gotIt()">GOT IT</button>
-            <button @click.stop="again()">AGAIN</button>
+  <body onload="getNationalDex(); fetchMonFromDex();">
+    <!-- <button class="fastNav natlDex">Jump To National Pokedex</button>
+         <button class="fastNav forms">Jump to Alternate Forms</button> -->
+    <div class="app">
+      <div class="pkmnList hidden">
+        <ul></ul>
+      </div>
+      <div class="pkmnInfo">
+        <button id="listOpen" style="z-index: 2">
+          <i class="bi bi-list" style="font-size: 40px"></i>
+        </button>
+        <h1></h1>
+        <sub></sub>
+        <div class="artwork">
+          <img src="" alt="" class="art reg" />
+          <img src="" alt="" class="art shiny hidden" />
+        </div>
+        <div class="types"></div>
+        <div class="flex buttons">
+          <button id="shinyButton">
+            <img
+              width="48px"
+              src="https://archives.bulbagarden.net/media/upload/2/20/ShinyVIIIStar.png"
+            />
+          </button>
+          <button class="statToggle pogoStats">POGO Stats</button>
+          <button class="statToggle baseStats hidden">Base Stats</button>
+        </div>
+        <div class="stats">
+          <div class="statPage base">
+            <span>HP</span>
+            <div class="bar hp"><b id="hp"></b></div>
+            <span>Attack</span>
+            <div class="bar atk"><b id="atk"></b></div>
+            <span>Defense</span>
+            <div class="bar def"><b id="def"></b></div>
+            <span>Sp. Attack</span>
+            <div class="bar spatk"><b id="spatk"></b></div>
+            <span>Sp. Defense</span>
+            <div class="bar spdef"><b id="spdef"></b></div>
+            <span>Speed</span>
+            <div class="bar spd"><b id="spd"></b></div>
+          </div>
+          <br />
+          <div class="statPage pogo hidden">
+            <span>Max CP</span>
+            <div class="bar maxCP"><b id="maxCP"></b></div>
+            <br />
+            <input class="lvlSlide" type="number" min="1" max="50" value="50" />
+            <br />
+            <br />
+            <span>Attack</span>
+            <div class="bar pogoAtk"><b id="pogoAtk"></b></div>
+            <span>Defense</span>
+            <div class="bar pogoDef"><b id="pogoDef"></b></div>
+            <span>Stamina</span>
+            <div class="bar pogoSta"><b id="pogoSta"></b></div>
           </div>
         </div>
+        <div class="flavor">
+          <span class="genus"></span>
+          <br /><br /><br />
+          <span class="flavorText"></span>
+          <br /><br /><br />
+          <span class="whatGame"></span>
+        </div>
       </div>
-
-      <div class="navigation">
-        <button @click="move(-1)" type="button">&#8592;</button>
-
-        <button @click="move(1)" type="button">&#8594;</button>
-      </div>
-
-      <a :href="readMoreUrl">Read more</a>
     </div>
-
-    <script src="data.js"></script>
-    <script src="https://unpkg.com/vue@3.0.7/dist/vue.global.js"></script>
-    <script>
-      const FlashCardApp = {
-        data() {
-          return {
-            deckName: "Vue.js Fundamentals",
-            cards,
-            index: 0,
-            flipped: false,
-            readMoreUrl: "https://v3.vuejs.org/guide",
-          };
-        },
-        methods: {
-          move(change) {
-            if (this.cards[this.index + change]) {
-              this.index += change;
-            } else {
-              this.index = change == 1 ? 0 : this.cards.length - 1;
-            }
-            this.flipped = false;
-          },
-          gotIt() {
-            if (this.cards.length === 1) {
-              return alert("Well done!");
-            }
-            this.cards.splice(this.index, 1);
-            if (!this.cards[this.index]) {
-              this.index = 0;
-            }
-            this.flipped = false;
-          },
-          again() {
-            this.cards[this.index].isRepeat = true;
-            this.move(1);
-          },
-        },
-        computed: {
-          front() {
-            return this.cards[this.index].front;
-          },
-          back() {
-            return this.cards[this.index].back;
-          },
-          isRepeat() {
-            return this.cards[this.index].isRepeat;
-          },
-        },
-      };
-
-      const app = Vue.createApp(FlashCardApp).mount("#app");
-    </script>
+    <script src="scripts.js"></script>
+    <script src="stat-colors.js"></script>
   </body>
 </html>

@@ -9,6 +9,9 @@ var cpm = [
   0.76739717, 0.7731865, 0.77893275, 0.784637, 0.7903, 0.7953, 0.8003, 0.8053,
   0.8103, 0.8153, 0.8203, 0.8253, 0.8303, 0.8353, 0.8403,
 ];
+var expBaseA = 0;
+var expBaseD = 0;
+var expBaseS = 0;
 
 function getNationalDex() {
   fetch("https://pokeapi.co/api/v2/pokedex/1")
@@ -134,16 +137,18 @@ function fetchMonFromDex() {
       var hundoAtk = baseAtk + 15;
       var hundoDef = baseDef + 15;
       var hundoSta = baseSta + 15;
-      var nerfedAtk = Math.round(baseAtk * 0.91) + 15;
-      var nerfedDef = Math.round(baseDef * 0.91) + 15;
-      var nerfedSta = Math.round(baseSta * 0.91) + 15;
+      var nerfedAtk = Math.round(baseAtk * 0.91);
+      var nerfedDef = Math.round(baseDef * 0.91);
+      var nerfedSta = Math.round(baseSta * 0.91);
+
+      var lvlVal = Number($(".lvlSlide").val());
 
       var lvl40 = Math.floor(
         Math.max(
           10,
-          (hundoAtk *
-            Math.pow(hundoDef, 0.5) *
-            Math.pow(hundoSta, 0.5) *
+          (baseAtk *
+            Math.pow(baseDef, 0.5) *
+            Math.pow(baseSta, 0.5) *
             Math.pow(cpm[39], 2)) /
             10
         )
@@ -155,7 +160,7 @@ function fetchMonFromDex() {
           (hundoAtk *
             Math.pow(hundoDef, 0.5) *
             Math.pow(hundoSta, 0.5) *
-            Math.pow(cpm[49], 2)) /
+            Math.pow(cpm[lvlVal - 1], 2)) /
             10
         )
       );
@@ -166,7 +171,7 @@ function fetchMonFromDex() {
           (nerfedAtk *
             Math.pow(nerfedDef, 0.5) *
             Math.pow(nerfedSta, 0.5) *
-            Math.pow(cpm[49], 2)) /
+            Math.pow(cpm[lvlVal - 1], 2)) /
             10
         )
       );
@@ -186,14 +191,14 @@ function fetchMonFromDex() {
       $(".pogoSta").css({
         width: `${nerfedSta * 0.81}px`,
       });
-      $("#maxCP").text(maxCP);
-      $(".maxCP").css({
-        width: `${maxCP * 0.06}px`,
-      });
+      expBaseA = baseAtk;
+      expBaseD = baseDef;
+      expBaseS = baseSta;
     });
 
   fetchLore();
   addAbilities();
+  setTimeout(lvlChange, 500);
   setTimeout(statColors, 500);
 }
 
@@ -248,11 +253,11 @@ $(document).keydown(function (e) {
   if (e.altKey && e.key === "r") {
     p = Math.floor(Math.random() * 1025 + 1);
     fetchMonFromDex();
-  } else if (e.key === "ArrowDown") {
+  } else if (e.key === "ArrowRight") {
     e.preventDefault();
     p++;
     fetchMonFromDex();
-  } else if (e.key === "ArrowUp") {
+  } else if (e.key === "ArrowLeft") {
     e.preventDefault();
     p--;
     fetchMonFromDex();
@@ -269,3 +274,56 @@ $("#listOpen").click(function () {
   $(".pkmnList").toggleClass("hidden");
   $(".pkmnInfo").toggleClass("hidden");
 });
+
+$(".lvlSlide").on("input", function () {
+  lvlChange();
+});
+
+function lvlChange() {
+  var lvlVal = Number($(".lvlSlide").val());
+  var expHundoA = expBaseA + 15;
+  var expHundoD = expBaseD + 15;
+  var expHundoS = expBaseS + 15;
+
+  var lvl40 = Math.floor(
+    Math.max(
+      10,
+      (expBaseA *
+        Math.pow(expBaseD, 0.5) *
+        Math.pow(expBaseS, 0.5) *
+        Math.pow(cpm[39], 2)) /
+        10
+    )
+  );
+
+  var maxCP = Math.floor(
+    Math.max(
+      10,
+      (expHundoA *
+        Math.pow(expHundoD, 0.5) *
+        Math.pow(expHundoS, 0.5) *
+        Math.pow(cpm[lvlVal - 1], 2)) /
+        10
+    )
+  );
+
+  var nerfedMaxCP = Math.floor(
+    Math.max(
+      10,
+      (Math.round(expBaseA * 0.91) *
+        Math.pow(Math.round(expBaseD * 0.91), 0.5) *
+        Math.pow(Math.round(expBaseS * 0.91), 0.5) *
+        Math.pow(cpm[lvlVal - 1], 2)) /
+        10
+    )
+  );
+
+  if (lvl40 >= 4000) {
+    maxCP = nerfedMaxCP;
+  }
+  $("#maxCP").text(maxCP);
+  $(".maxCP").css({
+    width: `${maxCP * 0.06}px`,
+  });
+  setTimeout(statColors, 250);
+}
