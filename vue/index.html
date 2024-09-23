@@ -45,7 +45,6 @@
         />
       </center>
       <div class="tabcontent" v-cloak v-if="tab === 1">
-        <h2>Battle Information</h2>
         <div class="flex alt">
           <div class="types"></div>
           <div v-for="(type, index) in pkmn.types">
@@ -63,37 +62,37 @@
             <div
               class="bar"
               v-text="pkmn.stats[0].base_stat"
-              :style="{'width': (pkmn.stats[0].base_stat * 0.66) + '%'}"
+              :style="{'width': (pkmn.stats[0].base_stat * 0.66) + '%', 'background-color': getStatColor(pkmn.stats[0].base_stat)}"
             ></div>
             <div class="barside">Attack</div>
             <div
               class="bar"
               v-text="pkmn.stats[1].base_stat"
-              :style="{'width': (pkmn.stats[1].base_stat * 0.66) + '%'}"
+              :style="{'width': (pkmn.stats[1].base_stat * 0.66) + '%', 'background-color': getStatColor(pkmn.stats[1].base_stat)}"
             ></div>
             <div class="barside">Defense</div>
             <div
               class="bar"
               v-text="pkmn.stats[2].base_stat"
-              :style="{'width': (pkmn.stats[2].base_stat * 0.66) + '%'}"
+              :style="{'width': (pkmn.stats[2].base_stat * 0.66) + '%', 'background-color': getStatColor(pkmn.stats[2].base_stat)}"
             ></div>
             <div class="barside">Special Attack</div>
             <div
               class="bar"
               v-text="pkmn.stats[3].base_stat"
-              :style="{'width': (pkmn.stats[3].base_stat * 0.66) + '%'}"
+              :style="{'width': (pkmn.stats[3].base_stat * 0.66) + '%', 'background-color': getStatColor(pkmn.stats[3].base_stat)}"
             ></div>
             <div class="barside">Special Defense</div>
             <div
               class="bar"
               v-text="pkmn.stats[4].base_stat"
-              :style="{'width': (pkmn.stats[4].base_stat * 0.66) + '%'}"
+              :style="{'width': (pkmn.stats[4].base_stat * 0.66) + '%', 'background-color': getStatColor(pkmn.stats[4].base_stat)}"
             ></div>
             <div class="barside">Speed</div>
             <div
               class="bar"
               v-text="pkmn.stats[5].base_stat"
-              :style="{'width': (pkmn.stats[5].base_stat * 0.66) + '%'}"
+              :style="{'width': (pkmn.stats[5].base_stat * 0.66) + '%', 'background-color': getStatColor(pkmn.stats[5].base_stat)}"
             ></div>
           </div>
           <div class="abilities">
@@ -121,11 +120,14 @@
         </div>
       </div>
       <div class="tabcontent" v-cloak v-else-if="tab === 2">
-        <h2>
-          Pokémon Factoids:
-          <span style="text-transform: capitalize" v-text="pkmn.name"></span>
-        </h2>
-        <h3 v-text="`The ${genus}`"></h3>
+        <img
+          style="transform: translateY(12px)"
+          :src="`https://img.pokemondb.net/sprites/scarlet-violet/icon/avif/${pkmn.name}.avif`"
+        />
+        <h3
+          style="text-transform: capitalize"
+          v-text="`${pkmn.name}: The ${genus}`"
+        ></h3>
         <div class="flavor">
           <div class="flex alt">
             <div v-text="flavor"></div>
@@ -1596,6 +1598,21 @@
               .replace("violet", "Pokémon Violet");
             this.gamesName = findGameName;
             return this.gamesName;
+          },
+          getStatColor(stat) {
+            if (stat >= 1 && stat < 35) {
+              return "red";
+            } else if (stat >= 35 && stat < 50) {
+              return "orangered";
+            } else if (stat >= 50 && stat < 70) {
+              return "orange";
+            } else if (stat >= 70 && stat < 90) {
+              return "yellow";
+            } else if (stat >= 90 && stat < 150) {
+              return "lime";
+            } else if (stat >= 150) {
+              return "#11d4a0";
+            }
           },
         },
       };
