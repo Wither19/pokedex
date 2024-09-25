@@ -183,7 +183,7 @@ body {
   top: 100px;
 }
 .sprite {
-  width: 225px;
+  width: 250px;
   display: block;
   filter: drop-shadow(1px 2px 4px black);
 }
@@ -202,7 +202,7 @@ body {
   text-shadow: 0px 1px 2px black;
   box-shadow: 1px 2px 3px black;
   font-size: 1em;
-  transition: width 150ms, color 200ms;
+  transition: width 300ms, background-color 400ms;
 }
 
 .barside {
@@ -265,4 +265,9 @@ button:hover {
   font-size: 1.05em;
   margin: 12px 20%;
   line-height: 125%;
+}
+
+.flex.first {
+  position: relative; 
+  top: -35vh;
 }

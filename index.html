@@ -3,11 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" media="screen and (max-width: 2000px)" href="style.css" />
+    <link rel="stylesheet" media="screen and (max-width: 1400px)" href="chromebook.css" />
   </head>
   <body>
     <div id="app">
+      <audio id="cry" :src="pkmnCry" style="opacity: 0;" type="audio/ogg"></audio>
       <div class="tab">
         <button class="tablinks" @click="tab = 1">Stats</button>
         <button class="tablinks" @click="tab = 2">Lore</button>
@@ -27,6 +30,7 @@
         </div>
 
         <h1 style="text-transform: capitalize">#{{ pkmn.id.toString().padStart(4, "0") }} - {{ pkmn.name.replace("-", " ") }}</h1>
+        <button @click='document.querySelector("#cry").play();'><i class="bi bi-play-fill"></i></button>
         <img class="sprite" :class='shiny ? "hidden" : ""' :src="pkmn.sprites.other.home.front_default" />
         <img class="sprite" :class='shiny ? "" : "hidden"' :src="pkmn.sprites.other.home.front_shiny" />
       </center>
@@ -42,7 +46,7 @@
           </div>
         </div>
 
-        <div class="flex" style="position: relative; top: -35vh">
+        <div class="flex first">
           <div class="stats">
             <h3>Base Stats</h3>
             <div class="barside">HP</div>
@@ -62,20 +66,13 @@
           <div class="abilities">
             <h3>Abilities</h3>
             <div v-for="(ability, index) in pkmn.abilities">
-              <div
-                class="abilityCard"
-                @click="getAbilityData; notifShown = !notifShown;"
-                :class='notifShown ? "condensed" : ""'
-              >
+              <div class="abilityCard">
                 <span v-show="notifShown === false">
                   <span
                     v-text='pkmn.abilities[index].ability.name.replace("-", " ")'
                   ></span>
                   &nbsp;
                   <b v-if="pkmn.abilities[index].is_hidden">(H)</b>
-                </span>
-                <span class="back" v-if="notifShown === true">
-                  <span v-text="cachedEffect[index]"></span>
                 </span>
               </div>
             </div>
@@ -1482,7 +1479,7 @@
             gamesName: "Pokémon Shield",
             p: 1,
             notifShown: false,
-            cachedEffect: [],
+            pkmnCry: "https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/132.ogg",
           };
         },
         mounted() {
@@ -1505,6 +1502,7 @@
               .then((response) => response.json())
               .then((data) => {
                 this.pkmn = data;
+                this.pkmnCry = data.cries.latest;
               });
             this.fetchSpecies();
           },
@@ -1518,17 +1516,6 @@
             setTimeout(this.engFlavor, 250);
             setTimeout(this.gameName, 250);
             this.cachedEffect = "";
-          },
-          getAbilityData() {
-            for (let e = 0; e <= this.pkmn.abilities.length; e++) {
-              fetch(this.pkmn.abilities[e].ability.url).then(response => response.json()).then(data => {
-                let engAbility = data.flavor_text_entries.findLast(
-                  (ability) => ability.language.name === "en"
-                );
-                this.cachedEffect.push(engAbility.flavor_text);
-                alert(this.cachedEffect);
-              });
-            }
           },
           engGenera() {
             let findGenera = this.species.genera.findLast(
